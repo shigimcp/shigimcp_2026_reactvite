@@ -23,7 +23,6 @@ const root = createRoot(document.getElementById("root"));
 root.render(
 	<StrictMode>
 		<BrowserRouter>
-		{/* <BrowserRouter basename={import.meta.env.BASE_URL}> */}
 		{/* <BrowserRouter basename='/shigimcp_2026_reactvite/'> */}
 		{/* <BrowserRouter basename='/Xstage/shigimcp_2026_reactvite'> */}
 			<App />
