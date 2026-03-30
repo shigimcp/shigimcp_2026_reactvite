@@ -1,0 +1,30 @@
+[
+ {
+   "skill_index": 0,
+   "skill_id": "tech",
+   "skillSet": "Creative Technology",
+   "skill": "• UI/UX\n• Interactive Digital Experiences\n• Code Animation\n• Responsive Web Design\n• Rapid Prototyping\n• 360 Digital Campaigns",
+   "skill_html": "<ul>\n\t<li>UI/UX</li>\n\t<li>Interactive Digital Experiences</li>\n\t<li>Code Animation</li>\n\t<li>Responsive Web Design</li>\n\t<li>Rapid Prototyping</li>\n\t<li>360 Digital Campaigns</li>\n</ul>"
+ },
+ {
+   "skill_index": 1,
+   "skill_id": "crtv",
+   "skillSet": "Creative",
+   "skill": "• Graphic Design\n• Art Direction\n• Motion Graphics\n• Print & Editorial Layout",
+   "skill_html": "<ul>\n\t<li>Graphic Design</li>\n\t<li>Art Direction</li>\n\t<li>Motion Graphics</li>\n\t<li>Print & Editorial Layout</li>\n</ul>"
+ },
+ {
+   "skill_index": 2,
+   "skill_id": "dev",
+   "skillSet": "Front-End Development",
+   "skill": "• HTML5\n• CSS3 / SCSS / SASS\n• JavaScript / jQuery\n• GSAP\n• Working knowledge of:\n  - React\n  - Unity / WebGL / C#",
+   "skill_html": "<ul>\n\t<li>HTML5\n\t<li>CSS3 / SCSS / SASS\n\t<li>JavaScript / jQuery\n\t<li>GSAP\n\t<li>Working knowledge of:\n\t<ul>\n\t\t<li>React</li>\n\t\t<li>Unity / WebGL / C#</li>\n\t</ul>\n</ul>"
+ },
+ {
+   "skill_index": 3,
+   "skill_id": "tool",
+   "skillSet": "Design Ecosystems",
+   "skill": "• Adobe Creative Suite, notably:\n  - Photoshop\n  - Illustrator\n  - InDesign\n  - After Effects\n• Working knowledge of:\n  - Figma\n  - XD\n  - Sketch",
+   "skill_html": "<ul>\n\t<li>Adobe Creative Suite, notably:</li>\n\t<ul>\n\t\t<li>Photoshop</li>\n\t\t<li>Illustrator</li>\n\t\t<li>InDesign</li>\n\t\t<li>After Effects</li>\n\t</ul>\n\t<li>Working knowledge of:</li>\n\t<ul>\n\t\t<li>Figma</li>\n\t\t<li>XD</li>\n\t\t<li>Sketch</li>\n\t</ul>\n</ul>"
+ }
+]
