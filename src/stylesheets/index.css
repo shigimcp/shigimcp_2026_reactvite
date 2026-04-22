@@ -131,7 +131,8 @@
 
 * {
 	/* font-size: 10px; */
-	font-size: 15px;
+	/* font-size: 15px; */
+
 	/* letter-spacing: 0.025em; */
 	/* letter-spacing: -0.00625em; */
 
@@ -167,12 +168,15 @@ img {
 /* #region ==================== MARK: ROOT ==================== */
 
 :root, body {
+	/* width: 100vw;
+	height: 100vh; */
+
 	margin: 0;
 	padding: 0;
 }
 
 :root {
-	/* border: 2px solid #ff00ff; */
+	/* border: 1px inset #ff00ff; */
 
 	/* font-family: ChaleParNinSix, system-ui, Avenir, Helvetica, Arial, sans-serif; */
 	font-family: AvenirNext-Regular, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -192,7 +196,7 @@ img {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
-	width: 100vw;
+	/* width: 100vw; */
 	/* height: 100vh; */
 
 	/* max-width: 1440px; */
@@ -200,402 +204,1441 @@ img {
 	/* margin: 0;
 	padding: 0; */
 
+	/* overflow: hidden; */
+
 	/* position: fixed;
 	z-index: 999; */
 
 	/* #region -------------------- MARK: variables -------------------- */
 
-	/* --header-height: 80px; */
-	--header-height: 70px;
-	/* --header-height: 60px; */
+	--hedPadding: 0 1.25rem 0 0;
+	/* --navPadding: 0 2.5rem 0 0; */
 
+	/* --header-height: 70px;
 	--navBar-height: 40px;
 
 	--workNav-width: 175px;
-	/* --workNav-height: 25px; */
 	--workNav-height: 60px;
 
 	--body-min-width: 1115px;
 	--body-max-width: 1440px;
+	--body-max-width: 1920px; */
 
-	/* --body-width: 50vw;
-	--body-min-width: 820px;
-	--body-max-width: 1115px;
+	/* --work-gallery-width: 90vw; */
 
-	--header-height: 60px;
-	--navBar-height: 35px;
-	--workNav-height: 50px; */
 
-	/* #endregion -------------------- MARK: variables -------------------- */
+	/* REF: https://nekocalc.com/px-to-rem-converter *** Calculation based on a root font-size of 15 pixel!!! *** */
+
+	--header-height: 4.667rem;
+	--navBar-height: 2.667rem;
+
+	--workNav-width: 11.667rem;
+	--workNav-height: 4rem;
+
+	/* --body-min-width: 74.333rem; */
+	/* --body-max-width: 96rem; */
+	/* --body-max-width: 126.667rem;
+
+	/* #endregion -------------------- variables -------------------- */
 }
 
 /* #endregion ==================== ROOT ==================== */
 
 
+/* #region ==================== MARK: MEDIA QUERIES ==================== */
 
+/* @media (min-width: 1921px) {
+@media (min-width: 1920px) and (max-width: 2560px) {
+@media (width >= 1920px) {
+	* {
+		font-size: 15px;
+	}
 
+	:root {
+		--header-height: 70px;
+		--navBar-height: 40px;
 
-/* #region ========================= MARK: VARIABLES fr Global.css (2021) ========================= */
+		--workNav-width: 175px;
+		--workNav-height: 60px;
 
-/* #region - - - - - - - - - - - VARIABLES: BG MIXINS - REF: https://cssgradient.io - - - - - - - - - - - */
+		--body-min-width: 1115px;
+		--body-max-width: 1440px;
+		--body-max-width: 1920px;
 
-/* @mixin bgGradient01() {
-	background: rgb(255, 255, 255);
-	background: -moz-linear-gradient(
-		90deg,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(255, 255, 255, 1) 10%,
-		rgba(255, 255, 255, 1) 90%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	background: -webkit-linear-gradient(
-		90deg,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(255, 255, 255, 1) 10%,
-		rgba(255, 255, 255, 1) 90%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	background: linear-gradient(
-		90deg,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(255, 255, 255, 1) 10%,
-		rgba(255, 255, 255, 1) 90%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
-	mix-blend-mode: multiply;
-}
+		REF: https://nekocalc.com/px-to-rem-converter *** Calculation based on a root font-size of 15 pixel!!! ***
+		--header-height: 4.667rem;
+		--navBar-height: 2.667rem;
 
-@mixin bgGradient02() {
-	background: rgb(230, 230, 230);
-	background: -moz-linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 0) 0%,
-		rgba(230, 230, 230, 1) 20%,
-		rgba(230, 230, 230, 1) 80%,
-		rgba(230, 230, 230, 0) 100%
-	);
-	background: -webkit-linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 0) 0%,
-		rgba(230, 230, 230, 1) 20%,
-		rgba(230, 230, 230, 1) 80%,
-		rgba(230, 230, 230, 0) 100%
-	);
-	background: linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 0) 0%,
-		rgba(230, 230, 230, 1) 20%,
-		rgba(230, 230, 230, 1) 80%,
-		rgba(230, 230, 230, 0) 100%
-	);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e6e6e6",endColorstr="#e6e6e6",GradientType=1);
-	mix-blend-mode: multiply;
-}
+		--workNav-width: 11.667rem;
+		--workNav-height: 4rem;
 
-@mixin bgGradient03() {
-	background: rgb(230, 230, 230);
-	background: -moz-linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 1) 0%,
-		rgba(230, 230, 230, 0) 20%,
-		rgba(230, 230, 230, 0) 80%,
-		rgba(230, 230, 230, 1) 100%
-	);
-	background: -webkit-linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 1) 0%,
-		rgba(230, 230, 230, 0) 20%,
-		rgba(230, 230, 230, 0) 80%,
-		rgba(230, 230, 230, 1) 100%
-	);
-	background: linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 1) 0%,
-		rgba(230, 230, 230, 0) 20%,
-		rgba(230, 230, 230, 0) 80%,
-		rgba(230, 230, 230, 1) 100%
-	);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e6e6e6",endColorstr="#e6e6e6",GradientType=1);
-	mix-blend-mode: multiply;
-}
-
-@mixin bgGradient04() {
-	background: rgb(230, 230, 230);
-	background: -moz-linear-gradient(
-		90deg,
-		rgba(210, 210, 210, 1) 0%,
-		rgba(210, 210, 210, 0) 40%,
-		rgba(210, 210, 210, 0) 60%,
-		rgba(210, 210, 210, 1) 100%
-	);
-	background: -webkit-linear-gradient(
-		90deg,
-		rgba(210, 210, 210, 1) 0%,
-		rgba(210, 210, 210, 0) 40%,
-		rgba(210, 210, 210, 0) 60%,
-		rgba(210, 210, 210, 1) 100%
-	);
-	background: linear-gradient(
-		90deg,
-		rgba(210, 210, 210, 1) 0%,
-		rgba(210, 210, 210, 0) 40%,
-		rgba(210, 210, 210, 0) 60%,
-		rgba(210, 210, 210, 1) 100%
-	);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e6e6e6",endColorstr="#e6e6e6",GradientType=1);
-	mix-blend-mode: multiply;
-}
-
-@mixin bgGradient05() {
-	background: rgb(255, 255, 255);
-	background: -moz-linear-gradient(
-		0deg,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(255, 255, 255, 1) 40%,
-		rgba(255, 255, 255, 1) 100%
-	);
-	background: -webkit-linear-gradient(
-		0deg,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(255, 255, 255, 1) 40%,
-		rgba(255, 255, 255, 1) 100%
-	);
-	background: linear-gradient(
-		0deg,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(255, 255, 255, 1) 40%,
-		rgba(255, 255, 255, 1) 100%
-	);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
-	mix-blend-mode: screen;
-}
-
-@mixin bgGradient06() {
-	background: rgb(230, 230, 230);
-	background: -moz-linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 1) 0%,
-		rgba(255, 255, 255, 1) 20%,
-		rgba(255, 255, 255, 1) 80%,
-		rgba(230, 230, 230, 1) 100%
-	);
-	background: -webkit-linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 1) 0%,
-		rgba(255, 255, 255, 1) 20%,
-		rgba(255, 255, 255, 1) 80%,
-		rgba(230, 230, 230, 1) 100%
-	);
-	background: linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 1) 0%,
-		rgba(255, 255, 255, 1) 20%,
-		rgba(255, 255, 255, 1) 80%,
-		rgba(230, 230, 230, 1) 100%
-	);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e6e6e6",endColorstr="#e6e6e6",GradientType=1);
-	mix-blend-mode: multiply;
-}
-
-@mixin bgGradient07() {
-	background: rgb(230, 230, 230);
-	background: -moz-linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 1) 0%,
-		rgba(245, 245, 245, 1) 20%,
-		rgba(245, 245, 245, 1) 80%,
-		rgba(230, 230, 230, 1) 100%
-	);
-	background: -webkit-linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 1) 0%,
-		rgba(245, 245, 245, 1) 20%,
-		rgba(245, 245, 245, 1) 80%,
-		rgba(230, 230, 230, 1) 100%
-	);
-	background: linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 1) 0%,
-		rgba(245, 245, 245, 1) 20%,
-		rgba(245, 245, 245, 1) 80%,
-		rgba(230, 230, 230, 1) 100%
-	);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e6e6e6",endColorstr="#e6e6e6",GradientType=1);
-	mix-blend-mode: multiply;
+		--body-min-width: 74.333rem;
+		--body-max-width: 96rem;
+		--body-max-width: 126.667rem;
+		--body-max-width: calc(100vw - 1.25rem);
+	}
 } */
 
-/* #endregion - - - - - - - - - - - VARIABLES: BG MIXINS - REF: https://cssgradient.io - - - - - - - - - - - */
+/* @media (min-width: 1441px) and (max-width: 1920px) { */
+/* @media (1441px <= width <= 1920px) { */
+/* @media (min-width: 1440px) and (max-width: 1919px) { */
+@media (min-width: 1440px) {
+	* {
+		font-size: 15px;
+	}
 
-/* #region - - - - - - - - - - - VARIABLES: SVG FILL MIXINS - REF: https://cssgradient.io - *** OOPS! CAN'T use css to give SVGs gradient fills; must use inline <linearGradient> *** - - - - - - - - - - - */
+	:root {
 
-/* @mixin fillGradient01() {
-	fill: rgb(255, 255, 255);
-	fill: -moz-linear-gradient(
-		0deg,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(255, 255, 255, 1) 40%,
-		rgba(255, 255, 255, 1) 100%
-	);
-	fill: -webkit-linear-gradient(
-		0deg,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(255, 255, 255, 1) 40%,
-		rgba(255, 255, 255, 1) 100%
-	);
-	fill: linear-gradient(
-		0deg,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(255, 255, 255, 1) 40%,
-		rgba(255, 255, 255, 1) 100%
-	);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
-	mix-blend-mode: screen;
-} */
+		/* #region -------------------- MARK: :root -------------------- */
 
-/* #endregion - - - - - - - - - - - VARIABLES: SVG FILL MIXINS - REF: https://cssgradient.io - *** OOPS! CAN'T use css to give SVGs gradient fills; must use inline <linearGradient> *** - - - - - - - - - - - */
+		/* --header-height: 70px;
+		--navBar-height: 40px;
 
-/* #region - - - - - - - - - - - VARIABLES: modalBG - - - - - - - - - - - */
+		--workNav-width: 175px;
+		--workNav-height: 60px;
 
-/* @mixin modalBG() {
-	background: rgba(--color: #000000, --alpha: 0.5);
+		--body-min-width: 1115px;
+		--body-max-width: 1440px; */
 
-	mix-blend-mode: screen;
-} */
+		/* REF: https://nekocalc.com/px-to-rem-converter *** Calculation based on a root font-size of 15 pixel!!! *** */
+		/* --header-height: 4.667rem;
+		--navBar-height: 2.667rem;
 
-/* #endregion - - - - - - - - - - - VARIABLES: modalBG - - - - - - - - - - - */
+		--workNav-width: 11.667rem;
+		--workNav-height: 4rem; */
 
-/* #region - - - - - - - - - - - VARIABLES: BUTTON MIXINS - REF: https://cssgradient.io - - - - - - - - - - - */
+		--body-min-width: 74.333rem;
+		/* --body-max-width: 96rem; */
+		--body-max-width: 94.75rem;
+		/* --body-max-width: calc(100vw - 1.25rem); */
 
-/* @mixin btnBgRest() {
-	background: rgb(230, 230, 230);
-	background: -moz-linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 1) 0%,
-		rgba(245, 245, 245, 1) 20%,
-		rgba(245, 245, 245, 1) 80%,
-		rgba(230, 230, 230, 1) 100%
-	);
-	background: -webkit-linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 1) 0%,
-		rgba(245, 245, 245, 1) 20%,
-		rgba(245, 245, 245, 1) 80%,
-		rgba(230, 230, 230, 1) 100%
-	);
-	background: linear-gradient(
-		90deg,
-		rgba(230, 230, 230, 1) 0%,
-		rgba(245, 245, 245, 1) 20%,
-		rgba(245, 245, 245, 1) 80%,
-		rgba(230, 230, 230, 1) 100%
-	);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e6e6e6",endColorstr="#e6e6e6",GradientType=1);
-	mix-blend-mode: multiply;
+		--work-gallery-width: 90vw;
+
+		/* --hed-BGgradient-stops: 57.5%; */
+		--hed-BGgradient-stops: 61%;
+		/* --hed-BGgradient: linear-gradient(0deg,rgba(255, 255, 255, 1) 61.25%, rgba(0, 0, 0, 1) 61.25%, rgba(0, 0, 0, 1) 100%); */
+		--hed-BGgradient: linear-gradient(0deg,rgba(255, 255, 255, 1) var(--hed-BGgradient-stops), rgba(0, 0, 0, 1) var(--hed-BGgradient-stops), rgba(0, 0, 0, 1) 100%);
+
+		--hed-margin: 1.5rem 0 0 0;
+
+		/* --logo-max-height: 170px; */
+		/* --logo-max-height: 11.333rem; */
+		/* --hed0102-vertical_align: 8rem; */
+
+		/* #endregion -------------------- :root -------------------- */
+
+
+		/* #region -------------------- MARK: Header.jsx / App.css -------------------- */
+
+		.contact_m, .navBarContainer_m {
+			display: none;
+		}
+
+		/* #endregion -------------------- Header.jsx / App.css -------------------- */
+
+
+		/* #region -------------------- MARK: Work.jsx / Work.css -------------------- */
+
+		/* .chipContainer {
+			border: 1px inset #ff0000;
+			max-width: var(--body-min-width);
+			max-width: 75vw;
+			padding: var(--hedPadding);
+		} */
+
+		/* #endregion -------------------- Work.jsx / Work.css -------------------- */
+	}
 }
 
-@mixin btnBgHover() {
-	background: rgb(170, 170, 170);
-	background: -moz-linear-gradient(
-		90deg,
-		rgba(170, 170, 170, 1) 0%,
-		rgba(245, 245, 245, 1) 20%,
-		rgba(245, 245, 245, 1) 80%,
-		rgba(170, 170, 170, 1) 100%
-	);
-	background: -webkit-linear-gradient(
-		90deg,
-		rgba(170, 170, 170, 1) 0%,
-		rgba(245, 245, 245, 1) 20%,
-		rgba(245, 245, 245, 1) 80%,
-		rgba(170, 170, 170, 1) 100%
-	);
-	background: linear-gradient(
-		90deg,
-		rgba(170, 170, 170, 1) 0%,
-		rgba(245, 245, 245, 1) 20%,
-		rgba(245, 245, 245, 1) 80%,
-		rgba(170, 170, 170, 1) 100%
-	);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e6e6e6",endColorstr="#e6e6e6",GradientType=1);
-	mix-blend-mode: multiply;
-} */
+/* @media (min-width: 1281px) and (max-width: 1440px) { */
+/* @media (1281px <= width <= 1440px) { */
+/* @media (min-width: 1280px) and (max-width: 1439px) { */
+@media (min-width: 1024px) and (max-width: 1439px) {
+/* @media (min-width: 1024px) { */
+	* {
+		/* font-size: 17.5px; */
+		/* font-size: 15px; */
+		/* font-size: 12.5px; */
+		font-size: 11px;
+	}
 
-/* #endregion - - - - - - - - - - - VARIABLES: BUTTON MIXINS - REF: https://cssgradient.io - - - - - - - - - - - */
+	:root {
 
-/* #region - - - - - - - - - - - VARIABLES: TRANSITION MIXINS - REF: https://codepen.io/marknotton/pen/VamaqN - - - - - - - - - - - */
+		/* #region -------------------- MARK: :root -------------------- */
 
-/* @mixin transition(--transition...) {
-	-moz-transition: --transition;
-	-o-transition: --transition;
-	-webkit-transition: --transition;
-	transition: --transition;
+		--body-min-width: 74.333rem;
+		--body-max-width: calc(100vw - 1.25rem);
+
+		--work-gallery-width: 90vw;
+
+		--hed-BGgradient-stops: 59.75%;
+		--hed-BGgradient: linear-gradient(0deg,rgba(255, 255, 255, 1) var(--hed-BGgradient-stops), rgba(0, 0, 0, 1) var(--hed-BGgradient-stops), rgba(0, 0, 0, 1) 100%);
+
+		/* #endregion -------------------- :root -------------------- */
+
+
+		/* #region -------------------- MARK: Header.jsx / App.css -------------------- */
+
+		.contact_m, .navBarContainer_m {
+			display: none;
+		}
+
+		/* #endregion -------------------- Header.jsx / App.css -------------------- */
+
+
+		/* #region -------------------- MARK: Home.jsx / Home.css -------------------- */
+
+		/* .homeCanvas {
+			border: 1px inset #ff0000;
+
+			height: calc(100vh - var(--header-height) - var(--navBar-height));
+
+			canvas {
+				border: 1px inset #00ff00;
+
+				width: 100vw;
+				height: calc(50vh - var(--header-height) - var(--navBar-height));
+			}
+		} */
+
+		.homeHed {
+			/* border: 1px inset #0000ff; */
+
+			/* top: 25vh; */
+
+			/* h1 {
+				font-size: 2.375em;
+			} */
+
+			.homeDescr {
+				/* border: 1px inset #0000ff; */
+
+				font-size: 1.375rem;
+				line-height: 1.875rem;
+
+				margin: 2rem 40% 0 0;
+
+				.note {
+					/* border: 1px inset #0000ff; */
+	
+					font-size: 1.125rem;
+					line-height: 1.5rem;
+
+					margin: 7.5rem 0 0 0;
+				}
+			}
+		}
+
+		/* #endregion -------------------- Home.jsx / Home.css -------------------- */
+
+
+		/* #region -------------------- MARK: Work.jsx / Work.css -------------------- */
+
+		.workNavContainer {
+			/* border: 1px inset #0000ff; */
+
+			/* display: none; */
+
+			.workNavBar {
+				/* border: 1px inset #0000ff; */
+
+				.emplNavBar {
+					/* border: 1px inset #0000ff; */
+
+					/* width: var(--body-min-width); */
+					width: calc(var(--body-min-width) - 12.5rem);
+				}
+
+				.typeNavBar {
+					/* border: 1px inset #0000ff; */
+
+					left: 21.25rem;
+				}
+
+				.toggleNav {
+					width: 10rem;
+					right: calc(var(--workNav-width) - 11.5rem);
+				}
+			}
+		}
+
+		.chipContainer {
+			/* border: 1px inset #ff0000; */
+
+			/* width: 80vw; */
+			/* width: var(--body-min-width); */
+			/* width: var(--body-max-width); */
+
+			/* row-gap: 0.75rem; */
+
+			/* top: calc(var(--header-height) + var(--navBar-height)); */
+			top: calc(var(--header-height) * 2.25);
+
+			.chipItem {
+				/* border: 0.5px inset #00ff00; */
+
+				/* flex: 0 0 32.5%; */
+
+				.chipInfo {
+					/* border: 0.5px inset #0000ff; */
+
+					padding: 0 0.5rem;
+
+					h3 {
+						/* border: 1px inset #0000ff; */
+
+						font-size: 0.75rem;
+						padding: 0.25rem 0 0.25rem 0;
+					}
+				}
+			}
+		}
+
+		/* #endregion -------------------- Work.jsx / Work.css -------------------- */
+
+
+		/* #region -------------------- MARK: About.jsx / About.css -------------------- */
+
+		.aboutContainer {
+			/* border: 1px inset #ff0000; */
+			/* background: none; */
+			/* background-blend-mode: difference; */
+
+			/* width: 85vw; */
+			width: 90vw;
+			height: 100%;
+
+			top: calc((var(--header-height) * 3));
+
+			/* .haiku {
+				margin: -5rem auto 0 auto;
+			} */
+
+			.thoughtBubbleDiv {
+
+				.thoughtBubbleText {
+					/* margin: 0 0 0.5rem 0; */
+
+					p, p1, p2 {
+						font-size: 1.0rem;
+						line-height: 1.5rem;
+
+						margin: 0 0 0.75rem 0;
+						padding: 0;
+					}
+				}
+			}
+
+			.resetThoughtsDiv {
+				.resetThoughtsText {
+					font-size: 0.875rem;
+				}
+			}
+		}
+
+		/* #endregion -------------------- About.jsx / About.css -------------------- */
+	}
 }
 
-@mixin transition-property(--property...) {
-	-moz-transition-property: --property;
-	-o-transition-property: --property;
-	-webkit-transition-property: --property;
-	transition-property: --property;
+/* @media (min-width: 769px) and (max-width: 1280px) { */
+/* @media (769px <= width <= 1280px) { */
+/* @media (min-width: 768px) and (max-width: 1279px) { */
+@media (min-width: 768px) and (max-width: 1023px) {
+	* {
+		/* font-size: 10px; */
+		/* font-size: 9px; */
+		font-size: 8.5px;
+		/* font-size: 8px; */
+		/* font-size: 7px; */
+	}
+
+	:root {
+
+		/* #region -------------------- MARK: :root -------------------- */
+
+		/* --body-min-width: 74.333rem; */
+		--body-min-width: 71.25rem;
+		--body-max-width: calc(100vw - 1.25rem);
+
+		--work-gallery-width: 90vw;
+
+		--hed-BGgradient-stops: 58.5%;
+		--hed-BGgradient: linear-gradient(0deg,rgba(255, 255, 255, 1) var(--hed-BGgradient-stops), rgba(0, 0, 0, 1) var(--hed-BGgradient-stops), rgba(0, 0, 0, 1) 100%);
+
+		/* #endregion -------------------- :root -------------------- */
+
+
+		/* #region -------------------- MARK: Header.jsx / App.css -------------------- */
+
+		.contact_m, .navBarContainer_m {
+			display: none;
+		}
+
+		/* #endregion -------------------- Header.jsx / App.css -------------------- */
+
+
+		/* #region -------------------- MARK: Home.jsx / Home.css -------------------- */
+
+		.homeHed {
+			/* border: 1px inset #0000ff; */
+
+			line-height: 3.5rem;
+			top: 12.5vh;
+
+			h1 {
+				font-size: 3.5em;
+			}
+
+			h2 {
+				font-size: 2em;
+			}
+
+			.homeDescr {
+				/* border: 1px inset #0000ff; */
+
+				font-size: 1.625rem;
+				line-height: 2.375rem;
+
+				/* margin: 2rem 50% 0 0; */
+				margin: 2rem 15% 0 0;
+
+				p {
+					margin: 0 0 1.5rem 0;
+				}
+
+				.note {
+					/* border: 1px inset #0000ff; */
+	
+					font-size: 1.5rem;
+					line-height: 2rem;
+
+					margin: 20rem 32.5rem 0 0;
+				}
+			}
+		}
+
+		/* #endregion -------------------- Home.jsx / Home.css -------------------- */
+
+
+		/* #region -------------------- MARK: Work.jsx / Work.css -------------------- */
+
+		/* .isotopeContainer {
+			border: 1px inset #ff00ff;
+
+			.workItem {
+				border: 1px inset #00ffff;
+				padding: 0;
+			}
+		} */
+
+		.workNavContainer {
+			/* border: 1px inset #0000ff; */
+
+			/* display: none; */
+
+			.workNavBar {
+				/* border: 1px inset #00ff00; */
+
+				.emplNavBar {
+					/* border: 1px inset #0000ff; */
+
+					/* width: var(--body-min-width); */
+					width: calc(var(--body-min-width) - 11.25rem);
+					/* width: calc(var(--body-min-width) - 13.75rem); */
+					column-gap: 5px;
+					left: 0;
+				}
+
+				.typeNavBar {
+					/* border: 1px inset #0000ff; */
+
+					left: 21.25rem;
+				}
+
+				.toggleNav {
+					width: 10rem;
+					/* right: calc(var(--workNav-width) - 10.5rem); */
+					right: 0;
+				}
+			}
+		}
+
+		.chipContainer {
+			/* border: 1px inset #ff0000; */
+
+			/* width: 80vw; */
+			/* width: var(--body-min-width); */
+			/* width: var(--body-max-width); */
+
+			row-gap: 1.5rem;
+
+			/* top: calc(var(--header-height) + var(--navBar-height)); */
+			top: calc(var(--header-height) * 2.1875);
+
+			.chipItem {
+				/* border: 0.5px inset #00ff00; */
+
+				flex: 0 0 32.5%;
+
+				.chipInfo {
+					/* border: 0.5px inset #0000ff; */
+
+					padding: 0 0.5rem;
+
+					h3 {
+						/* border: 1px inset #0000ff; */
+
+						font-size: 0.75rem;
+						padding: 0.25rem 0 0.25rem 0;
+					}
+				}
+			}
+		}
+
+		/* #endregion -------------------- Work.jsx / Work.css -------------------- */
+
+
+		/* #region -------------------- MARK: About.jsx / About.css -------------------- */
+
+		.aboutContainer {
+			/* border: 1px inset #ff0000; */
+			/* background: none; */
+			/* background-blend-mode: difference; */
+
+			/* width: 85vw; */
+			width: 90vw;
+			height: 100%;
+
+			top: calc((var(--header-height) * 3.5));
+
+			/* .haiku {
+				margin: -5rem auto 0 auto;
+			} */
+
+			.afroContainer, .guideContainer, .curlContainer {
+				/* border: 1px inset #ff00ff; */
+
+				/* width: 120vw; */
+
+				left: 50%;
+				transform: translate(-50%, 0);
+				-ms-transform: translate(-50%, 0);
+				-moz-transform: translate(-50%, 0);
+				-o-transform: translate(-50%, 0);
+				-webkit-transform: translate(-50%, 0);
+				transform: translate(-50%, 0);
+			}
+
+			.afroContainer {
+				/* border: 1px inset #ff0000; */
+
+				width: 120vw;
+			}
+
+			.curlContainer {
+				/* border: 1px inset #0000ff; */
+
+				.curlSvg {
+					/* border: 1px inset #0000ff; */
+
+					width: 5.5%;
+				}
+			}
+
+			.guideContainer, .curlContainer {
+				/* border: 1px inset #00ffff; */
+
+				width: 90vw;
+			}
+
+			.thoughtBubbleDiv {
+
+				.thoughtBubbleText {
+					/* margin: 0 0 0.5rem 0; */
+					margin: 0.5rem 0 0 0;
+
+					p, p1, p2 {
+						font-size: 1.0rem;
+						line-height: 1.5rem;
+
+						margin: 0 0 0.75rem 0;
+						padding: 0;
+					}
+				}
+
+				.thoughtClose {
+					/* border: 05px solid #000000; */
+					border-radius: 10%;
+
+					width: 15%;
+					height: 15%;
+
+					position: absolute;
+					top: 3.5rem;
+					right: -1.5rem;
+
+					.thoughtClosePath {
+						/* border: 01px inset #00ff00; */
+
+						stroke-width: 0.1875rem;
+					}
+
+					.thoughtCloseX {
+						/* border: 01px inset #0000ff; */
+
+						font-size: 1.25em;
+						font-weight: 400;
+
+						stroke: #000000;
+						stroke-width: 3.75%;
+					}
+				}
+			}
+
+			.resetThoughtsDiv {
+				/* border: 1px inset #ff00ff; */
+
+				width: 17.5%;
+
+				top: -2.5rem;
+				right: 0%;
+
+				.resetThoughtsText {
+					font-size: 1.1875rem;
+					line-height: 1.75rem;
+				}
+			}
+		}
+
+		/* #endregion -------------------- About.jsx / About.css -------------------- */
+	}
 }
 
-@mixin transition-duration(--duration...) {
-	-moz-transition-property: --duration;
-	-o-transition-property: --duration;
-	-webkit-transition-property: --duration;
-	transition-property: --duration;
+/* @media (min-width: 481px) and (max-width: 768px) { */
+/* @media (481px <= width <= 768px) { */
+/* @media (min-width: 480px) and (max-width: 767px) { */
+@media (min-width: 375px) and (max-width: 767px) {
+	* {
+		/* font-size: 12.5px; */
+		/* font-size: 12px; */
+		font-size: 11px;
+		/* font-size: 10px; */
+		/* font-size: 9px; */
+		/* font-size: 8px; */
+		/* font-size: 7px; */
+	}
+
+	:root {
+
+		/* #region -------------------- MARK: :root -------------------- */
+
+		--header-height: 4.375rem;
+		--navBar-height: 5.625rem;
+
+		--body-min-width: 30.5rem;
+		--body-max-width: 32.5rem;
+
+		--work-gallery-width: 90vw;
+
+		--hed-BGgradient-stops: 59%;
+		--hed-BGgradient: linear-gradient(0deg,rgba(255, 255, 255, 1) var(--hed-BGgradient-stops), rgba(0, 0, 0, 1) var(--hed-BGgradient-stops), rgba(0, 0, 0, 1) 100%);
+
+		/* #endregion -------------------- :root -------------------- */
+
+
+		/* #region -------------------- MARK: Header.jsx / App.css -------------------- */
+
+		.hedWrapper {
+			z-index: 999;
+
+			.hedContainer {
+
+				width: 100vw;
+				max-width: 100vw;
+
+				margin: 0;
+				padding: 0;
+
+				grid-template-columns: 22.5% 77.5%;
+
+				.logo {
+					padding: 0.75rem 0.75rem 0 0;
+					grid-area: auto;
+					z-index: 9999;
+				}
+
+				.hed {
+					color: #000000;
+
+					margin: 2.25rem 0 0 0;
+
+					display: inline-block;
+
+					.hed00 {
+						line-height: 1.375rem;
+
+						.hed01 {
+							color: #ffffff;
+							font-size: 2.25rem;
+							/* font-size: 2.5rem; */
+							padding: 0 0 1rem 0;
+							display: block;
+						}
+
+						.hed02 {
+							font-size: 0.875rem;
+							/* font-size: 0.9875rem; */
+							/* font-size: 1.015rem; */
+						}
+					}
+
+					.contact {
+						font-size: 1.0625rem;
+						line-height: 1.75rem;
+						text-align: right;
+
+						width: inherit;
+
+						margin: 0.375rem 0 0 0;
+						padding: var(--hedPadding);
+
+						display: block;
+
+						a, .email {
+							font-size: inherit;
+							color: #000000;
+							text-decoration: underline;
+							text-decoration-thickness: 1px;
+							text-decoration-color: #888888;
+						}
+					}
+				}
+			}
+
+			.navBarContainer {
+				display: none;
+			}
+		}
+
+		/* #endregion -------------------- Header.jsx / App.css -------------------- */
+
+
+		/* #region -------------------- MARK: Home.jsx / Home.css -------------------- */
+
+		.homeHed {
+			/* border: 1px inset #0000ff; */
+
+			line-height: 2.625rem;
+			top: 17.5vh;
+
+			h1 {
+				font-size: 2.5em;
+			}
+
+			h2 {
+				font-size: 1.5em;
+			}
+
+			.homeDescr {
+				/* border: 1px inset #0000ff; */
+
+				font-size: 1.375rem;
+				line-height: 1.75rem;
+
+				margin: 2rem 0 0 0;
+
+				p {
+					margin: 0 0 1rem 0;
+				}
+
+				.note {
+					/* border: 1px inset #0000ff; */
+	
+					font-size: 1.125rem;
+					line-height: 1.5rem;
+
+					margin: 5rem 8.75rem 0 0;
+				}
+			}
+		}
+
+		/* #endregion -------------------- Home.jsx / Home.css -------------------- */
+
+
+		/* #region -------------------- MARK: Work.jsx / Work.css -------------------- */
+
+		/* .isotopeContainer { */
+		.galleryContainer {
+			/* border: 1px inset #ff0000; */
+			top: calc(var(--header-height) + var(--navBar-height) + 5rem);
+		}
+
+		.workNavContainer {
+			/* border: 1px inset #0000ff; */
+			/* background: #ff0000; */
+
+			/* width: var(--body-max-width); */
+			width: 100vw;
+			/* height: fit-content;
+			white-space: nowrap; */
+
+			margin: 0;
+			padding: 0;
+
+			/* top: calc(var(--header-height) + var(--navBar-height)); */
+			top: calc(var(--header-height) + var(--navBar-height) + 0.75rem);
+			/* top: calc(var(--header-height) + var(--navBar-height) + 0.875rem); */
+
+			clip: rect(0px, 100vw, 100vh, 0px);
+
+			.workNavBar {
+				/* border: 1px inset #ff0000; */
+				/* background: #00ff00; */
+
+				width: inherit;
+				/* height: fit-content; */
+
+				margin: inherit;
+				padding: inherit;
+
+				/* display: grid;
+				grid-template-columns: 1fr 1fr; */
+
+				/* display: block; */
+				/* display: inline-flex; */
+
+				/* z-index: 9999; */
+
+				/* .workNavBtnContainer_m {
+					border: 1px inset #00ff00;
+
+					display: grid;
+					visibility: visible;
+				} */
+
+				.emplNavBar, .typeNavBar {
+					/* border: 1px inset #00ff00; */
+					/* background: #ffffff; */
+					/* background-color: #ffffff; */
+
+					/* width: 50%; */
+					width: inherit;
+					/* height: 5rem; */
+					height: inherit;
+
+					/* margin: 0;
+					padding: 0; */
+
+					/* display: grid; */
+					grid-template-columns: none;
+					grid-template-rows: auto;
+
+					position: absolute;
+					/* top: 0; */
+					/* top: var(--navBar-height); */
+					/* top: calc(var(--navBar-height) * 0.5); */
+					top: calc(var(--navBar-height) * 0.6666);
+					/* top: calc(var(--navBar-height) * 0.75); */
+					/* top: calc(var(--navBar-height) * -5); */
+					left: 0;
+					right: 0;
+					z-index: -1;
+
+					/* .workNavItem { */
+					.workNavItem, .emplNavItem, .typeNavItem {
+						/* border: 0.5px inset #0000ff; */
+						border-bottom: 1px solid #cccccc;
+						/* background: #ffffff; */
+
+						height: inherit;
+
+						.emplNavEmployer {
+							display: inline-block;
+						}
+					}
+
+					.emplNavItem {
+						/* border: 0.5px solid #0000ff; */
+
+						text-align: left;
+
+						display: grid;
+						/* grid-template-columns: 30% 70%; */
+						grid-template-columns: 32.5% 67.5%;
+						align-items: center;
+						/* justify-content: center; */
+
+						.workNavLogo {
+							/* border: 1px inset #ff0000; */
+
+							/* width: auto; */
+							/* max-width: 30%; */
+							max-width: 35%;
+							/* height: 100%; */
+							/* height: inherit; */
+							max-height: var(--workNav-height);
+							/* max-height: 90%; */
+							object-fit: contain;
+							/* width: 100%; */
+							/* max-height: 100%; */
+							/* object-fit: cover; */
+
+							margin: auto;
+							padding: 0 0 0 50%;
+
+							/* display: inline-block; */
+							/* display: grid;
+							justify-content: center; */
+						}
+
+						.emplNavEmployer {
+							/* border: 1px inset #0000ff; */
+
+							/* width: 100%; */
+							/* padding: 0; */
+							/* padding: 0 10% 0 0; */
+							padding: 0 0 0 7.5%;
+	
+							display: inline-block;
+						}
+					}
+
+					/* .emplNavItem > .workNavLogo{
+						object-fit: contain;
+					} */
+
+					/* .activeEmplDiv, .activeTypeDiv {
+						border: 1px inset #00ffff;
+
+						background: linear-gradient(0deg, rgba(0, 0, 0, 0.125) 0%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.125) 100%);
+
+						width: inherit;
+						height: inherit;
+
+						position: inherit;
+						left: 0;
+						z-index: -1;
+					} */
+				}
+
+				/* .emplNavBar {
+					border: 1px inset #00ff00;
+					background: #ff0000;
+					display: none;
+
+					float: left;
+					left: 0;
+					right: auto;
+
+					top: 0;
+					top: calc((var(--navBar-height) * -8) - 0.6875rem);
+					top: calc(var(--navBar-height) * 0.6666);
+				} */
+
+				/* .typeNavBar {
+					border: 1px inset #0000ff;
+					display: none;
+
+					float: right;
+					left: auto;
+					right: 0;
+
+					opacity: 1;
+					visibility: visible;
+
+					top: calc((var(--navBar-height) * -3) - 0.6875rem);
+					top: calc(var(--navBar-height) * 0.6666);
+				} */
+
+				.toggleNav {
+					/* border: 1px solid #bbbbbb; */
+					display: none;
+				}
+			}
+		}
+
+		.chipContainer {
+			/* border: 1px inset #ff0000; */
+
+			/* width: 80vw; */
+			width: var(--body-max-width);
+			padding: 0 0 7.5rem 0;
+
+			row-gap: 0.875rem;
+
+			/* top: calc(var(--header-height) + var(--navBar-height)); */
+			top: calc(var(--header-height) * 2.125);
+
+			.chipItem {
+				/* border: 0.5px inset #00ff00; */
+
+				/* flex: 0 0 24.375%; */
+				/* flex: 0 0 32.5%; */
+				flex: 0 0 48.75%;
+
+				.chipInfo {
+					/* border: 0.5px inset #0000ff; */
+
+					padding: 0 0.5rem;
+
+					h3 {
+						/* border: 1px inset #0000ff; */
+						font-size: 0.75rem;
+						padding: 0.25rem 0 0.25rem 0;
+					}
+				}
+			}
+		}
+
+		/* #endregion -------------------- Work.jsx / Work.css -------------------- */
+
+
+		/* #region -------------------- MARK: About.jsx / About.css -------------------- */
+
+		.aboutContainer {
+			/* border: 1px inset #ff0000; */
+			/* background: none; */
+			/* background-blend-mode: difference; */
+
+			width: 100vw;
+
+			padding: 0;
+
+			top: calc((var(--header-height) * 1.25) + var(--navBar-height));
+			/* top: calc(var(--header-height) * 1.25); */
+
+			.haiku {
+				/* border: 1px inset #00ff00; */
+
+				width: inherit;
+
+				margin: 0 auto;
+				padding: 0;
+			}
+
+			.afroContainer, .guideContainer, .curlContainer {
+			/* .afroContainer { */
+				/* border: 1px inset #00ff00; */
+
+				left: 50%;
+				transform: translate(-50%, 0);
+				-ms-transform: translate(-50%, 0);
+				-moz-transform: translate(-50%, 0);
+				-o-transform: translate(-50%, 0);
+				-webkit-transform: translate(-50%, 0);
+				transform: translate(-50%, 0);
+
+				margin: calc(var(--navBar-height) * 0.875) 0 0 0;
+			}
+
+			.afroContainer {
+				/* border: 1px inset #00ff00; */
+
+				width: 170vw;
+			}
+
+			.guideContainer, .curlContainer {
+				/* border: 1px inset #00ff00; */
+
+				width: 100vw;
+			}
+
+			.curlContainer {
+				/* border: 1px inset #0000ff; */
+
+				.curlSvg {
+					/* border: 1px inset #0000ff; */
+
+					width: 2.5rem;
+				}
+			}
+
+			.thoughtBubbleDiv {
+				/* border: 1px inset #0000ff; */
+
+				width: 80%;
+				margin: 5rem 0 0 0;
+
+				.thoughtBubbleText {
+					/* border: 1px inset #ff00ff; */
+					margin: 0.25rem 0 0 0;
+
+					p, p1, p2 {
+						font-size: 0.875rem;
+						line-height: 1.25rem;
+
+						margin: 0 0 0.5rem 0;
+						padding: 0;
+					}
+				}
+
+				.thoughtClose {
+					border-radius: 2.5rem;
+
+					font-size: 1rem;
+
+					width: 2.5rem;
+					height: 2.5rem;
+
+					/* top: 3.5rem;
+					right: 0rem; */
+
+					top: 3.875rem;
+					right: 0.25rem;
+
+					.thoughtClosePath {
+						/* border: 01px inset #00ff00; */
+						stroke-width: 0.1875rem;
+					}
+				}
+			}
+
+			.resetThoughtsDiv {
+				/* border: 1px inset #ff00ff; */
+
+				width: 20%;
+
+				top: 9.375rem;
+				right: 1.5rem;
+
+				.resetThoughtsText {
+					font-size: 0.5rem;
+					line-height: 0.75rem;
+				}
+			}
+		}
+
+		/* #endregion -------------------- About.jsx / About.css -------------------- */
+
+
+		/* #region -------------------- MARK: Resume.jsx / Resume.css -------------------- */
+
+		.resumeContainer {
+			/* border: 1px inset #00ffff; */
+			/* padding: 0 0 calc(var(--header-height) * 4) 0; */
+
+			width: var(--body-min-width);
+			/* width: var(--body-max-width); */
+			/* max-width: var(--body-max-width); */
+
+			.resumeSect {
+				/* border: 1px inset #00ffff; */
+
+				padding: 1rem 0 0 0;
+			}
+
+			.skillContainer .skillGrid {
+				/* border: 1px inset #0000ff; */
+
+				display: grid;
+
+				grid-template-columns: 55% 45%;
+				grid-template-rows: auto auto;
+
+				.skillCol {
+					margin: 0 0 1.5rem 0;
+				}
+			}
+
+			.eduContainer {
+				padding: 2.5rem 0 12.5rem 0;
+			}
+		}
+
+		/* #endregion -------------------- Resume.jsx / Resume.css -------------------- */
+	}
 }
 
-@mixin transition-timing-function(--timing...) {
-	-moz-transition-timing-function: --timing;
-	-o-transition-timing-function: --timing;
-	-webkit-transition-timing-function: --timing;
-	transition-timing-function: --timing;
+/* @media (min-width: 360px) and (max-width: 480px) { */
+/* @media (360px <= width <= 480px) { */
+/* @media (min-width: 359px) and (max-width: 479px) { */
+/* @media (min-width: 360px) and (max-width: 374px) { */
+@media (max-width: 374px) {
+	* {
+		font-size: 10px;
+	}
+
+	:root {
+
+		/* #region -------------------- MARK: :root -------------------- */
+
+		--header-height: 4.375rem;
+		--navBar-height: 5.625rem;
+
+		--body-min-width: 32.5rem;
+		--body-max-width: 32rem;
+
+		--work-gallery-width: 90vw;
+
+		--hed-BGgradient-stops: 60%;
+		--hed-BGgradient: linear-gradient(0deg,rgba(255, 255, 255, 1) var(--hed-BGgradient-stops), rgba(0, 0, 0, 1) var(--hed-BGgradient-stops), rgba(0, 0, 0, 1) 100%);
+
+		/* #endregion -------------------- :root -------------------- */
+
+
+		/* #region -------------------- MARK: Header.jsx / App.css -------------------- */
+
+		.hedWrapper {
+			z-index: 999;
+
+			.hedContainer {
+
+				width: 100vw;
+				max-width: 100vw;
+
+				margin: 0;
+				padding: 0;
+
+				grid-template-columns: 22.5% 77.5%;
+
+				.logo {
+					padding: 0.75rem 0.75rem 0 0;
+					grid-area: auto;
+					z-index: 9999;
+				}
+
+				.hed {
+					color: #000000;
+
+					margin: 2.25rem 0 0 0;
+
+					display: inline-block;
+
+					.hed00 {
+						line-height: 1.375rem;
+
+						.hed01 {
+							color: #ffffff;
+							font-size: 2.5rem;
+							padding: 0 0 1rem 0;
+							display: block;
+						}
+
+						.hed02 {
+							font-size: 0.9375rem;
+							/* font-size: 1.015rem; */
+						}
+					}
+
+					.contact {
+						font-size: 1.0625rem;
+						line-height: 1.75rem;
+						text-align: right;
+
+						width: inherit;
+
+						margin: 0.375rem 0 0 0;
+						padding: var(--hedPadding);
+
+						display: block;
+
+						a, .email {
+							font-size: inherit;
+							color: #000000;
+							text-decoration: underline;
+							text-decoration-thickness: 1px;
+							text-decoration-color: #888888;
+						}
+					}
+				}
+			}
+
+			.navBarContainer {
+				display: none;
+			}
+		}
+
+		/* #endregion -------------------- Header.jsx / App.css -------------------- */
+
+
+		/* #region -------------------- MARK: Work.jsx / Work.css -------------------- */
+
+		/* .workNavContainer {
+			border: 1px inset #0000ff;
+			display: none;
+		} */
+
+		.chipContainer {
+			/* border: 1px inset #ff0000; */
+
+			/* width: 80vw; */
+			/* width: var(--body-max-width); */
+			width: var(--work-gallery-width);
+
+			row-gap: 0.75rem;
+
+			top: calc(var(--header-height) + var(--navBar-height));
+
+			.chipItem {
+				/* border: 0.5px inset #00ff00; */
+
+				/* flex: 0 0 24.375%; */
+				flex: 0 0 32.5%;
+
+				.chipInfo {
+					/* border: 0.5px inset #0000ff; */
+
+					padding: 0 0.5rem;
+
+					h3 {
+						/* border: 1px inset #0000ff; */
+						font-size: 0.75rem;
+						padding: 0.25rem 0 0.25rem 0;
+					}
+				}
+			}
+		}
+
+		/* #endregion -------------------- Work.jsx / Work.css -------------------- */
+
+
+		/* #region -------------------- MARK: About.jsx / About.css -------------------- */
+
+		.aboutContainer {
+			/* border: 1px inset #ff0000; */
+			/* background: none; */
+			/* background-blend-mode: difference; */
+
+			width: 100vw;
+
+			padding: 0;
+
+			top: calc((var(--header-height) * 1.25) + var(--navBar-height));
+			/* top: calc(var(--header-height) * 1.25); */
+
+			.haiku {
+				/* border: 1px inset #00ff00; */
+
+				width: inherit;
+
+				margin: 0 auto;
+				padding: 0;
+			}
+
+			.afroContainer, .guideContainer, .curlContainer {
+			/* .afroContainer { */
+				/* border: 1px inset #00ff00; */
+
+				left: 50%;
+				transform: translate(-50%, 0);
+				-ms-transform: translate(-50%, 0);
+				-moz-transform: translate(-50%, 0);
+				-o-transform: translate(-50%, 0);
+				-webkit-transform: translate(-50%, 0);
+				transform: translate(-50%, 0);
+
+				margin: calc(var(--navBar-height) * 0.875) 0 0 0;
+			}
+
+			.afroContainer {
+				/* border: 1px inset #00ff00; */
+
+				width: 170vw;
+			}
+
+			.guideContainer, .curlContainer {
+				/* border: 1px inset #00ff00; */
+
+				width: 100vw;
+			}
+
+			.curlContainer {
+				/* border: 1px inset #0000ff; */
+
+				.curlSvg {
+					/* border: 1px inset #0000ff; */
+
+					width: 2.5rem;
+				}
+			}
+
+			.thoughtBubbleDiv {
+				/* border: 1px inset #0000ff; */
+
+				width: 80%;
+				margin: 5rem 0 0 0;
+
+				.thoughtBubbleText {
+					/* border: 1px inset #ff00ff; */
+					margin: 0.25rem 0 0 0;
+
+					p, p1, p2 {
+						font-size: 0.875rem;
+						line-height: 1.25rem;
+
+						margin: 0 0 0.5rem 0;
+						padding: 0;
+					}
+				}
+
+				.thoughtClose {
+					border-radius: 2.5rem;
+
+					font-size: 1rem;
+
+					width: 2.5rem;
+					height: 2.5rem;
+
+					top: 3.5rem;
+					right: 0rem;
+
+					.thoughtClosePath {
+						/* border: 01px inset #00ff00; */
+						stroke-width: 0.1875rem;
+					}
+				}
+			}
+
+			.resetThoughtsDiv {
+				/* border: 1px inset #ff00ff; */
+
+				width: 20%;
+
+				top: 9.375rem;
+				right: 1.5rem;
+
+				.resetThoughtsText {
+					font-size: 0.5rem;
+					line-height: 0.75rem;
+				}
+			}
+		}
+
+		/* #endregion -------------------- About.jsx / About.css -------------------- */
+
+
+		/* #region -------------------- MARK: Resume.jsx / Resume.css -------------------- */
+
+		.resumeContainer {
+			/* border: 1px inset #00ffff; */
+			/* padding: 0 0 calc(var(--header-height) * 4) 0; */
+
+			.resumeSect {
+				/* border: 1px inset #00ffff; */
+
+				padding: 1rem 0 0 0;
+			}
+
+			.skillContainer .skillGrid {
+				/* border: 1px inset #0000ff; */
+
+				display: grid;
+
+				grid-template-columns: 55% 45%;
+				grid-template-rows: auto auto;
+
+				.skillCol {
+					margin: 0 0 1.5rem 0;
+				}
+			}
+
+			.eduContainer {
+				padding: 2.5rem 0 12.5rem 0;
+			}
+		}
+
+		/* #endregion -------------------- Resume.jsx / Resume.css -------------------- */
+	}
 }
 
-@mixin transition-delay(--delay...) {
-	-moz-transition-delay: --delay;
-	-o-transition-delay: --delay;
-	-webkit-transition-delay: --delay;
-	transition-delay: --delay;
-} */
-
-/* #endregion - - - - - - - - - - - VARIABLES: TRANSITION MIXINS - REF: https://codepen.io/marknotton/pen/VamaqN - - - - - - - - - - - */
-
-/* #region - - - - - - - - - - - VARIABLES: EXPORT - - - - - - - - - - - */
-
-/* REF: https://til.hashrocket.com/posts/sxbrscjuqu-share-scss-variables-with-javascript */
-/* REF: https://medium.com/clover-platform-blog/modular-scss-and-why-you-need-it-6bb2d8c40fd8 */
-/* REF: https://css-tricks.com/getting-javascript-to-talk-to-css-and-sass/ */
-
-/* @function remove-px(--var) { */
-/* @return --var / 1px - 1; */
-/* } */
-
-/* @function remove-vw(--var) { */
-/* @return --var / 1vw - 1; */
-/* } */
-
-/* :export {
-	bodyWidth: --body-width;
-	bodyMinWidth: --body-min-width;
-	bodyMaxWidth: --body-max-width;
-
-	headerHeight: --header-height;
-	navBarHeight: --navBar-height;
-	workNavHeight: --workNav-height;
-} */
-
-/* :root { */
-/* --bodyWidth: --bodyWidth; */
-/* --bodyMinWidth: --bodyMinWidth; */
-/* --bodyMaxWidth: --bodyMaxWidth; */
-
-/* --headerHeight: --headerHeight; */
-/* --navBarHeight: --navBarHeight; */
-/* --workNavHeight: --workNavHeight; */
-/* } */
-
-/* #endregion - - - - - - - - - - - VARIABLES: EXPORT - - - - - - - - - - - */
-
-/* #endregion ========================= MARK: VARIABLES fr Global.css (2021) ========================= */
+/* #endregion ==================== MEDIA QUERIES ==================== */

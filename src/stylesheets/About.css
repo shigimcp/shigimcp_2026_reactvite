@@ -1,9 +1,13 @@
 /* #region ==================== MARK: BASE ==================== */
 
 .aboutContainer {
-	/* border: 2px solid #ff0000; */
+	/* border: 1px inset #ff0000; */
+	/* background: none; */
+	/* background-blend-mode: difference; */
 
-	width: 85vw;
+	/* width: 85vw; */
+	/* width: 80vw; */
+	width: 75vw;
 	height: 100%;
 	/* height: auto; */
 
@@ -11,15 +15,18 @@
 	padding: 0; */
 
 	margin: 0 auto;
+	/* margin: -100px auto 0 auto; */
 	/* padding: 0; */
 	/* padding: calc(var(--navBar-height) * 2) 0; */
 	padding: calc(var(--navBar-height) * 0.75) 0;
 
 	/* position: absolute; */
 	position: fixed;
-	top: calc(var(--header-height) + var(--navBar-height));
-	left: 50%;
+	/* top: calc(var(--header-height) + var(--navBar-height)); */
+	top: calc((var(--header-height) * 2) + var(--navBar-height));
+	z-index: 999;
 
+	left: 50%;
 	transform: translate(-50%, 0);
 	-ms-transform: translate(-50%, 0);
 	-moz-transform: translate(-50%, 0);
@@ -28,7 +35,7 @@
 	transform: translate(-50%, 0);
 
 	.haiku {
-		/* border: 2px solid #00ffff; */
+		/* border: 1px inset #00ffff; */
 
 		/* font-size: 15px; */
 		font-size: 1rem;
@@ -38,9 +45,15 @@
 		/* line-height: 2.5em; */
 		line-height: 50px;
 
-		margin: 0;
+		width: 50vw;
+
+		/* margin: 0; */
+		margin: -70px auto 0 auto;
 		/* padding: 0; */
 		padding: 0 0 25px 0;
+
+		/* position: absolute; */
+		z-index: 999;
 
 		h1 {
 			/* font-size: 2em; */
@@ -90,24 +103,25 @@
 	}
 
 	.afroContainer, .guideContainer, .curlContainer {
-		/* border: 2px solid #ff00ff; */
+		/* border: 1px inset #ff00ff; */
 
 		width: inherit;
-		/* height: inherit; */
+		height: inherit;
 		/* height: auto; */
+		/* height: 75%; */
 
 		/* position: absolute; */
 		position: inherit;
 	}
 
 	.afroContainer {
-		/* border: 2px solid #00ff00; */
+		/* border: 1px inset #00ff00; */
 
 		width: 100%;
 	}
 
 	.guideContainer {
-		/* border: 2px solid #ff0000; */
+		/* border: 1px inset #ff0000; */
 
 		/* height: 100%; */
 		/* height: 100vh; */
@@ -117,7 +131,7 @@
 		visibility: hidden;
 
 		.guideSVG {
-			/* border: 2px solid #0000ff; */
+			/* border: 1px inset #0000ff; */
 
 			opacity: 0.5;
 
@@ -131,7 +145,7 @@
 	}
 
 	.boingSvg {
-		/* border: 2px solid #0000ff; */
+		/* border: 1px inset #0000ff; */
 
 		width: 25%;
 		height: auto;
@@ -147,7 +161,7 @@
 	}
 
 	.curlContainer {
-		/* border: 2px solid #0000ff; */
+		/* border: 1px inset #0000ff; */
 
 		/* width: 100%; */
 		/* width: 50%; */
@@ -161,7 +175,7 @@
 		/* overflow: auto; */
 
 		.curlSvg {
-			/* border: 2px solid #0000ff; */
+			/* border: 1px inset #0000ff; */
 
 			/* width: 3.75vw; */
 			/* width: 3.75%; */
@@ -175,7 +189,8 @@
 			cursor: pointer;
 
 			.curlPath {
-				fill: #333333;
+				/* fill: #333333; */
+				fill: #444444;
 				/* fill: #ff00ff; */
 				/* stroke-linejoin: round; */
 				/* pointer-events: visible; */
@@ -194,7 +209,7 @@
 	}
 
 	.thoughtBubbleDiv {
-		/* border: 2px solid #999999; */
+		/* border: 1px inset #999999; */
 
 		font-family: AnimeAceItalic, Arial, Helvetica, sans-serif;
 		/* font-size: 12px;
@@ -209,7 +224,8 @@
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 
-		width: 37.5%;
+		/* width: 37.5%; */
+		width: 45%;
 		/* width: 50%; */
 		/* width: 52.5%; */
 
@@ -223,46 +239,8 @@
 		/* position: absolute; */
 		/* z-index: 999; */
 
-		p, p1, p2 {
-			letter-spacing: 0.025rem;
-		}
-
-		p {
-			/* font-size: 1rem; */
-			font-size: 0.9375rem;
-			line-height: 1.5rem;
-
-			/* margin: 0.5625rem 0 0 0; */
-			/* margin: 0 0 0.5625rem 0; */
-			margin: 0 0 0.5625rem 0.625rem;
-			/* padding: 0; */
-		}
-
-		p1, p2 {
-			font-size: 0.8125rem;
-			line-height: 1.25rem;
-		}
-
-		p1 {
-			/* font-size: 0.8125rem;
-			line-height: 1.25rem; */
-
-			/* margin: 0.5625rem 0 0 0; */
-			margin: 0 0 0.5625rem 0;
-			/* padding: 0; */
-		}
-
-		p2 {
-			/* font-size: 0.8125rem;
-			line-height: 1.25rem; */
-
-			margin: 0.5625rem 0 0 0;
-			/* margin: 0 0 0.5625rem 0; */
-			/* padding: 0; */
-		}
-
 		.thoughtBubbleSvg {
-			/* border: 2px solid #0000ff; */
+			/* border: 1px inset #0000ff; */
 			/* opacity: 0.25; */
 
 			/* width: 100%; */
@@ -276,6 +254,7 @@
 
 				fill: #ffffff;
 				stroke: #000000;
+				stroke-width: 0.25rem;
 				stroke-linejoin: round;
 
 				/* fill: #00ffff; */
@@ -284,7 +263,7 @@
 		}
 
 		.thoughtBubbleText {
-			/* border: 2px solid #ff00ff; */
+			/* border: 1px inset #ff00ff; */
 
 			/* font-size: 1.5em; */
 			/* line-height: 1.375em; */
@@ -325,8 +304,31 @@
 			/* left: 10%; */
 			/* left: 8.75%; */
 
+			p, p1, p2 {
+				letter-spacing: 0.025rem;
+
+				margin: 0 0 0.5rem 0;
+				padding: 0;
+			}
+
 			p {
-				padding: 1.125% 0;
+				font-size: 0.9375rem;
+				line-height: 1.5rem;
+			}
+
+			/* p1, p2 {
+				font-size: 0.8125rem;
+				line-height: 1.25rem;
+			} */
+
+			p1 {
+				font-size: 0.8125rem;
+				line-height: 1.25rem;
+			}
+
+			p2 {
+				font-size: 0.8125rem;
+				line-height: 1.25rem;
 			}
 		}
 
@@ -354,21 +356,22 @@
 			cursor: pointer;
 
 			.thoughtClosePath {
-				/* border: 02px solid #00ff00; */
+				/* border: 01px inset #00ff00; */
 
 				/* fill: #ff0000; */
 				fill: #ffffff;
 
 				/* stroke: #00ff00; */
 				stroke: #000000;
-				stroke-width: 12.5%;
+				/* stroke-width: 12.5%; */
 				/* stroke-width: 0.2vw; */
+				stroke-width: 0.25rem;
 
 				/* paint-order: stroke; */
 			}
 
 			.thoughtCloseX {
-				/* border: 02px solid #0000ff; */
+				/* border: 01px inset #0000ff; */
 
 				/* font-size: 0.75em; */
 
@@ -379,7 +382,7 @@
 	}
 
 	.resetThoughtsDiv {
-		/* border: 2px solid #ff00ff; */
+		/* border: 1px inset #ff00ff; */
 
 		font-family: AnimeAceItalic, Arial, Helvetica, sans-serif;
 		/* font-size: 12px; */
@@ -401,20 +404,22 @@
 		position: absolute;
 		/* top: 0; */
 		/* right: 0; */
-		top: 25%;
-		right: -2.5%;
+		/* top: 25%;
+		right: -2.5%; */
+		top: 10%;
+		right: 0%;
 
 		transition: 0.2s;
 
 		cursor: pointer;
 
 		.resetThoughtsSvg {
-			/* border: 2px solid #00ff00; */
+			/* border: 1px inset #00ff00; */
 
 			overflow: visible;
 
 			.resetThoughtsPath {
-				/* border: 2px solid #0000ff; */
+				/* border: 1px inset #0000ff; */
 
 				/* fill: #ff0000; */
 				/* fill: #eeeeee; */
@@ -424,7 +429,8 @@
 
 				stroke: #000000;
 				/* stroke: #666666; */
-				stroke-width: 2.5%;
+				/* stroke-width: 2.5%; */
+				stroke-width: 0.5rem;
 				stroke-opacity: 0.625;
 				/* stroke-linejoin: round; */
 				stroke-linejoin: miter;
@@ -433,11 +439,14 @@
 		}
 
 		.resetThoughtsText {
-			/* border: 2px solid #ff00ff; */
+			/* border: 1px inset #ff00ff; */
 			width: 100%;
 
-			font-size: 0.875rem;
-			line-height: 1.375rem;
+			/* font-size: 0.875rem;
+			line-height: 1.375rem; */
+
+			font-size: 0.8125rem;
+			line-height: 1.25rem;
 
 			/* margin: 0; */
 			margin: -1.25% 0 0 1.5%;

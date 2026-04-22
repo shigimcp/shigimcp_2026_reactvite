@@ -10,7 +10,6 @@ import { PerspectiveCamera } from '@react-three/drei';
 // import { PerspectiveCamera, Svg } from '@react-three/drei';
 // import { AmbientLight, Mesh, PointLight } from 'three';
 
-// import '../stylesheets/BodyContainer.scss';
 // import '../stylesheets/App.css';
 import '../stylesheets/Home.css';
 
@@ -22,73 +21,11 @@ import Logo from '../components/threeFiber/Logo';
 //#endregion ==================== IMPORTS ====================
 
 
-
-//#region ==================== MARK: PLACEHOLDER ====================
-
-// function Body() {
-// 	return (
-// 		<div className='bodyContainer'>
-// 			{/* <h2>{title}</h2> */}
-// 			{/* {children} */}
-
-// 			<img src={logo} className='logoK' id='logoKID' alt='logo' />
-// 			<img src={logoRev} className='logoW' id='logoWID' alt='logoRev' />
-// 		</div>
-// 	);
-// }
-
-// export default Body;
-
-// const Home = () => <h1>Home Page</h1>;
-
-// export default Home;
-
-// const navLoc = Home;
-
-//#endregion ==================== PLACEHOLDER ====================
-
-
-//#region ==================== MARK: CUBE (testing 1, 2, 3...) ====================
-
-// function Cube() {
-// // function Cube(props) {
-
-// 	// const mesh_Ref = useRef<Mesh>(null);
-// 	const mesh_Ref = useRef();
-
-// 	useFrame(() => {
-// 		if (!mesh_Ref.current) {
-// 			return;
-// 		}
-
-// 		mesh_Ref.current.rotation.x += 0.01;
-// 		mesh_Ref.current.rotation.y += 0.01;
-// 	});
-
-// 	return (
-// 		<mesh ref={mesh_Ref}>
-// 		{/* <mesh {...props} ref={mesh_Ref}> */}
-
-// 			{/* <boxGeometry />
-// 			<meshStandardMaterial /> */}
-
-// 			<boxGeometry args={[2, 2, 2]} />
-// 			<meshStandardMaterial color={'blue'} />
-
-// 		</mesh>
-// 	);
-// }
-
-//#endregion ==================== CUBE (testing 1, 2, 3...) ====================
-
-
-
 // export default function Home() {
 export default function Home(props) {
-// export default function Home({isLargeScreen}) {
 // export default function Home({islargescreen}) {
 
-	//#region ==================== FINDIN' OUT SH*T ====================
+	//#region ==================== MARK: FINDIN' OUT SH*T ====================
 
 	// console.log('');
 	// console.log('==================== COMPONENT: Home.jsx ====================');
@@ -106,20 +43,12 @@ export default function Home(props) {
 	// console.log(typeof isLargeScreen);
 
 	// // console.log('');
-	// console.log('islargescreen = ' + islargescreen);
-	// console.log(islargescreen);
+	// console.log('props.thisDeviceWidthArray = ' + props.thisDeviceWidthArray);
+	// console.log(props.thisDeviceWidthArray);
 
 	// // console.log('');
-	// console.log('typeof islargescreen = ' + typeof islargescreen);
-	// console.log(typeof islargescreen);
-
-	// // console.log('');
-	// console.log('props.isLargeScreen = ' + props.isLargeScreen);
-	// console.log(props.isLargeScreen);
-
-	// // console.log('');
-	// console.log('typeof props.isLargeScreen = ' + typeof props.isLargeScreen);
-	// console.log(typeof props.isLargeScreen);
+	// console.log('typeof props.thisDeviceWidthArray = ' + typeof props.thisDeviceWidthArray);
+	// console.log(typeof props.thisDeviceWidthArray);
 
 	// // console.log('');
 	// console.log('logoSVG = ' + logoSVG);
@@ -128,101 +57,169 @@ export default function Home(props) {
 	//#endregion ==================== FINDIN' OUT SH*T ====================
 
 
+	//#region ==================== MARK: CONSTs/FUNCTIONs ====================
+
+	// const thisDeviceWidthArray = [
+	// 	// window.matchMedia('(max-width: 374px)').matches, 
+	// 	// window.matchMedia('(min-width: 375px)').matches && window.matchMedia('(max-width: 767px)').matches, 
+	// 	// window.matchMedia('(min-width: 768px)').matches && window.matchMedia('(max-width: 1023px)').matches, 
+	// 	// window.matchMedia('(min-width: 1024px)').matches && window.matchMedia('(max-width: 1439px)').matches, 
+	// 	// window.matchMedia('(min-width: 1440px)').matches
+
+	// 	window.matchMedia('(max-width: 375px)').matches || window.matchMedia('(max-width: 480px)').matches, 
+	// 	window.matchMedia('(max-width: 768px)').matches, 
+	// 	window.matchMedia('(min-width: 1024px)').matches
+	// ];
+
+	const pCamPos = [
+		// [-0.5, 3, 20], 
+		// [0.25, 1.75, 11.25], 
+		// [0, 0.75, 10]
+
+		[-0.5, 3, 20], 
+		[0.25, 1.75, 11.25], 
+		[0, 0.75, 7.5]
+	];
+
+	//#endregion ==================== CONSTs/FUNCTIONs ====================
+
+
 	return (
 		<>
-			{/* <Cubes /> */}
 
-			{/* <div> */}
+		{/* #region -------------------- MARK: 3RF LOGO - REF: https://www.youtube.com/watch?v=DPl34H2ISsk -------------------- */}
 
-			{/* #region -------------------- MARK: 3RF LOGO - REF: https://www.youtube.com/watch?v=DPl34H2ISsk -------------------- */}
+			<Canvas className='homeCanvas'>
+			{/* <Canvas className = 'homeCanvas' camera = {{ position: [0, 0, 5] }}> */}
 
-				<Canvas className='homeCanvas'>
-				{/* <Canvas className = 'homeCanvas' camera = {{ position: [0, 0, 5] }}> */}
+			{/* #region - - - - - - - - - - - MARK: PerspectiveCamera => mobile, laptop, desktop - SEE: Header.jsx - - - - - - - - - - - */}
 
-					{/* <PerspectiveCamera makeDefault fov={17.5} position={[0, 0, 15]} /> */}
-					{/* <PerspectiveCamera makeDefault position={[0, 0.5, 6.25]} /> */}
-					{/* <PerspectiveCamera makeDefault fov={25} position={[0, 0.5, 10]} /> */}
-					<PerspectiveCamera makeDefault fov={22.5} position={[0, 0.75, 10]} />
+				{/* <PerspectiveCamera makeDefault fov={30} position={[-0.5, 3, 20]} /> */}
+				{/* <PerspectiveCamera makeDefault fov={30} position={[0.25, 1.75, 11.25]} /> */}
+				{/* <PerspectiveCamera makeDefault fov={22.5} position={[0, 0.75, 10]} /> */}
 
-					{/* <mesh>
-						<boxGeometry args={[2, 2, 2]} />
-						<meshStandardMaterial color={'orange'} />
-					</mesh> */}
+				{/* <PerspectiveCamera makeDefault fov={22.5} position={[-0.5, 3, 25]} /> */}
+				{/* <PerspectiveCamera makeDefault fov={22.5} position={[0.25, 1.75, 15]} /> */}
+				{/* <PerspectiveCamera makeDefault fov={22.5} position={[0, 0.75, 10]} /> */}
 
-					<ambientLight />
-					<pointLight position={[5, 5, 5]} />
-					{/* <directionalLight position={[5, 5, 5]} /> */}
+				{/* <PerspectiveCamera makeDefault fov={30} position={pCamPos[0]} /> */}
+				{/* <PerspectiveCamera makeDefault fov={30} position={pCamPos[1]} /> */}
+				{/* <PerspectiveCamera makeDefault fov={22.5} position={pCamPos[2]} /> */}
 
-					{/* <Cube /> */}
+				{/* <PerspectiveCamera makeDefault fov={30} position={(window.matchMedia('(min-width: 375px)').matches && window.matchMedia('(max-width: 767px)').matches) ? pCamPos[0] : pCamPos[1]} /> */}
+				{/* <PerspectiveCamera makeDefault fov={30} position={(thisDeviceWidthArray[0]) ? pCamPos[0] : (thisDeviceWidthArray[1] || thisDeviceWidthArray[2]) ? pCamPos[1] : pCamPos[2]} /> */}
+				{/* <PerspectiveCamera makeDefault fov={30} position={(thisDeviceWidthArray[0]) ? pCamPos[0] : (thisDeviceWidthArray[1]) ? pCamPos[1] : pCamPos[2]} /> */}
+				<PerspectiveCamera makeDefault fov={30} position={(props.thisDeviceWidthArray[0]) ? pCamPos[0] : (props.thisDeviceWidthArray[1]) ? pCamPos[1] : pCamPos[2]} />
 
-					{/* <Suspense>
-						<Svg src='../assets/images/0elements/shigeru_logo.svg' position={[0, 0, 0]} scale={0.05} />
-					</Suspense> */}
+			{/* #endregion - - - - - - - - - - - PerspectiveCamera => mobile, laptop, desktop - SEE: Header.jsx - - - - - - - - - - - */}
 
-					<Logo />
+				<ambientLight />
+				<pointLight position={[5, 5, 5]} />
+				{/* <directionalLight position={[5, 5, 5]} /> */}
 
-				</Canvas>
+				{/* <Suspense>
+					<Svg src='../assets/images/0elements/shigeru_logo.svg' position={[0, 0, 0]} scale={0.05} />
+				</Suspense> */}
 
-			{/* #endregion -------------------- 3RF LOGO - REF: https://www.youtube.com/watch?v=DPl34H2ISsk -------------------- */}
+				<Logo />
 
-			{/* #region -------------------- MARK: homeHed -------------------- */}
+			</Canvas>
 
-				{/* <div className='homeHed'> */}
-				{/* <div className='homeHed homeHed_d'> */}
-				{/* <div className='homeHed homeHed_l'> */}
-				{/* <div className='homeHed homeHed_m'> */}
-				{/* <div className={isLargeScreen ? 'homeHed homeHed_d' : 'homeHed homeHed_l'}> */}
-				{/* <div className={islargescreen ? 'homeHed homeHed_d' : 'homeHed homeHed_l'}> */}
-				<div className={props.isLargeScreen ? 'homeHed homeHed_d' : 'homeHed homeHed_l'}>
-					<h1>Shigeru McPherson</h1>
+		{/* #endregion -------------------- 3RF LOGO - REF: https://www.youtube.com/watch?v=DPl34H2ISsk -------------------- */}
 
-					{/* <h2>digital designer &bull; art director</h2> */}
-					{/* <h2>digital designer &middot; art director</h2> */}
-					{/* <h2>digital designer &#183; art director</h2> */}
-					{/* <h2>Creative Technology | Interactive Design | Front-End Development</h2> */}
-					{/* <h2>creative technology | interactive design | front-end development</h2> */}
-					{/* <h2>creative technology &middot; interactive design &middot; front-end development</h2> */}
-					{/* <h2>
-						&middot; creative technology <br />
-						&middot; interactive design <br />
-						&middot; front-end development
-					</h2> */}
+		{/* #region -------------------- MARK: homeHed -------------------- */}
 
-					{/* <h3>(and not afraid of writing code...!)</h3> */}
+			<div className='homeHed'>
+			{/* <div className={islargescreen ? 'homeHed homeHed_d' : 'homeHed homeHed_l'}> */}
+			{/* <div className={props.isLargeScreen ? 'homeHed homeHed_d' : 'homeHed homeHed_l'}> */}
 
-					<p className='homeDescr'>
-						Hi!
+				{/* <h1>Shigeru McPherson</h1> */}
+				<h1>Just call me Shigi...</h1>
+				<h2>(rhymes with "Ziggy")</h2>
+				{/* <h2>They call me Shigi...</h2> */}
+
+				{/* <h2>digital designer &bull; art director</h2> */}
+				{/* <h2>digital designer &middot; art director</h2> */}
+				{/* <h2>digital designer &#183; art director</h2> */}
+				{/* <h2>Creative Technology | Interactive Design | Front-End Development</h2> */}
+				{/* <h2>creative technology | interactive design | front-end development</h2> */}
+				{/* <h2>creative technology &middot; interactive design &middot; front-end development</h2> */}
+				{/* <h2>
+					&middot; creative technology <br />
+					&middot; interactive design <br />
+					&middot; front-end development
+				</h2> */}
+
+				{/* <h3>(and not afraid of writing code...!)</h3> */}
+
+				{/* <p className='homeDescr'>
+					Hi!
+					<br />
+					I'm a Creative Technologist and Developer with 20+ years of experience building interactive digital experiences, campaign websites, and motion-driven content for global brands including L’Oréal (Kiehl’s), Elizabeth Arden, Armani Exchange, and Hearst Communications.
+					<br /><br />
+					I combine strong visual design with front-end development to prototype and deliver engaging digital experiences, while continuously exploring creative coding workflows that integrate motion, UI/UX, and front-end development.
+				</p> */}
+
+				{/* <div className='note'>
+					<p>
+						<b>NOTE:</b> This website is my sandbox.
 						<br />
-						I'm a Creative Technologist and Developer with 20+ years of experience building interactive digital experiences, campaign websites, and motion-driven content for global brands including L’Oréal (Kiehl’s), Elizabeth Arden, Armani Exchange, and Hearst Communications.
+						This is my sandbox.
+						<br />
+						This will <i>always</i> be a work in progress.
+						<br />
+					</p>
+					<p>
+						(You can tell, because... <i>WHY?!?! &#128514; ===&#62;)</i>
+					</p>
+					<p>
+						<br />
 						<br /><br />
+						<i>Please, be forgiving... LOL!</i>
+						Please, be kind... <i>LOL!</i>
+						Please, be kind... &#128540;
+					</p>
+				</div> */}
+
+				<div className='homeDescr'>
+					<p>
+						Hi!
+					</p>
+					<p>
+						{/* <br /> */}
+						{/* <br /><br /> */}
+						I'm a Creative Technologist and Developer with 20+ years of experience building interactive digital experiences, campaign websites, and motion-driven content for global brands including L’Oréal (Kiehl’s), Elizabeth Arden, Armani Exchange, and Hearst Communications.
+					</p>
+					<p>
+						{/* <br /><br /> */}
 						I combine strong visual design with front-end development to prototype and deliver engaging digital experiences, while continuously exploring creative coding workflows that integrate motion, UI/UX, and front-end development.
+						{/* <br /><br /> */}
+					</p>
+					<p>
+						Love,<br />
+						&nbsp;&nbsp;&nbsp;ChatGPT
 					</p>
 
 					<div className='note'>
 						<p>
 							<b>NOTE:</b> This website is my sandbox.
-							{/* <br /> */}
-							{/* This is my sandbox. */}
 							<br />
-							This will <i>always</i> be a work in progress.
-							<br />
+							This will <i>*always*</i> be a work in progress.
 						</p>
 						<p>
-							(You can tell, because... <i>WHY?!?! &#128514; ===&#62;)</i>
-						</p>
-						{/* <p>
+							(You can tell, because... <i>WHY?!?! &#128514; ===&#62;</i>
+							{/* (You can tell because... <i>WHY?!?! &#128514; ===&#62;)</i> */}
 							<br />
-							<br /><br />
-							<i>Please, be forgiving... LOL!</i>
-							Please, be kind... <i>LOL!</i>
-							Please, be kind... &#128540;
-						</p> */}
+							{/* That said... this site is best viewed on a laptop or desktop.) */}
+							That said, this site is best viewed on a laptop or desktop.)
+						</p>
 					</div>
 				</div>
 
-			{/* #endregion -------------------- homeHed -------------------- */}
+			</div>
 
-			{/* </div> */}
+		{/* #endregion -------------------- homeHed -------------------- */}
+
 		</>
 	)
 }

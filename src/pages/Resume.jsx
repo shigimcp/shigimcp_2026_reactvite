@@ -161,16 +161,17 @@ function SkillChartItem(props) {
 
 //#region -------------------- MARK: SkillChart --------------------
 
-function SkillChart(props) {
+// function SkillChart(props) {
+function SkillChart() {
 
 	//#region -------------------- MARK: FINDIN' OUT SH*T --------------------
 
 	// console.log('');
 	// console.log('-------------------- COMPONENT: SkillChart --------------------');
 
-	// // // console.log('');
-	// // console.log('props = ' + props);
-	// // console.log(props);
+	// // console.log('');
+	// console.log('props = ' + props);
+	// console.log(props);
 
 	// // console.log('');
 	// console.log('skillData = ' + skillData);
@@ -204,14 +205,14 @@ function SkillChart(props) {
 
 		//#region -------------------- MARK: FINDIN' OUT MORE SH*T --------------------
 
-	// console.log('');
-	// console.log('-------------------- COMPONENT: SkillChart --------------------');
+		// console.log('');
+		// console.log('-------------------- COMPONENT: SkillChart --------------------');
 
-	// // console.log('');
-	// console.log('skillItems = ' + skillItems);
-	// console.log(skillItems);
+		// // console.log('');
+		// console.log('skillItems = ' + skillItems);
+		// console.log(skillItems);
 
-	//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
+		//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
 
 
 	return (
@@ -234,61 +235,61 @@ function SkillChart(props) {
 
 //#region -------------------- MARK: SkillChartMan --------------------
 
-function SkillChartMan() {
-	return (
-		<>
-			{/* <div className='skillGrid'>
-				<SkillChart category='discipline' />
-				<SkillChart category='software' />
-				<SkillChart category='dev' />
-				<SkillChart category='3d' />
-				<SkillChart category='info' />
-			</div> */}
+// function SkillChartMan() {
+// 	return (
+// 		<>
+// 			<div className='skillGrid'>
+// 				<SkillChart category='discipline' />
+// 				<SkillChart category='software' />
+// 				<SkillChart category='dev' />
+// 				<SkillChart category='3d' />
+// 				<SkillChart category='info' />
+// 			</div>
 
-			<div className='skillGrid'>
-				<div className='skillCol'>
-					<h1>Creative Technology</h1>
-					Interactive Digital Experiences<br />
-					Creative Coding<br />
-					Rapid Prototyping<br />
-					360 Digital Campaigns
-				</div>
-				<div className='skillCol'>
-					<h1>Creative</h1>
-					Graphic Design<br />
-					Art Direction<br />
-					UI/UX<br />
-					Responsive Web Design<br />
-					Code Animation<br />
-					Motion Graphics<br />
-					Print & Editorial Layout
-				</div>
-				<div className='skillCol'>
-					<h1>Front-End Development</h1>
-					HTML5<br />
-					CSS3 / SCSS / SASS<br />
-					JavaScript / jQuery<br />
-					GSAP<br />
-					Working knowledge of:<br />
-					- React<br />
-					- Unity / WebGL / C#
-				</div>
-				<div className='skillCol'>
-					<h1>Design Ecosystems</h1>
-					Adobe Creative Suite, notably:<br />
-					- Photoshop<br />
-					- Illustrator<br />
-					- InDesign<br />
-					- After Effects<br />
-					Working knowledge of:<br />
-					- Figma<br />
-					- XD<br />
-					- Sketch
-				</div>
-			</div>
-		</>
-	);
-}
+// 			<div className='skillGrid'>
+// 				<div className='skillCol'>
+// 					<h1>Creative Technology</h1>
+// 					Interactive Digital Experiences<br />
+// 					Creative Coding<br />
+// 					Rapid Prototyping<br />
+// 					360 Digital Campaigns
+// 				</div>
+// 				<div className='skillCol'>
+// 					<h1>Creative</h1>
+// 					Graphic Design<br />
+// 					Art Direction<br />
+// 					UI/UX<br />
+// 					Responsive Web Design<br />
+// 					Code Animation<br />
+// 					Motion Graphics<br />
+// 					Print & Editorial Layout
+// 				</div>
+// 				<div className='skillCol'>
+// 					<h1>Front-End Development</h1>
+// 					HTML5<br />
+// 					CSS3 / SCSS / SASS<br />
+// 					JavaScript / jQuery<br />
+// 					GSAP<br />
+// 					Working knowledge of:<br />
+// 					- React<br />
+// 					- Unity / WebGL / C#
+// 				</div>
+// 				<div className='skillCol'>
+// 					<h1>Design Ecosystems</h1>
+// 					Adobe Creative Suite, notably:<br />
+// 					- Photoshop<br />
+// 					- Illustrator<br />
+// 					- InDesign<br />
+// 					- After Effects<br />
+// 					Working knowledge of:<br />
+// 					- Figma<br />
+// 					- XD<br />
+// 					- Sketch
+// 				</div>
+// 			</div>
+// 		</>
+// 	);
+// }
 
 //#endregion -------------------- SkillChartMan --------------------
 
@@ -813,19 +814,19 @@ export default function Resume() {
 				<div className='resumeSect earlyContainer' id='earlyContainerID'>
 					<h1 className='sectHed'>Earlier Experience Highlights</h1>
 					<div className='earlyList'>
-						<h1>DDB Worldwide (Studio 8) &sdot; <p className='earlyTitle'>Multimedia Specialist</p></h1>
+						<h1>DDB Worldwide (Studio 8) &sdot; <span className='earlyTitle'>Multimedia Specialist</span></h1>
 						<p className='earlyDescr'>Website development and promotional campaigns for diverse industry clients</p>
 
-						<h1>Heeb Magazine &sdot; <p className='earlyTitle'>Designer / Design Director</p></h1>
+						<h1>Heeb Magazine &sdot; <span className='earlyTitle'>Designer / Design Director</span></h1>
 						<p className='earlyDescr'>Art direction, editorial layout, and pre-press for multiple issues</p>
 
-						<h1>Harper’s Bazaar &sdot; <p className='earlyTitle'>Designer</p></h1>
+						<h1>Harper’s Bazaar &sdot; <span className='earlyTitle'>Designer</span></h1>
 						<p className='earlyDescr'>Page layout and design, logo & type treatment and (p)retouching for editorial content, photo features, reviews</p>
 
-						<h1>Style.com (Condé Nast) &sdot; <p className='earlyTitle'>Freelance Production Designer</p></h1>
+						<h1>Style.com (Condé Nast) &sdot; <span className='earlyTitle'>Freelance Production Designer</span></h1>
 						<p className='earlyDescr'>High-end photo retouching and e-commerce asset production</p>
 
-						<h1>Darwin Digital (a Saatchi & Saatchi Vision Company) &sdot; <p className='earlyTitle'>Designer</p></h1>
+						<h1>Darwin Digital (a Saatchi & Saatchi Vision Company) &sdot; <span className='earlyTitle'>Designer</span></h1>
 						<p className='earlyDescr'>Designed interactive assets for high-end clients including Procter & Gamble and Hewlett-Packard</p>
 					</div>
 				</div>
@@ -882,15 +883,15 @@ export default function Resume() {
 					</div>
 
 					<div className='dialogMenu' id='dialogMenuID'>
-						<a href={resumePDFurl} download target='_blank' rel='noreferrer'>*.pdf</a>
-						<a href={resumeDOCXurl} download target='_blank' rel='noreferrer'>*.docx</a>
-						<a href={resumeSimpleDOCXurl} download target='_blank' rel='noreferrer'>*.docx</a>
-						<a href={resumeTXTurl} download target='_blank' rel='noreferrer'>*.txt</a>
+						<a href={resumePDFurl} download target='_new' rel='noreferrer'>*.pdf</a>
+						<a href={resumeDOCXurl} download target='_new' rel='noreferrer'>*.docx</a>
+						<a href={resumeSimpleDOCXurl} download target='_new' rel='noreferrer'>*.docx</a>
+						<a href={resumeTXTurl} download target='_new' rel='noreferrer'>*.txt</a>
 
-						<a href={resumePDFurl} download target='_blank' rel='noreferrer'>{resumePDFfilename}</a>
-						<a href={resumeDOCXurl} download target='_blank' rel='noreferrer'>{resumeDOCXfilename}</a>
-						<a href={resumeSimpleDOCXurl} download target='_blank' rel='noreferrer'>{resumeSimpleDOCXfilename}</a>
-						<a href={resumeTXTurl} download target='_blank' rel='noreferrer'>{resumeTXTfilename}</a>
+						<a href={resumePDFurl} download target='_new' rel='noreferrer'>{resumePDFfilename}</a>
+						<a href={resumeDOCXurl} download target='_new' rel='noreferrer'>{resumeDOCXfilename}</a>
+						<a href={resumeSimpleDOCXurl} download target='_new' rel='noreferrer'>{resumeSimpleDOCXfilename}</a>
+						<a href={resumeTXTurl} download target='_new' rel='noreferrer'>{resumeTXTfilename}</a>
 					</div>
 
 					<div className='dialogHed dialogHed02' id='dialogHed02ID'>
@@ -898,7 +899,7 @@ export default function Resume() {
 					</div>
 
 					<div className='dialogMenu dialogMenu02' id='dialogMenu02ID'>
-						<a href={resumeZIPurl} download target='_blank' rel='noreferrer'>{resumeZIPfilename}</a>
+						<a href={resumeZIPurl} download target='_new' rel='noreferrer'>{resumeZIPfilename}</a>
 					</div>
 
 				</div>

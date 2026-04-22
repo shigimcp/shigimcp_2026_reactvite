@@ -1,29 +1,4 @@
-// #region ==================== IMPORTS ====================
-
-// import React from 'react';
-// import { useState } from 'react';
-// import { useEffect } from 'react';
-// import { useRef, useMemo } from 'react';
-
-// import { Box3, Vector3 } from "three";
-
-// import { isBrowser } from "react-device-detect";
-// import { isMobile } from "react-device-detect";
-// import { isBrowser, isMobile } from "react-device-detect";
-// import { BrowserView, MobileView, isBrowser, isMobile } from "react-device-detect";
-
-// import { useLoader } from 'react-three-fiber';
-// import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
-// import { useFrame } from 'react-three-fiber';
-
-// import { useLoader } from '@react-three/fiber';
-// import { SVGLoader } from 'three/examples/jsm/Addons.js';
-
-
-
-// import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
-// import { Svg } from "@react-three/drei";
-
+// #region ==================== MARK: IMPORTS ====================
 
 // import { useMemo } from 'react';
 import { useRef, useMemo } from 'react';
@@ -35,12 +10,10 @@ import { useLoader } from '@react-three/fiber';
 // import { OrbitControls } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 
-
 // #endregion ==================== IMPORTS ====================
 
 
-
-// #region ==================== CONSTANTS / VARS ====================
+// #region ==================== MARK: CONSTANTS / VARS ====================
 
 const remoteGitImageLoc = 'https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/';
 
@@ -92,7 +65,7 @@ export default function Logo() {
 	// #endregion -------------------- ANIMATION --------------------
 
 
-	//#region ==================== FINDIN' OUT SH*T ====================
+	//#region ==================== MARK: FINDIN' OUT SH*T ====================
 
 	// console.log('');
 	// console.log('==================== COMPONENT: Logo.jsx ====================');

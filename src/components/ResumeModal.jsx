@@ -131,37 +131,37 @@ const ResumeModal = ({ isOpen, hasCloseBtn = true, onClose }) => {
 					<div className='dialogMenu' id='dialogMenuID'>
 						<p>SHORT form...</p>
 
-						{/* <a href={resumePDFurl} download target='_blank' rel='noreferrer'>{resumePDFfilename}</a>
-						<a href={resumeDOCXurl} download target='_blank' rel='noreferrer'>{resumeDOCXfilename}</a>
-						<a href={resumeSimpleDOCXurl} download target='_blank' rel='noreferrer'>{resumeSimpleDOCXfilename}</a>
-						<a href={resumeTXTurl} download target='_blank' rel='noreferrer'>{resumeTXTfilename}</a> */}
+						{/* <a href={resumePDFurl} download target='_new' rel='noreferrer'>{resumePDFfilename}</a>
+						<a href={resumeDOCXurl} download target='_new' rel='noreferrer'>{resumeDOCXfilename}</a>
+						<a href={resumeSimpleDOCXurl} download target='_new' rel='noreferrer'>{resumeSimpleDOCXfilename}</a>
+						<a href={resumeTXTurl} download target='_new' rel='noreferrer'>{resumeTXTfilename}</a> */}
 
 						{/* <a href={resumePDFurl} download target='_self' rel='noreferrer'>{resumePDFfilename}</a>
 						<a href={resumeDOCXurl} download target='_self' rel='noreferrer'>{resumeDOCXfilename}</a>
 						<a href={resumeSimpleDOCXurl} download target='_self' rel='noreferrer'>{resumeSimpleDOCXfilename}</a>
 						<a href={resumeTXTurl} download target='_self' rel='noreferrer'>{resumeTXTfilename}</a> */}
 
-						{/* <a href={resumePDFurl} download target='_blank' rel='noreferrer'>{resumePDFfilename}</a>
+						{/* <a href={resumePDFurl} download target='_new' rel='noreferrer'>{resumePDFfilename}</a>
 						<a href={resumeDOCXurl} download target='_self' rel='noreferrer'>{resumeDOCXfilename}</a>
 						<a href={resumeSimpleDOCXurl} download target='_self' rel='noreferrer'>{resumeSimpleDOCXfilename}</a>
-						<a href={resumeTXTurl} download target='_blank' rel='noreferrer'>{resumeTXTfilename}</a> */}
+						<a href={resumeTXTurl} download target='_new' rel='noreferrer'>{resumeTXTfilename}</a> */}
 
 						{/* <a href={resumePDFurl} onClick={() => {downloadFileAtURL(resumePDFurl)}}>{resumePDFfilename}</a>
 						<a href={resumeDOCXurl} onClick={() => {downloadFileAtURL(resumeDOCXurl)}}>{resumeDOCXfilename}</a>
 						<a href={resumeSimpleDOCXurl} onClick={() => {downloadFileAtURL(resumeSimpleDOCXurl)}}>{resumeSimpleDOCXfilename}</a>
 						<a href={resumeTXTurl} onClick={() => {downloadFileAtURL(resumeTXTurl)}}>{resumeTXTfilename}</a> */}
 
-						<a href={resumePDFurl_short} download target='_blank' rel='noreferrer'>{resumePDFfilename_short}</a>
+						<a href={resumePDFurl_short} download target='_new' rel='noreferrer'>{resumePDFfilename_short}</a>
 						<a href={resumeDOCXurl_short} download target='_self' rel='noreferrer'>{resumeDOCXfilename_short}</a>
 						<a href={resumeSimpleDOCXurl_short} download target='_self' rel='noreferrer'>{resumeSimpleDOCXfilename_short}</a>
-						<a href={resumeTXTurl_short} download target='_blank' rel='noreferrer'>{resumeTXTfilename_short}</a>
+						<a href={resumeTXTurl_short} download target='_new' rel='noreferrer'>{resumeTXTfilename_short}</a>
 
 						{/* <div className='dialogHed dialogHed02' id='dialogHed02ID'> */}
 							<p>or download ALL...</p>
 						{/* </div> */}
 
 						{/* <div className='dialogMenu dialogMenu02' id='dialogMenu02ID'> */}
-							{/* <a href={resumeZIPurl} download target='_blank' rel='noreferrer'>{resumeZIPfilename}</a> */}
+							{/* <a href={resumeZIPurl} download target='_new' rel='noreferrer'>{resumeZIPfilename}</a> */}
 							{/* <a href={resumeZIPurl} download target='_self' rel='noreferrer'>{resumeZIPfilename}</a> */}
 							{/* <a href={resumeZIPurl} onClick={() => {downloadFileAtURL(resumeZIPurl)}}>{resumeZIPfilename}</a> */}
 							<a href={resumeZIPurl_short} download target='_self' rel='noreferrer'>{resumeZIPfilename_short}</a>
@@ -176,10 +176,10 @@ const ResumeModal = ({ isOpen, hasCloseBtn = true, onClose }) => {
 					<div className='dialogMenu' id='dialogMenuID'>
 						<p>LONG form...</p>
 
-						<a href={resumePDFurl_long} download target='_blank' rel='noreferrer'>{resumePDFfilename_long}</a>
+						<a href={resumePDFurl_long} download target='_new' rel='noreferrer'>{resumePDFfilename_long}</a>
 						<a href={resumeDOCXurl_long} download target='_self' rel='noreferrer'>{resumeDOCXfilename_long}</a>
 						<a href={resumeSimpleDOCXurl_long} download target='_self' rel='noreferrer'>{resumeSimpleDOCXfilename_long}</a>
-						<a href={resumeTXTurl_long} download target='_blank' rel='noreferrer'>{resumeTXTfilename_long}</a>
+						<a href={resumeTXTurl_long} download target='_new' rel='noreferrer'>{resumeTXTfilename_long}</a>
 
 						{/* <div className='dialogHed dialogHed02' id='dialogHed02ID'> */}
 							<p>or download ALL...</p>

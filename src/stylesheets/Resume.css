@@ -1,19 +1,7 @@
 /* #region ==================== MARK: BASE ==================== */
 
-/* .employerContainer * {
-	border: 2px solid #00ffff;
-
-	text-align: left;
-	line-height: 1.25em;
-
-	margin: 0;
-	padding: 0;
-	padding: 0 0 0.125em 0;
-} */
-
-/* .employerContainer { */
 .resumeContainer {
-	/* border: 2px solid #ff0000; */
+	/* border: 1px inset #ff0000; */
 
 	/* letter-spacing: 0.0375em; */
 
@@ -21,29 +9,45 @@
 	/* min-width: var(--body-min-width); */
 	/* max-width: var(--body-max-width); */
 	/* max-width: 1115px; */
+	/* height: auto; */
 	/* height: 100vh; */
-	height: auto;
+	/* height: calc(100vh - calc(var(--header-height) * 2)); */
+	height: calc(100vh - calc(var(--header-height) + var(--navBar-height)));
 
-	overflow: auto;
+	overflow: scroll;
+	/* overflow: hidden; */
+	/* overflow: auto; */
+	scrollbar-width: none;
 
 	margin: 0 auto;
 	/* margin: 0 auto 120px auto; */
+	padding: 0;
 	/* padding: 0 0 0 5%; */
 	/* padding: calc(var(--navBar-height) * 2) 0; */
 	/* padding: var(--navBar-height) 0 var(--header-height) 0; */
-	padding: 0 0 var(--header-height) 0;
+	/* padding: 0 0 var(--header-height) 0; */
+	/* padding: 0 0 calc(var(--header-height) * 2) 0; */
+	/* padding: 0 0 calc(var(--header-height) * 4) 0; */
 
 	/* position: absolute; */
-
-	position: relative;
+	position: fixed;
+	/* position: relative; */
 	/* top: var(--header-height); */
 	/* top: var(--navBar-height); */
 	top: calc(var(--header-height) + var(--navBar-height));
 	/* top: calc(var(--navBar-height) + 20px); */
 	/* top: calc(var(--navBar-height) * 2); */
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 999;
+
+	/* clip: rect(0px, 100vw, calc(var(--header-height) - 10px), 0px); */
+	/* clip: rect(calc(var(--header-height) - 10px), 100vw, auto, 0px); */
+	/* clip-path: rect(5px 5px 160px 145px round 20%); */
+
 
 	.resumeSect {
-		/* border: 2px solid #00ffff; */
+		/* border: 1px inset #00ffff; */
 
 		margin: 0;
 		padding: 2rem 0 0 0;
@@ -71,7 +75,7 @@
 	}
 
 	.sectHed {
-		/* border: 2px solid #ff00ff; */
+		/* border: 1px inset #ff00ff; */
 		border-bottom: 1px solid #999999;
 
 		font-weight: 500;
@@ -92,7 +96,7 @@
 	}
 
 	/* h1, h2 {
-		border: 2px solid #00ffff;
+		border: 1px inset #00ffff;
 
 		font-family: AvenirNext-Medium, system-ui, Helvetica, Arial, sans-serif;
 		font-family: AvenirNext-DemiBold, system-ui, Helvetica, Arial, sans-serif;
@@ -106,7 +110,7 @@
 	} */
 
 	h1 {
-		/* border: 2px solid #00ffff; */
+		/* border: 1px inset #00ffff; */
 
 		/* font-family: AvenirNext-Medium, system-ui, Helvetica, Arial, sans-serif; */
 		font-family: AvenirNext-DemiBold, system-ui, Helvetica, Arial, sans-serif;
@@ -119,7 +123,7 @@
 	}
 
 	h2 {
-		/* border: 2px solid #ff00ff; */
+		/* border: 1px inset #ff00ff; */
 
 		font-family: AvenirNext-Medium, system-ui, Helvetica, Arial, sans-serif;
 		/* font-family: AvenirNext-DemiBold, system-ui, Helvetica, Arial, sans-serif; */
@@ -169,7 +173,7 @@
 	} */
 
 	/* .introContainer {
-		border: 2px solid #00ff00;
+		border: 1px inset #00ff00;
 
 		font-family: AvenirNext-Italic, system-ui, Avenir, Helvetica, Arial, sans-serif;
 		font-style: italic;
@@ -181,7 +185,7 @@
 	} */
 
 	.skillContainer {
-		/* border: 2px solid #ff00ff; */
+		/* border: 1px inset #ff00ff; */
 
 		/* font-size: 0.9375em; */
 
@@ -190,7 +194,7 @@
 		/* padding: 0 0 0 5%; */
 
 		.skillGrid {
-			/* border: 2px solid #0000ff; */
+			/* border: 1px inset #0000ff; */
 
 			display: grid;
 
@@ -205,10 +209,12 @@
 			grid-template-columns: auto auto auto auto;
 			gap: 0;
 
-			margin: -1rem 0 0 0;
+			/* margin: 0; */
+			/* margin: -1rem 0 0 0; */
+			/* margin: 20rem 0 0 0; */
 
 			.skillCol{
-				/* border: 2px solid #0000ff; */
+				/* border: 1px inset #0000ff; */
 
 				h2 {
 					font-size: 1.1875rem;
@@ -218,11 +224,11 @@
 				}
 
 				.skillList {
-					/* border: 2px solid #0000ff; */
+					/* border: 1px inset #0000ff; */
 					line-height: 1.5rem;
 
 					ul {
-						/* border: 2px solid #0000ff; */
+						/* border: 1px inset #0000ff; */
 
 						list-style: none;
 						margin: 0 0 0.5rem 0;
@@ -239,10 +245,10 @@
 	}
 
 	.employerContainer {
-		/* border: 2px solid #00ff00; */
+		/* border: 1px inset #00ff00; */
 
 		.employerList {
-			/* border: 2px solid #00ff00; */
+			/* border: 1px inset #00ff00; */
 
 			text-align: left;
 
@@ -271,11 +277,12 @@
 				display: grid;
 				/* grid-template-columns: repeat(3, auto); */
 				/* grid-template-columns: 12.5% auto 10%; */
-				grid-template-columns: 12.5% auto 11.25%;
+				/* grid-template-columns: 12.5% auto 11.25%; */
+				grid-template-columns: 12.5% auto;
 				column-gap: 0;
 
 				.logo, .logoMissing {
-					/* border: 2px solid #ff0000; */
+					/* border: 1px inset #ff0000; */
 					text-align: left;
 
 					width: 72.5%;
@@ -289,7 +296,7 @@
 				}
 
 				/* .logo {
-					border: 2px solid #ff0000;
+					border: 1px inset #ff0000;
 
 					max-width: 75%;
 					max-height: 50%;
@@ -298,17 +305,17 @@
 				} */
 
 				/* .logoMissing {
-					border: 2px solid #00ffff;
+					border: 1px inset #00ffff;
 					background: none;
 
 					opacity: 0.1;
 				} */
 
 				.employerInfoContainer {
-					/* border: 2px solid #00ffff; */
+					/* border: 1px inset #00ffff; */
 
 					.employerDates {
-						/* border: 2px solid #00ffff; */
+						/* border: 1px inset #00ffff; */
 
 						text-align: right;
 						line-height: 1.75em;
@@ -331,7 +338,7 @@
 
 					/* .employerInfo, .employerInfo_ { */
 					.employerInfo {
-						/* border: 2px solid #00ffff; */
+						/* border: 1px inset #00ffff; */
 
 						/* font-size: 1.0625em;
 						line-height: 1.25em; */
@@ -366,14 +373,14 @@
 					}
 
 					/* .employerInfo {
-						border: 2px solid #00ffff;
+						border: 1px inset #00ffff;
 
 						list-style: disc;
 						list-style: none;
 					} */
 
 					/* .employerInfo_ {
-						border: 2px solid #00ffff;
+						border: 1px inset #00ffff;
 
 						margin: 0 0 0 15px;
 
@@ -401,7 +408,7 @@
 	}
 
 	/* .techContainer {
-		border: 2px solid #00ff00;
+		border: 1px inset #00ff00;
 
 		ul {
 			list-style: disc;
@@ -410,19 +417,19 @@
 	} */
 
 	.earlyContainer {
-		/* border: 2px solid #0000ff; */
+		/* border: 1px inset #0000ff; */
 
 		.earlyList {
-			/* border: 2px solid #ff0000; */
+			/* border: 1px inset #ff0000; */
 
 			h1 {
-				/* border: 2px solid #00ff00; */
+				/* border: 1px inset #00ff00; */
 
 				font-size: 1.25rem;
 				line-height: 1.375rem;
 
 				.earlyTitle {
-					/* border: 2px solid #0000ff; */
+					/* border: 1px inset #0000ff; */
 
 					font-family: AvenirNext-MediumItalic, system-ui, Helvetica, Arial, sans-serif;
 
@@ -435,7 +442,7 @@
 			}
 
 			.earlyDescr {
-				/* border: 2px solid #ff00ff; */
+				/* border: 1px inset #ff00ff; */
 
 				margin: 0 0 1rem 0;
 			}
@@ -443,19 +450,19 @@
 	}
 
 	.eduContainer {
-		/* border: 2px solid #0000ff; */
+		/* border: 1px inset #0000ff; */
 
 		width: auto;
 		/* height: 8.75em; */
 
 		/* margin: 0; */
 		/* padding: 0 0 0 5%; */
-		padding: 3rem 0 5rem 0;
+		padding: 3rem 0 7.5rem 0;
 
 		position: relative;
 
 		.eduInfoContainer {
-			/* border: 2px solid #00ff00; */
+			/* border: 1px inset #00ff00; */
 
 			/* line-height: 1rem; */
 
@@ -469,7 +476,7 @@
 			column-gap: 0;
 
 			.logo {
-				/* border: 2px solid #00ffff; */
+				/* border: 1px inset #00ffff; */
 
 				/* width: 100%; */
 				max-width: 52.5%;
@@ -479,7 +486,7 @@
 			}
 
 			/* h2 {
-				border: 2px solid #0000ff;
+				border: 1px inset #0000ff;
 				line-height: 1.5em;
 				margin: 0 0 0.125em 0;
 			} */
@@ -490,7 +497,7 @@
 			}
 
 			.eduDate {
-				/* border: 2px solid #0000ff; */
+				/* border: 1px inset #0000ff; */
 
 				/* line-height: 1rem; */
 

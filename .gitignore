@@ -1,6 +1,11 @@
 # Added by me
 .DS_Store
+*.DS_Store
 **/.DS_Store
+
+.htaccess
+*.htaccess
+**/.htaccess
 
 # Logs
 logs

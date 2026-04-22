@@ -168,7 +168,7 @@ function addGuides(refContainer) {
 	let refContainerDims = getDimensions(refContainer);
 
 
-	//#region ('-------------------- MARK: FINDIN' OUT SH*T ('--------------------
+	//#region -------------------- MARK: FINDIN' OUT SH*T --------------------
 
 	// console.log('');
 	// console.log('-------------------- FUNCTION: addGuides(refContainer) --------------------');
@@ -179,7 +179,7 @@ function addGuides(refContainer) {
 	// console.log('refContainerDims = ' + refContainerDims);
 	// console.log(refContainerDims);
 
-	//#endregion ('-------------------- FINDIN' OUT SH*T ('--------------------
+	//#endregion -------------------- FINDIN' OUT SH*T --------------------
 
 
 	//#region -------------------- AFRO GUIDE (guideSVG): outerEllipse / innerEllipse --------------------

@@ -4,6 +4,11 @@ import React from 'react';
 import { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+
+// import { useReducer } from 'react';
+import { useNavigate } from 'react-router-dom';
+// import { useLayoutEffect } from 'react';
+
 // import { Suspense } from 'react';
 // import { useCallback } from 'react';
 // import { useLocation } from 'react-router-dom';
@@ -13,7 +18,10 @@ import { useEffect } from 'react';
 // // REF: https://www.youtube.com/watch?v=PMXUCNzthQU&t=508s => https://www.npmjs.com/package/ua-parser-js => https://github.com/faisalman/ua-parser-js => https://docs.uaparser.dev/api/main/overview.html
 // import { UAParser } from 'ua-parser-js';
 
+// REF: https://gsap.com/resources/React/
 import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies 
 
 // REF: https://metafizzy.co => https://isotope.metafizzy.co => https://packery.metafizzy.co => https://imagesloaded.desandro.com => https://github.com/desandro/imagesloaded => https://www.npmjs.com/package/imagesloaded
 import Isotope from 'isotope-layout';
@@ -48,13 +56,30 @@ import work from '../data/json/work.json';
 
 //#region - - - - - - - - - - - MARK: EA (src/assets) - - - - - - - - - - -
 
+import EAAR_18951 from '../assets/images/ea/banners/CR_18951_ALWAYS_RED_DIGITAL_PLAN_1H15_300x600/EAAR_18951';
+
+import NMPF_04852 from '../assets/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250/NMPF_04852';
+// import NMPF_04852 from '../assets/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250_reactvite/dist/';
+// import NMPF_04852 from '../assets/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250_reactvite/src/App';
+// import NMPF_04852 from '../assets/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250_reactvite/src/NMPF_04852';
+// import NMPF_04852 from '../assets/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250_reactvite/NMPF_04852/index.html';
+
+// import NMMN_11155 from '../assets/images/ea/banners/CR_11155_MINAJESTY_2014_US_DIGITAL_300x600/NMMN_11155';
+import BCBG_02342 from '../assets/images/ea/banners/BCBG_MAXAZRIA_CR00002342_AU_Digital_Plan/BCBG_02342';
+import BCBG_05500 from '../assets/images/ea/banners/CR_5500_BCBG_BC_AU_Digital_Plan_2013/BCBG_05500';
+import JCNR_07074 from '../assets/images/ea/banners/CR_7074_JC_VNOIR_2013_AU_300x600/JCNR_07074';
+import BSPS_26897 from '../assets/images/ea/banners/26897_BS_PRIVATE_SHOW_GWP_PR_Walgreens_300x250/BSPS_26897';
+import NMTG_26903 from '../assets/images/ea/banners/26903_NM_TRINI_GIRL_GWP_PR_Walgreens_300x250/NMTG_26903';
+import JCVR_26963 from '../assets/images/ea/banners/26963_JC_VIVA_ROSE_GWP_PR_Walgreens_300x250/JCVR_26963';
+// import JBJA_10263 from '../assets/images/ea/banners/CR_10263_J_by_JENNIFER_ANISTON_Kohls_300x250/JBJA_10263';
+
+//#endregion - - - - - - - - - - - EA (src/assets) - - - - - - - - - - -
+
+//#region - - - - - - - - - - - MARK: EA (public) - - - - - - - - - - -
+
 // import EAAR_18951 from '../assets/images/ea/banners/CR_18951_ALWAYS_RED_DIGITAL_PLAN_1H15_300x600/EAAR_18951';
 
 // import NMPF_04852 from '../assets/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250/NMPF_04852';
-// // import NMPF_04852 from '../assets/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250_reactvite/dist/';
-// // import NMPF_04852 from '../assets/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250_reactvite/src/App';
-// // import NMPF_04852 from '../assets/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250_reactvite/src/NMPF_04852';
-// // import NMPF_04852 from '../assets/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250_reactvite/NMPF_04852/index.html';
 
 // import NMMN_11155 from '../assets/images/ea/banners/CR_11155_MINAJESTY_2014_US_DIGITAL_300x600/NMMN_11155';
 // import BCBG_02342 from '../assets/images/ea/banners/BCBG_MAXAZRIA_CR00002342_AU_Digital_Plan/BCBG_02342';
@@ -65,39 +90,9 @@ import work from '../data/json/work.json';
 // import JCVR_26963 from '../assets/images/ea/banners/26963_JC_VIVA_ROSE_GWP_PR_Walgreens_300x250/JCVR_26963';
 // import JBJA_10263 from '../assets/images/ea/banners/CR_10263_J_by_JENNIFER_ANISTON_Kohls_300x250/JBJA_10263';
 
-//#endregion - - - - - - - - - - - EA (src/assets) - - - - - - - - - - -
+//#endregion - - - - - - - - - - - EA (public) - - - - - - - - - - -
 
-//#region - - - - - - - - - - - MARK: EA (public) - - - - - - - - - - -
-
-// import EAAR_18951 from '/images/ea/banners/CR_18951_ALWAYS_RED_DIGITAL_PLAN_1H15_300x600/EAAR_18951';
-
-// import NMPF_04852 from '/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250/NMPF_04852';
-
-// import NMMN_11155 from '/images/ea/banners/CR_11155_MINAJESTY_2014_US_DIGITAL_300x600/NMMN_11155';
-// import BCBG_02342 from '/images/ea/banners/BCBG_MAXAZRIA_CR00002342_AU_Digital_Plan/BCBG_02342';
-// import BCBG_05500 from '/images/ea/banners/CR_5500_BCBG_BC_AU_Digital_Plan_2013/BCBG_05500';
-// import JCNR_07074 from '/images/ea/banners/CR_7074_JC_VNOIR_2013_AU_300x600/JCNR_07074';
-// import BSPS_26897 from '/images/ea/banners/26897_BS_PRIVATE_SHOW_GWP_PR_Walgreens_300x250/BSPS_26897';
-// import NMTG_26903 from '/images/ea/banners/26903_NM_TRINI_GIRL_GWP_PR_Walgreens_300x250/NMTG_26903';
-// import JCVR_26963 from '/images/ea/banners/26963_JC_VIVA_ROSE_GWP_PR_Walgreens_300x250/JCVR_26963';
-// import JBJA_10263 from '/images/ea/banners/CR_10263_J_by_JENNIFER_ANISTON_Kohls_300x250/JBJA_10263';
-
-
-
-// const EAAR_18951 = '/images/ea/banners/CR_18951_ALWAYS_RED_DIGITAL_PLAN_1H15_300x600/EAAR_18951';
-
-// const NMPF_04852 = '/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250/NMPF_04852';
-
-// const NMMN_11155 = '/images/ea/banners/CR_11155_MINAJESTY_2014_US_DIGITAL_300x600/NMMN_11155';
-// const BCBG_02342 = '/images/ea/banners/BCBG_MAXAZRIA_CR00002342_AU_Digital_Plan/BCBG_02342';
-// const BCBG_05500 = '/images/ea/banners/CR_5500_BCBG_BC_AU_Digital_Plan_2013/BCBG_05500';
-// const JCNR_07074 = '/images/ea/banners/CR_7074_JC_VNOIR_2013_AU_300x600/JCNR_07074';
-// const BSPS_26897 = '/images/ea/banners/26897_BS_PRIVATE_SHOW_GWP_PR_Walgreens_300x250/BSPS_26897';
-// const NMTG_26903 = '/images/ea/banners/26903_NM_TRINI_GIRL_GWP_PR_Walgreens_300x250/NMTG_26903';
-// const JCVR_26963 = '/images/ea/banners/26963_JC_VIVA_ROSE_GWP_PR_Walgreens_300x250/JCVR_26963';
-// const JBJA_10263 = '/images/ea/banners/CR_10263_J_by_JENNIFER_ANISTON_Kohls_300x250/JBJA_10263';
-
-
+//#region - - - - - - - - - - - MARK: EA (shigimcp) - - - - - - - - - - -
 
 // const EAAR_18951 = new URL('/images/ea/banners/CR_18951_ALWAYS_RED_DIGITAL_PLAN_1H15_300x600/EAAR_18951.jsx', import.meta.url).href;
 
@@ -113,8 +108,22 @@ import work from '../data/json/work.json';
 // const JCVR_26963 = new URL('/images/ea/banners/26963_JC_VIVA_ROSE_GWP_PR_Walgreens_300x250/JCVR_26963.jsx', import.meta.url).href;
 // const JBJA_10263 = new URL('/images/ea/banners/CR_10263_J_by_JENNIFER_ANISTON_Kohls_300x250/JBJA_10263.jsx', import.meta.url).href;
 
-//#endregion - - - - - - - - - - - EA (public) - - - - - - - - - - -
 
+
+// const EAAR_18951 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_18951_ALWAYS_RED_DIGITAL_PLAN_1H15_300x600/EAAR_18951.jsx', import.meta.url).href;
+
+// const NMPF_04852 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_4852_NMPF_US_Walmart_300x250/NMPF_04852.jsx', import.meta.url).href;
+
+// const NMMN_11155 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_11155_MINAJESTY_2014_US_DIGITAL_300x600/NMMN_11155.jsx', import.meta.url).href;
+// const BCBG_02342 = new URL('https://www.shigimcp.com/assets/img/ea/banners/BCBG_MAXAZRIA_CR00002342_AU_Digital_Plan/BCBG_02342.jsx', import.meta.url).href;
+// const BCBG_05500 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_5500_BCBG_BC_AU_Digital_Plan_2013/BCBG_05500.jsx', import.meta.url).href;
+// const JCNR_07074 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_7074_JC_VNOIR_2013_AU_300x600/JCNR_07074.jsx', import.meta.url).href;
+// const BSPS_26897 = new URL('https://www.shigimcp.com/assets/img/ea/banners/26897_BS_PRIVATE_SHOW_GWP_PR_Walgreens_300x250/BSPS_26897.jsx', import.meta.url).href;
+// const NMTG_26903 = new URL('https://www.shigimcp.com/assets/img/ea/banners/26903_NM_TRINI_GIRL_GWP_PR_Walgreens_300x250/NMTG_26903.jsx', import.meta.url).href;
+// const JCVR_26963 = new URL('https://www.shigimcp.com/assets/img/ea/banners/26963_JC_VIVA_ROSE_GWP_PR_Walgreens_300x250/JCVR_26963.jsx', import.meta.url).href;
+// const JBJA_10263 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_10263_J_by_JENNIFER_ANISTON_Kohls_300x250/JBJA_10263.jsx', import.meta.url).href;
+
+//#endregion - - - - - - - - - - - EA (shigimcp) - - - - - - - - - - -
 
 //#region - - - - - - - - - - - KIEHLS - - - - - - - - - - -
 
@@ -144,41 +153,6 @@ const videoLoc = 'https://vimeo.com/';
 // 	// setBrowserDetect(ua.device.type);
 // 	let browserDetect = ua.device.type;
 // }
-
-let workNavWidth;
-let workNavHeight;
-
-
-//#region -------------------- MARK: workNavTL: desktop vs mobile --------------------
-
-// if (ua.device.type === undefined) {
-
-// 	workNavTL
-// 		// .fromTo([employerNav_Ref.current], { y: -workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-// 		// .fromTo([typeNav_Ref.current], { y: 0, autoAlpha: 1 }, { y: -workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame01')
-// 		// // .fromTo([activeEmplDiv_Ref.current], { height: 0 }, { height: workNavHeight, duration: 0.5 }, 'frame01')
-
-// 		.fromTo(['.employerNav'], { y: -workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-// 		.fromTo(['.typeNav'], { y: 0, autoAlpha: 1 }, { y: -workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame01')
-// 		// .fromTo([activeEmplDiv_Ref.current], { height: 0 }, { height: workNavHeight, duration: 0.5 }, 'frame01')
-// 	;
-
-// 	// workNavTL.pause();
-
-// } else {
-
-// 	workNavTL
-// 		// .fromTo([employerNav_Ref.current], { x: -workNavWidth, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-// 		// .fromTo([typeNav_Ref.current], { x: 0, autoAlpha: 1 }, { x: -workNavWidth, autoAlpha: 0, duration: 0.5 }, 'frame01')
-// 		// // .fromTo([activeEmplDiv_Ref.current], { width: 0 }, { width: workNavHeight, duration: 0.5 }, 'frame01')
-
-// 		.fromTo(['.employerNav'], { x: -workNavWidth, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-// 		.fromTo(['.typeNav'], { x: 0, autoAlpha: 1 }, { x: -workNavWidth, autoAlpha: 0, duration: 0.5 }, 'frame01')
-// 		// .fromTo([activeEmplDiv_Ref.current], { width: 0 }, { width: workNavHeight, duration: 0.5 }, 'frame01')
-// 	;
-// }
-
-//#endregion -------------------- workNavTL: desktop vs mobile --------------------
 
 
 //#region -------------------- MARK: DATA --------------------
@@ -218,7 +192,33 @@ let workData = work;
 //#endregion -------------------- DATA --------------------
 
 
-//#region -------------------- MARK: FILTER ARRAY: filterEmployer (and... push "All" for employerNav) --------------------
+//#region -------------------- MARK: TIMELINES *** see useRef DEFs *** --------------------
+
+// // let workNavWidth;
+// let workNavHeight;
+
+// const workNavIN = new gsap.timeline();
+// // const workNavIN = new gsap.timeline().play();
+// // const workNavIN = new gsap.timeline().pause();
+// const workNavTL = new gsap.timeline().pause();
+
+// const emplNavTL = new gsap.timeline().pause();
+// const typeNavTL = new gsap.timeline().pause();
+
+// const workNavIN = new gsap.timeline();
+// const workNavTL = new gsap.timeline();
+// const emplNavTL = new gsap.timeline();
+// const typeNavTL = new gsap.timeline();
+
+// const workNavIN = new gsap.timeline().pause();
+// const workNavTL = new gsap.timeline().pause();
+// const emplNavTL = new gsap.timeline().pause();
+// const typeNavTL = new gsap.timeline().pause();
+
+//#endregion -------------------- TIMELINES *** see useRef DEFs *** --------------------
+
+
+//#region -------------------- MARK: FILTER ARRAY: filterEmployer (and... push "All" for emplNavBar) --------------------
 
 const filterEmployer = employerData.filter(isInGallery => isInGallery.isInGallery);
 
@@ -265,7 +265,7 @@ const filterEmployer = employerData.filter(isInGallery => isInGallery.isInGaller
 // console.log('filterEmployer = ');
 // console.log(filterEmployer);
 
-//#endregion -------------------- FILTER ARRAY: filterEmployer (and... push "All" for employerNav) --------------------
+//#endregion -------------------- FILTER ARRAY: filterEmployer (and... push "All" for emplNavBar) --------------------
 
 
 //#region -------------------- MARK: FILTER ARRAY: filterType - REF: https://github.com/rhernandog/gsap-flip-react/blob/master/src/App.js --------------------
@@ -290,139 +290,31 @@ const filterType = [
 
 //#region -------------------- MARK: HTML5 BANNERS: bannerContent[] --------------------
 
-// const bannerContent = {
-// 	EAAR_18951: EAAR_18951,
-// 	NMPF_04852: NMPF_04852,
-// 	NMMN_11155: NMMN_11155,
-// 	BCBG_02342: BCBG_02342,
-// 	BCBG_05500: BCBG_05500,
-// 	JCNR_07074: JCNR_07074,
-// 	BSPS_26897: BSPS_26897,
-// 	NMTG_26903: NMTG_26903,
-// 	JCVR_26963: JCVR_26963,
-// 	JBJA_10263: JBJA_10263,
-// };
+const bannerContent = {
+	EAAR_18951: EAAR_18951,
+	NMPF_04852: NMPF_04852,
+	// NMMN_11155: NMMN_11155,
+	BCBG_02342: BCBG_02342,
+	BCBG_05500: BCBG_05500,
+	JCNR_07074: JCNR_07074,
+	BSPS_26897: BSPS_26897,
+	NMTG_26903: NMTG_26903,
+	JCVR_26963: JCVR_26963,
+	// JBJA_10263: JBJA_10263,
+};
 
 //#endregion -------------------- HTML5 BANNERS: xContent[] --------------------
 
 //#endregion ==================== CONSTANTS n VARS ====================
 
 
-//#region ==================== MARK: TIMELINES ====================
-
-//#region -------------------- MARK: TIMELINES: workNavIN --------------------');
-
-// console.log('-------------------- MARK: TIMELINES: workNavIN --------------------');
-
-const workNavIN = new gsap.timeline();
-// const workNavIN = new gsap.timeline({ paused: true });
-// const workNavIN = new gsap.timeline().pause();
-
-// workNavIN
-// 	// .fromTo(['.employerNav'], { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 });
-// 	.fromTo(['.employerNav'], { y: 0, autoAlpha: 0 }, { y: workNavHeight, autoAlpha: 1, duration: 0.5 });
-
-// 	// .to([activeEmplDiv_Ref.current], { x: thisLocX, y: thisLocY, width: thisLocW, height: thisLocH, duration: 0.375 })
-// 	// .to([activeTypeDiv_Ref.current], { x: thisLocX, y: thisLocY, width: thisLocW, height: thisLocH, duration: 0.375 })
-// ;
-
-// workNavIN
-// 	// .fromTo([workNav_Ref.current], { y: 0, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame00')
-// 	// .fromTo([workNav_Ref.current], { y: -workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame00')
-
-// 	.fromTo(['.workNavContainer'], { y: 0, autoAlpha: 0 }, { y: workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame00')
-// 	// .fromTo(['.employerNav'], { y: 0, autoAlpha: 0 }, { y: workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame00')
-// ;
-
-// console.log('workNavIN = ' + workNavIN);
-
-//#endregion -------------------- TIMELINES: workNavIN --------------------');
-
-
-//#region -------------------- MARK: TIMELINES: workNavTL --------------------');
-
-// console.log('-------------------- MARK: TIMELINES: workNavTL --------------------');
-
-// const workNavTL = new gsap.timeline();
-// const workNavTL = new gsap.timeline({ paused: true });
-const workNavTL = new gsap.timeline().pause();
-
-// workNavTL
-// 	.to([activeEmplDiv_Ref.current], { x: thisLocX, y: thisLocY, width: thisLocW, height: thisLocH, duration: 0.375 })
-// 	.to([activeTypeDiv_Ref.current], { x: thisLocX, y: thisLocY, width: thisLocW, height: thisLocH, duration: 0.375 })
-// ;
-
-// if (ua.device.type === undefined) {
-
-// 	workNavTL
-// 		// .fromTo([employerNav_Ref.current], { y: -workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-// 		// .fromTo([typeNav_Ref.current], { y: 0, autoAlpha: 1 }, { y: -workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame01')
-// 		// // .fromTo([activeEmplDiv_Ref.current], { height: 0 }, { height: workNavHeight, duration: 0.5 }, 'frame01')
-
-// 		.fromTo(['.employerNav'], { y: -workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-// 		.fromTo(['.typeNav'], { y: 0, autoAlpha: 1 }, { y: -workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame01')
-// 		// .fromTo([activeEmplDiv_Ref.current], { height: 0 }, { height: workNavHeight, duration: 0.5 }, 'frame01')
-// 	;
-
-// 	// workNavTL.pause();
-
-// } else {
-
-// 	workNavTL
-// 		// .fromTo([employerNav_Ref.current], { x: -workNavWidth, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-// 		// .fromTo([typeNav_Ref.current], { x: 0, autoAlpha: 1 }, { x: -workNavWidth, autoAlpha: 0, duration: 0.5 }, 'frame01')
-// 		// // .fromTo([activeEmplDiv_Ref.current], { width: 0 }, { width: workNavHeight, duration: 0.5 }, 'frame01')
-
-// 		.fromTo(['.employerNav'], { x: -workNavWidth, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-// 		.fromTo(['.typeNav'], { x: 0, autoAlpha: 1 }, { x: -workNavWidth, autoAlpha: 0, duration: 0.5 }, 'frame01')
-// 		// .fromTo([activeEmplDiv_Ref.current], { width: 0 }, { width: workNavHeight, duration: 0.5 }, 'frame01')
-// 	;
-// }
-
-//#endregion -------------------- TIMELINES: workNavTL --------------------');
-
-//#endregion ==================== TIMELINES ====================
-
-
-
-// const Work = (props) => {
-// export default function Work() {
-// export default function Work(props) {
-// export default function Work({chipVisibility}) {
-// export default function Work({chipvisibility, handlechiptoggle}) {
-// export default function Work({isChipVisible, setIsChipVisible}) {
-// export default function Work({isChipVisible, setIsChipVisible, toggleVisibility}) {
+export default function Work(props) {
+// export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, filterKey, setFilterKey}) {
 // export default function Work({isChipVisible, setIsChipVisible, filterKey, setFilterKey}) {
-export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, filterKey, setFilterKey}) {
+// export default function Work({thisDeviceWidthArray, isChipVisible, setIsChipVisible, filterKey, setFilterKey}) {
 
-// const Work = ({chipVisibility, setChipVisibility}) => {
-// export default function Work({chipVisibility}) {
-// export default function Work({chipvisibility}) {
-// export default function Work({chipVisibility, setChipVisibility}) {
-// export default function Work({chipVisibility, handleChipToggle}) {
-// export default function Work({chipVisibility, chipContainer_Ref, galleryContainer_Ref}) {
-// export default function Work({chipVisibility, setChipVisibility}) {
-// export default function Work({chipVisibility, setChipVisibility, handleChipToggle}) {
 
-	// const locationWork = useLocation();
-	// const { chipvisibility } = locationWork.state;
-	// const { setchipvisibility } = locationWork.state.setChipVisibility;
-	// const { chipVisibility } = locationWork.state.chipVisibility;
-	// const { setChipVisibility } = locationWork.state.setChipVisibility;
-
-	// const chipvisibility = locationWork.state;
-	// const chipvisibility = locationWork.state.chipVisibility;
-	// const setchipvisibility = locationWork.state.setChipVisibility;
-	// const chipVisibility = locationWork.state.chipVisibility;
-	// const setChipVisibility = locationWork.state.setChipVisibility;
-
-	// const chipstate = locationWork.state;
-	// const chipvisibility = locationWork.state.chipVisibility;
-	// const chipvisibility = locationWork.state.chipvisibility;
-
-	// const chipvisibility = props.chipvisibility;
-
-	//#region ==================== FINDIN' OUT SH*T ====================
+	//#region ==================== MARK: FINDIN' OUT SH*T ====================
 
 	// console.log('');
 	// console.log('==================== COMPONENT: Work.jsx ====================');
@@ -432,12 +324,36 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 	// console.log(props);
 
 	// // console.log('');
+	// console.log('props.this = ' + props.this);
+	// console.log(props.this);
+
+	// // console.log('');
+	// console.log('props.filterKey = ' + props.filterKey);
+	// console.log(props.filterKey);
+
+	// // console.log('');
 	// console.log('isLargeScreen = ' + isLargeScreen);
 	// console.log(isLargeScreen);
 
 	// // console.log('');
 	// console.log('typeof isLargeScreen = ' + typeof isLargeScreen);
 	// console.log(typeof isLargeScreen);
+
+	// // console.log('');
+	// console.log('thisDeviceWidthArray = ' + thisDeviceWidthArray);
+	// console.log(thisDeviceWidthArray);
+
+	// // console.log('');
+	// console.log('typeof thisDeviceWidthArray = ' + typeof thisDeviceWidthArray);
+	// console.log(typeof thisDeviceWidthArray);
+
+	// // console.log('');
+	// console.log('props.thisDeviceWidthArray = ' + props.thisDeviceWidthArray);
+	// console.log(props.thisDeviceWidthArray);
+
+	// // console.log('');
+	// console.log('typeof props.thisDeviceWidthArray = ' + typeof props.thisDeviceWidthArray);
+	// console.log(typeof props.thisDeviceWidthArray);
 
 	// console.log('');
 	// console.log('isBrowser = ' + isBrowser);
@@ -523,6 +439,14 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 	// // console.log(setIsChipVisible);
 
 	// // console.log('');
+	// console.log('props.isChipVisible = ' + props.isChipVisible);
+	// // console.log(props.isChipVisible);
+
+	// // console.log('');
+	// console.log('props.setIsChipVisible = ' + props.setIsChipVisible);
+	// // console.log(props.setIsChipVisible);
+
+	// // console.log('');
 	// console.log('toggleVisibility = ' + toggleVisibility);
 	// // console.log(toggleVisibility);
 
@@ -559,42 +483,64 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 
 	//#region ==================== MARK: CONSTs / FUNCTIONs ====================
 
-	//#region -------------------- MARK: CONST: handleChipToggle *** NG *** --------------------
+	//#region -------------------- MARK: CONST/FUNCTION: handleNavToggles *** NG *** --------------------
 
-	// const handleChipToggle = () => {
+	// const handleNavToggles = () => {
+	// // function handleNavToggles(thisToggle) {
 
-	// 	//#region -------------------- FINDIN' OUT SH*T --------------------
+	// 	switch(navToggle) {
 
-	// 	// console.log('');
-	// 	// console.log('-------------------- CONST: handleChipToggle --------------------');
-	// 	// console.log('chipVisibility_PRE = ' + chipVisibility);
+	// 		case 'home':
+	// 			console.log('navToggle = ' + navToggle);
+	// 			break;
 
-	// 	//#endregion -------------------- FINDIN' OUT SH*T --------------------
+	// 		case 'settings':
+	// 			console.log('navToggle = ' + navToggle);
+	// 			break;
 
-	// 	// workNavIN.play();
-	// 	workNavIN.reverse();
+	// 		case 'profile':
+	// 			console.log('navToggle = ' + navToggle);
+	// 			break;
 
-	// 	setFilterKey('null');
-	// 	// setChipVisibility(!chipVisibility);
-	// 	// setChipVisibility(true);
-	// 	setIsChipVisible(true);
-
-
-	// 	//#region -------------------- FINDIN' OUT MORE SH*T --------------------
-
-	// 	// // console.log('');
-	// 	// console.log('chipVisibility_POST = ' + chipVisibility);
-
-	// 	//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
+	// 		default:
+	// 			console.log('break');
+	// 			break;
+	// 	}
 	// }
 
-	//#endregion -------------------- CONST: handleChipToggle *** NG *** --------------------
+	//#endregion -------------------- CONST/FUNCTION: handleNavToggles *** NG *** --------------------
+
+
+	//#region -------------------- MARK: CONST: useGoBack = (fallbackUrl) => /work --------------------
+
+	const useGoBack = (fallbackUrl) => {
+		const navigate = useNavigate();
+
+		// console.log('useGoBack');
+
+		return () => {
+			if (window.history.length > 1) {
+				// navigate(-1);
+				navigate(0);
+			} else {
+				navigate(fallbackUrl);
+			}
+		};
+	};
+
+	// Usage
+	const goBack = useGoBack('/work');
+
+	// return <button onClick={goBack}>Go Back</button>;
+
+	//#endregion -------------------- CONST: useGoBack = (fallbackUrl) => /work --------------------
 
 
 	//#region -------------------- MARK: CONST: handleFilterKeyChange - setFilterKey / activeEmplDiv_Ref / activeTypeDiv_Ref --------------------
 
 	// const handleFilterKeyChange = key => () => setFilterKey(key);
 
+	// const handleFilterKeyChange = key => (keyJSONnode) => {
 	const handleFilterKeyChange = key => (keyJSONnode) => {
 	// function handleFilterKeyChange(keyJSONnode) {
 
@@ -618,7 +564,7 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 		// console.log('keyJSONnode.target.parentNode.className = ' + keyJSONnode.target.parentNode.className);
 		// console.log('keyJSONnode.target.parentNode.parentNode.id = ' + keyJSONnode.target.parentNode.parentNode.id);
 
-		// console.log('');
+		// // console.log('');
 		// console.log('keyJSONnode.currentTarget = ' + keyJSONnode.currentTarget);
 		// console.log(keyJSONnode.currentTarget);
 		// console.log('keyJSONnode.currentTarget.id = ' + keyJSONnode.currentTarget.id);
@@ -633,26 +579,44 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 		// console.log('isLoading = ' + isLoading);
 
 		// console.log('');
-		// console.log('employerNav_Ref = ' + employerNav_Ref);
-		// console.log(employerNav_Ref);
-		// console.log('employerNav_Ref.querySelector([data-navprop=ctm]) = ' + employerNav_Ref.querySelector('[data-navprop="ctm"]'));
-		// console.log(employerNav_Ref.querySelector('[data-navprop="ctm"]'));
+		// console.log('emplNavBar_Ref = ' + emplNavBar_Ref);
+		// console.log(emplNavBar_Ref);
+		// console.log('emplNavBar_Ref.querySelector([data-navprop=ctm]) = ' + emplNavBar_Ref.querySelector('[data-navprop="ctm"]'));
+		// console.log(emplNavBar_Ref.querySelector('[data-navprop="ctm"]'));
 		// console.log('document.querySelector([data-navprop=ctm]) = ' + document.querySelector('[data-navprop="ctm"]'));
 		// console.log(document.querySelector('[data-navprop="ctm"]'));
 
-		// console.log('employerNav_Ref.current = ' + employerNav_Ref.current);
-		// console.log('employerNav_Ref.current.id = ' + employerNav_Ref.current.id);
-		// console.log('employerNav_Ref.current.offsetWidth = ' + employerNav_Ref.current.offsetWidth);
-		// console.log('employerNav_Ref.current.offsetHeight = ' + employerNav_Ref.current.offsetHeight);
-		// console.log('employerNav_Ref.current.id = ' + employerNav_Ref.current.id);
+		// console.log('emplNavBar_Ref.current = ' + emplNavBar_Ref.current);
+		// console.log('emplNavBar_Ref.current.id = ' + emplNavBar_Ref.current.id);
+		// console.log('emplNavBar_Ref.current.offsetWidth = ' + emplNavBar_Ref.current.offsetWidth);
+		// console.log('emplNavBar_Ref.current.offsetHeight = ' + emplNavBar_Ref.current.offsetHeight);
+		// console.log('emplNavBar_Ref.current.id = ' + emplNavBar_Ref.current.id);
 
 		//#endregion -------------------- FINDIN' OUT SH*T --------------------
 
-		// clearContent();
+		clearContent();
 
-		// workNavIN.play();
+		// workNavIN.current.play();
 
-		setFilterKey(key);
+		// if (!props.thisDeviceWidthArray[0]) {
+		// 	workNavIN.play();
+
+		// 	// setEmplNavToggleBtn(!emplNavToggleBtn);
+		// 	// setTypeNavToggleBtn(!typeNavToggleBtn);
+
+		// 	// setEmplNavToggleBtn(false);
+		// 	// setTypeNavToggleBtn(false);
+
+		// 	// emplNavTL.pause();
+		// 	// typeNavTL.pause();
+
+		// 	// emplNavTL.pause(0);
+		// 	// typeNavTL.pause(0);
+		// }
+
+		// setFilterKey(key);
+		props.setFilterKey(key);
+		// props.setFilterKey(keyJSONnode);
 
 		// setGalleryVisibility(true);
 
@@ -662,7 +626,8 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 		// setChipVisibility(!chipVisibility);
 		// setChipVisibility(chipVisibility => !chipVisibility);
 		// setChipVisibility(false);
-		setIsChipVisible(false);
+		// setIsChipVisible(false);
+		props.setIsChipVisible(false);
 
 		// handleChipToggle();
 
@@ -670,128 +635,77 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 		let thisLocY;
 		let thisLocW;
 		let thisLocH;
+		let activeDivDims
 
-		let activeDivDims = getDimensions(keyJSONnode.currentTarget);
-		// let activeDivDims = getDimensions(employerNav_Ref.current);
-		// let activeDivDims = getDimensions(key);
+		// let activeDivDims = getDimensions(keyJSONnode.currentTarget);
+		// // let activeDivDims = getDimensions(emplNavBar_Ref.current);
+		// // let activeDivDims = getDimensions(key);
 
+		if (keyJSONnode.currentTarget === 'undefined') {
+			activeDivDims = getDimensions(keyJSONnode.currentTarget);
 
-		//#region -------------------- FINDIN' OUT MORE SH*T --------------------
+			//#region -------------------- FINDIN' OUT MORE SH*T --------------------
 
-		// console.log('');
+			// console.log('');
 
-		// console.log('filterKey = ' + filterKey);
-		// console.log(filterKey);
+			// console.log('filterKey = ' + filterKey);
+			// console.log(filterKey);
 
-		// console.log('keyJSONnode.currentTarget.getAttribute(data-navprop) = ' + keyJSONnode.currentTarget.getAttribute('data-navprop'));
+			// console.log('props.filterKey = ' + props.filterKey);
+			// console.log(props.filterKey);
 
-		// console.log('activeDivDims: activeEmplDiv_Ref / activeEmplDiv_Ref = ' + activeDivDims);
-		// console.log(activeDivDims);
+			// console.log('keyJSONnode.currentTarget.getAttribute(data-navprop) = ' + keyJSONnode.currentTarget.getAttribute('data-navprop'));
 
-		//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
+			// console.log('activeDivDims: activeEmplDiv_Ref / activeEmplDiv_Ref = ' + activeDivDims);
+			// console.log(activeDivDims);
 
-
-		//#region -------------------- OLD: if/then/else... --------------------
-
-		// if (keyJSONnode.currentTarget.parentNode.id === 'isotopeChipsID') {
-		// 	// console.log("* - * - * CHIP!!! * - * - *");
-		// 	document.querySelector('[data-navprop=' + key + ']').click();
-		// }
-		// else if (keyJSONnode.currentTarget.parentNode.id === 'employerNavID') {
-		// // if (keyJSONnode.currentTarget.parentNode.id === 'employerNavID' || keyJSONnode.currentTarget.parentNode.id === 'chipContainerID') {
-		// // if (keyJSONnode.currentTarget.parentNode.id === 'employerNavID' && keyJSONnode.target.parentNode.className != 'chipItem') {
-		// // if (keyJSONnode.currentTarget.parentNode.id === 'employerNavID' && keyJSONnode.currentTarget.className === 'workNavItemLogo') {
-		// // if (keyJSONnode.currentTarget.className === 'workNavItemLogo') {
-
-		// 	// if (keyJSONnode.currentTarget.className === 'workNavItemLogo') {
-		// 	// 	// thisLocX = activeDivDims[0] - (employerNav_Ref.current.offsetWidth * 0.5) + (activeDivDims[2] * 0.5);
-		// 	// 	// thisLocX = activeDivDims[0] - (employerNav_Ref.current.offsetWidth * 0.5) + (activeDivDims[2] * 0.2);
-		// 	// 	thisLocX = activeDivDims[0] - (employerNav_Ref.current.offsetWidth * 0.5) + (activeDivDims[2] * 0.2) - 5;
-		// 	// } else {
-		// 	// 	thisLocX = activeDivDims[0] - (employerNav_Ref.current.offsetWidth * 0.5) + (activeDivDims[2] * 0.3);
-		// 	// }
-
-		// 	thisLocX = activeDivDims[0] - 5;
-		// 	// thisLocX = activeDivDims[0] - (employerNav_Ref.current.offsetWidth * 0.5) + (activeDivDims[2] * 0.2) + 15;
-		// 	thisLocY = activeDivDims[1];
-		// 	// thisLocW = activeDivDims[2];
-		// 	thisLocW = activeDivDims[2] + 10;
-		// 	thisLocH = activeDivDims[3];
-
-		// 	// // console.log('');
-		// 	// console.log('employerNav_Ref = ' + employerNav_Ref);
-		// 	// console.log(employerNav_Ref);
-		// 	// console.log('thisLocX = ' + thisLocX + '     thisLocY = ' + thisLocY);
-		// 	// console.log('thisLocW = ' + thisLocW + '     thisLocH = ' + thisLocH);
-
-		// 	gsap.to([activeEmplDiv_Ref.current], { x: thisLocX, y: thisLocY, width: thisLocW, height: thisLocH, duration: 0.375 });
-		// 	gsap.to([activeTypeDiv_Ref.current], { x: 0, y: 0, width: 0, height: thisLocH, duration: 0 });
-
-		// // } else {
-		// // } else if (keyJSONnode.target.parentNode.className == 'chipItem') {
-		// } else if (keyJSONnode.currentTarget.parentNode.id === 'typeNavID') {
-
-		// 	// thisLocX = activeDivDims[0] - (typeNav_Ref.current.offsetWidth * 0.5) + (activeDivDims[2] * 0.5);
-		// 	// thisLocX = activeDivDims[0] - (typeNav_Ref.current.offsetWidth * 0.5) + (activeDivDims[2] * 0.2);
-		// 	thisLocX = activeDivDims[0];
-		// 	thisLocY = activeDivDims[1];
-		// 	thisLocW = activeDivDims[2];
-		// 	thisLocH = activeDivDims[3];
-
-		// 	// console.log('');
-		// 	// console.log('typeNav_Ref');
-		// 	// console.log('thisLocX = ' + thisLocX + '     thisLocY = ' + thisLocY);
-		// 	// console.log('thisLocW = ' + thisLocW + '     thisLocH = ' + thisLocH);
-
-		// 	gsap.to([activeTypeDiv_Ref.current], { x: thisLocX, y: thisLocY, width: thisLocW, height: thisLocH, duration: 0.375 });
-		// 	gsap.to([activeEmplDiv_Ref.current], { x: 0, y: 0, width: 0, height: thisLocH, duration: 0 });
-		// }
-
-		//#endregion -------------------- OLD: if/then/else... --------------------
+			//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
 
 
-		switch (true) {
+			switch (true) {
 
-			// case keyJSONnode.currentTarget.parentNode.id === 'isotopeChipsID':
-			case keyJSONnode.currentTarget.parentNode.id === 'chipContainerID':
+				// case keyJSONnode.currentTarget.parentNode.id === 'isotopeChipsID':
+				case keyJSONnode.currentTarget.parentNode.id === 'chipContainerID':
 
-				// console.log("* - * - * CHIP!!! * - * - *");
-				document.querySelector('[data-navprop=' + key + ']').click();
+					// console.log("* - * - * CHIP!!! * - * - *");
+					document.querySelector('[data-navprop=' + key + ']').click();
+					// document.querySelector('[data-navprop=' + keyJSONnode + ']').click();
 
-				break;
+					break;
 
-			case keyJSONnode.currentTarget.parentNode.id === 'employerNavID':
+				case keyJSONnode.currentTarget.parentNode.id === 'emplNavBarID':
 
-				// thisLocX = activeDivDims[0];
-				thisLocX = activeDivDims[0] - 5;
-				// thisLocX = activeDivDims[0] - (employerNav_Ref.current.offsetWidth * 0.5) + (activeDivDims[2] * 0.2) + 15;
-				thisLocY = activeDivDims[1];
-				// thisLocW = activeDivDims[2];
-				thisLocW = activeDivDims[2] + 10;
-				thisLocH = activeDivDims[3];
+					// thisLocX = activeDivDims[0];
+					thisLocX = activeDivDims[0] - 5;
+					// thisLocX = activeDivDims[0] - (emplNavBar_Ref.current.offsetWidth * 0.5) + (activeDivDims[2] * 0.2) + 15;
+					thisLocY = activeDivDims[1];
+					// thisLocW = activeDivDims[2];
+					thisLocW = activeDivDims[2] + 10;
+					thisLocH = activeDivDims[3];
 
-				gsap.to([activeEmplDiv_Ref.current], { x: thisLocX, y: thisLocY, width: thisLocW, height: thisLocH, duration: 0.375 });
-				gsap.to([activeTypeDiv_Ref.current], { x: 0, y: 0, width: 0, height: thisLocH, duration: 0 });
+					gsap.to([activeEmplDiv_Ref.current], { x: thisLocX, y: thisLocY, width: thisLocW, height: thisLocH, duration: 0.375 });
+					gsap.to([activeTypeDiv_Ref.current], { x: 0, y: 0, width: 0, height: thisLocH, duration: 0 });
 
-				break;
+					break;
 
-			case keyJSONnode.currentTarget.parentNode.id === 'typeNavID':
+				case keyJSONnode.currentTarget.parentNode.id === 'typeNavBarID':
 
-				thisLocX = activeDivDims[0];
-				thisLocY = activeDivDims[1];
-				thisLocW = activeDivDims[2];
-				thisLocH = activeDivDims[3];
+					thisLocX = activeDivDims[0];
+					thisLocY = activeDivDims[1];
+					thisLocW = activeDivDims[2];
+					thisLocH = activeDivDims[3];
 
-				gsap.to([activeTypeDiv_Ref.current], { x: thisLocX, y: thisLocY, width: thisLocW, height: thisLocH, duration: 0.375 });
-				gsap.to([activeEmplDiv_Ref.current], { x: 0, y: 0, width: 0, height: thisLocH, duration: 0 });
+					gsap.to([activeTypeDiv_Ref.current], { x: thisLocX, y: thisLocY, width: thisLocW, height: thisLocH, duration: 0.375 });
+					gsap.to([activeEmplDiv_Ref.current], { x: 0, y: 0, width: 0, height: thisLocH, duration: 0 });
 
-				break;
+					break;
 
-			default:
+				default:
 
-				console.log('DEFAULT');
+					console.log('handleFilterKeyChange: switch = keyJSONnode.currentTarget.parentNode.id = DEFAULT');
 
-				break;
+					break;
+			}
 		}
 	};
 
@@ -808,33 +722,23 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 		// console.log('-------------------- MARK: FUNCTION: getDimensions(thisObject) --------------------');
 
 		// console.log('');
+		// console.log('thisObject = ' + thisObject);
 		// console.log('thisObject (key) = ' + thisObject);
 		// console.log('thisObject (keyJSONnode.currentTarget) = ' + thisObject);
 		// console.log(thisObject);
 
-		// console.log('employerNav_Ref = ' + employerNav_Ref);
-		// console.log(employerNav_Ref);
+		// console.log('emplNavBar_Ref = ' + emplNavBar_Ref);
+		// console.log(emplNavBar_Ref);
 
-		// console.log('employerNav_Ref.current = ' + employerNav_Ref.current);
-		// console.log(employerNav_Ref.current);
+		// console.log('emplNavBar_Ref.current = ' + emplNavBar_Ref.current);
+		// console.log(emplNavBar_Ref.current);
 
 		//#endregion -------------------- FINDIN' OUT SH*T --------------------
-
-		// let thisObject_x = document.getElementById(thisObject.id).offsetLeft;
-		// let thisObject_y = document.getElementById(thisObject.id).offsetTop;
-		// let thisObject_w = document.getElementById(thisObject.id).offsetWidth;
-		// let thisObject_h = document.getElementById(thisObject.id).offsetHeight;
 
 		let thisObject_x = thisObject.offsetLeft;
 		let thisObject_y = thisObject.offsetTop;
 		let thisObject_w = thisObject.offsetWidth;
 		let thisObject_h = thisObject.offsetHeight;
-
-		// let thisObject_x = thisObject.left;
-		// let thisObject_y = thisObject.top;
-		// let thisObject_w = thisObject.width;
-		// let thisObject_h = thisObject.height;
-
 
 		//#region -------------------- FINDIN' OUT MORE SH*T --------------------
 
@@ -845,21 +749,20 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 
 		//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
 
-
 		return [thisObject_x, thisObject_y, thisObject_w, thisObject_h];
 	}
 
 	//#endregion -------------------- FUNCTION: getDimensions(thisContainer) --------------------
 
 
-	//#region -------------------- MARK: FUNCTION: resizeContent(thisContent) --------------------
+	//#region -------------------- MARK: FUNCTION: resizeContent(thisContent) *** RETHINK THIS! *** --------------------
 
 	function resizeContent(thisContent) {
 
 		//#region -------------------- FINDIN' OUT SH*T --------------------
 
 		// console.log('');
-		// console.log('-------------------- resizeContent(thisContent) --------------------');
+		// console.log('-------------------- resizeContent(thisContent) *** RETHINK THIS! *** --------------------');
 		// console.log('thisContent = ' + thisContent);
 		// console.log(thisContent);
 
@@ -948,24 +851,26 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 				break;
 		}
 
-
 		// console.log('');
 		// console.log('newVidWidth = ' + newVidWidth + '     newVidHeight = ' + newVidHeight);
 
 		return ([newVidWidth, newVidHeight]);
 	}
 
-	//#endregion -------------------- FUNCTION: resizeContent(thisContent) --------------------
+	//#endregion -------------------- FUNCTION: resizeContent(thisContent) *** RETHINK THIS! *** --------------------
 
 
 	//#region -------------------- MARK: FUNCTION: clearContent() --------------------
 
 	function clearContent() {
+	// function clearContent(param1) {
 
 		//#region -------------------- FINDIN' OUT SH*T --------------------
 
 		// console.log('');
 		// console.log('-------------------- MARK: FUNCTION: clearContent() --------------------');
+
+		// console.log('param1 = ' + param1);
 
 		// console.log(bannerContainer_Ref.current.parentNode);
 		// console.log(bannerContainer_Ref.current);
@@ -1020,12 +925,11 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 		// console.log('thisEvent.currentTarget = ' + thisEvent.currentTarget);
 		// console.log(thisEvent.currentTarget);
 
-		// console.log('');
+		// // console.log('');
 		// console.log('thisWorkItem = ' + thisWorkItem);
 		// console.log(thisWorkItem);
 
 		//#endregion -------------------- FINDIN' OUT SH*T --------------------
-
 
 		// let thisLocX;
 		// let thisLocY;
@@ -1038,7 +942,6 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 		// console.log('currentTargetDims loadContent: ANIMATE or STANDARD = ' + currentTargetDims);
 		// console.log(currentTargetDims);
 
-
 		let targetDims = getDimensions(thisEvent.target);
 
 		// console.log('');
@@ -1049,21 +952,27 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 		switch (thisWorkItem.format) {
 
 			case 'banner': {
+
 				//#region -------------------- ASSIGN NEW CONTENT: banner --------------------
+
+				let bannerScale = thisEvent.target.offsetWidth / thisWorkItem.mwidth;
+
+				clearContent();
+
+
+				//#region -------------------- FINDIN' OUT SH*T --------------------
 
 				// console.log('');
 				// console.log('-------------------- ASSIGN NEW CONTENT: banner --------------------');
 				// console.log('I AM A BANNER: ' + thisWorkItem.format);
 
-
-				let bannerScale = thisEvent.target.offsetWidth / thisWorkItem.mwidth;
-
 				// console.log('bannerScale = ' + bannerScale);
 
-				clearContent();
+				//#endregion -------------------- FINDIN' OUT SH*T --------------------
 
 
 				if (thisWorkItem.format_src === 'animate' || thisWorkItem.format_src === 'standard') {
+				// if (thisWorkItem.format_src === 'animate' || thisWorkItem.format_src === 'standard' || thisWorkItem.format_src === 'html5') {
 
 					//#region - - - - - - - - - - - IF 'animate'... - - - - - - - - - - -
 
@@ -1090,13 +999,28 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 
 					//#region - - - - - - - - - - - ELSE IF 'html5'... - - - - - - - - - - -
 
+					newContent = React.createElement(bannerContent[thisWorkItem.link2]);
+					// newContent = remoteLoc + thisWorkItem.album_id + '/banners/' + thisWorkItem.link + '/index.html';
+
+
+					//#region -------------------- FINDIN' OUT MORE SH*T --------------------
+
 					// console.log('I am an HTML5 banner: ' + thisWorkItem.format_src);
 
-					// newContent = React.createElement(bannerContent[thisWorkItem.link2]);
+					// // console.log('thisWorkItem.link = ' + thisWorkItem.link);
+					// // console.log('thisWorkItem.link2 = ' + thisWorkItem.link2);
+					// // console.log('thisWorkItem.link3 = ' + thisWorkItem.link3);
+					// // console.log('thisWorkItem.link4 = ' + thisWorkItem.link4);
 
-					console.log('');
-					console.log('newContent = ' + newContent);
-					console.log(newContent);
+					// // console.log('bannerContent = ' + bannerContent);
+					// console.log(bannerContent);
+
+					// // console.log('');
+					// console.log('newContent = ' + newContent);
+					// console.log(newContent);
+
+					//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
+
 
 					// gsap.set([bannerContainer_Ref.current], { x: currentTargetDims[0], y: currentTargetDims[1], width: currentTargetDims[2], height: currentTargetDims[3], transformOrigin: '0 0', immediateRender: true });
 					// gsap.set([bannerContainer_Ref.current], { x: currentTargetDims[0], y: currentTargetDims[1], width: currentTargetDims[2], height: currentTargetDims[3], scale: bannerScale, transformOrigin: '0 0', immediateRender: true });
@@ -1398,19 +1322,34 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 
 	//#region ==================== MARK: useRef DEFs ====================
 
+	// let workNavWidth;
+	let workNavHeight;
+
+	const workNavIN = useRef();
+	const workNavTL = useRef();
+	const emplNavTL = useRef();
+	const typeNavTL = useRef();
+
+	const workNavContainer_Ref = useRef(null);
+
 	// const chipNav_Ref = useRef(null);
 	// const chipToggleBtn_Ref = useRef(null);
 	const workNav_Ref = useRef(null);
 
-	const employerNav_Ref = useRef(null);
+	const emplNavBar_Ref = useRef(null);
 	const activeEmplDiv_Ref = useRef(null);
 
-	const typeNav_Ref = useRef(null);
+	const typeNavBar_Ref = useRef(null);
 	const activeTypeDiv_Ref = useRef(null);
 
 	const toggleNav_Ref = useRef(null);
 	const toggleBtn_Ref = useRef(null);
 	// const navToggleBtn_Ref = useRef(null);
+
+	const workNavBtnContainer_m_Ref = useRef(null);
+	const workBackBtn_m_Ref = useRef(null);
+	const emplNavBtn_m_Ref = useRef(null);
+	const typeNavBtn_m_Ref = useRef(null);
 
 	// init one ref to store the future isotope object
 	// const isotope_Ref = useRef();
@@ -1440,26 +1379,17 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 
 	// const [isLoaded, setIsLoaded] = useState(false);
 
-	// const [browserDetect, setBrowserDetect] = useState();
-	// const [browserDetect, setBrowserDetect] = useState(null);
-	// const [browserDetect, setBrowserDetect] = useState('desktop');
-	// const [browserDetect, setBrowserDetect] = useState([]);
+	// const [navToggle, setNavToggle] = useState('workNavBar');
 
-	// const [isotopeToggle, setIsotopeToggle] = useState(true);
-	// const [galleryVisibility, setGalleryVisibility] = useState(false);
-	// const [chipVisibility, setChipVisibility] = useState(true);
-	// const [galChipToggle, setGalChipToggle] = useState(true);
-
-	// const [filterKey, setFilterKey] = useState('*');
-	// const [filterKey, setFilterKey] = useState('all');
-	// const [filterKey, setFilterKey] = useState('kiehls');
-	// const [filterKey, setFilterKey] = useState();
-	// const [filterKey, setFilterKey] = useState(null);
-
-	// const [workNavToggleText, setWorkNavToggleText] = useState('View by employer');
-	const [workNavToggleText, setWorkNavToggleText] = useState('View by type');
 	const [workNavToggleBtn, setWorkNavToggleBtn] = useState(true);
 	// const [workNavToggleBtn, setWorkNavToggleBtn] = useState(false);
+	const [workNavToggleText, setWorkNavToggleText] = useState('View by type');
+	// const [workNavToggleText, setWorkNavToggleText] = useState('View by employer');
+
+	// const [emplNavToggleBtn, setEmplNavToggleBtn] = useState(true);
+	// const [typeNavToggleBtn, setTypeNavToggleBtn] = useState(true);
+	const [emplNavToggleBtn, setEmplNavToggleBtn] = useState(false);
+	const [typeNavToggleBtn, setTypeNavToggleBtn] = useState(false);
 
 	const [bannerShow, setBannerShow] = useState();
 	// const [bannerShow, setBannerShow] = useState(null);
@@ -1479,6 +1409,471 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 
 
 	//#region ==================== MARK: useEffect(s) ====================
+
+	//#region -------------------- MARK: useEffect: browserDetect-ish (props.thisDeviceWidthArray) => define TIMELINES --------------------
+
+	// useEffect(() => {
+	useGSAP(() => {
+
+		// workNavWidth = emplNavBar_Ref.current.getBoundingClientRect().width;
+		workNavHeight = emplNavBar_Ref.current.getBoundingClientRect().height;
+
+		//#region -------------------- FINDIN' OUT SH*T --------------------
+
+		// // console.log('');
+		// console.log('-------------------- useEffect: browserDetect-ish (props.thisDeviceWidthArray) => define TIMELINES --------------------');
+
+		// // console.log('browserDetect = ' + browserDetect);
+
+		// // const ua = new UAParser().getResult();
+
+		// // console.log('ua = ' + ua);
+		// console.log(ua);
+		// console.log('ua.device.type = ' + ua.device.type);
+
+		// // console.log('');
+		// // console.log('workNav_Ref.current.id = ' + workNav_Ref.current.id);
+		// // console.log('workNav_Ref.current.getBoundingClientRect().width = ' + workNav_Ref.current.getBoundingClientRect().width);
+		// // console.log('workNav_Ref.current.getBoundingClientRect().height = ' + workNav_Ref.current.getBoundingClientRect().height);
+
+		// console.log('');
+		// console.log('screen.orientation = ' + screen.orientation);
+		// console.log('screen.orientation.type = ' + screen.orientation.type);
+		// console.log('window.matchMedia = ' + window.matchMedia);
+
+		// // console.log('');
+		// console.log('thisDeviceWidthArray = ' + thisDeviceWidthArray);
+		// console.log(thisDeviceWidthArray);
+
+		// // console.log('');
+		// console.log('props.thisDeviceWidthArray = ' + props.thisDeviceWidthArray);
+		// console.log(props.thisDeviceWidthArray);
+
+		// // console.log('');
+		// // console.log('workNav_Ref.current.children = ' + workNav_Ref.current.children);
+		// console.log(workNav_Ref.current.children);
+
+		// // console.log('');
+		// // console.log('workNavBtnContainer_m_Ref.current.children = ' + workNavBtnContainer_m_Ref.current.children);
+		// console.log(workNavBtnContainer_m_Ref.current.children);
+
+		// // console.log('');
+		// console.log('workNavHeight = ' + workNavHeight);
+		// console.log(workNavHeight);
+
+		//#endregion -------------------- FINDIN' OUT SH*T --------------------
+
+
+		if (!props.thisDeviceWidthArray[0]) {
+		// if (props.thisDeviceWidthArray[1] || props.thisDeviceWidthArray[2]) {
+
+			// console.log('props.thisDeviceWidthArray[1], props.thisDeviceWidthArray[2] = ' + props.thisDeviceWidthArray[1] + ', ' + props.thisDeviceWidthArray[2]);
+
+			// workNavIN
+			workNavIN.current = gsap.timeline()
+			// workNavIN.current = gsap.timeline({ paused: true })
+				// .to('.workNavBar .workNavBtnContainer_m', { display:"none", duration: 0 }, 'frame01')
+				.to('.workNavBtnContainer_m', { display:"none", duration: 0 }, 'frame01')
+				// .fromTo([workNav_Ref.current], { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 });
+				.fromTo('.workNavBar', { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 });
+				// .fromTo('.workNavBar', { y: -workNavHeight, autoAlpha: 0 }, { y: workNavHeight, autoAlpha: 1, duration: 0.5 });
+			;
+
+			// workNavIN.play();
+			// workNavIN.pause();
+
+			workNavIN.current.play();
+			// workNavIN.current.pause();
+
+
+			// workNavTL
+			workNavTL.current = gsap.timeline()
+			// workNavTL.current = gsap.timeline({ paused: true })
+				// .fromTo([emplNavBar_Ref.current], { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
+				// .fromTo([typeNavBar_Ref.current], { y: workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 0, duration: 0.5 }, 'frame01')
+
+				.fromTo('.emplNavBar', { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
+				.fromTo('.typeNavBar', { y: workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 0, duration: 0.5 }, 'frame01')
+			;
+
+			// workNavTL.play();
+			// workNavTL.pause();
+
+			// workNavTL.current.play();
+			workNavTL.current.pause();
+
+		} else {
+		// } else if (props.thisDeviceWidthArray[0]) {
+	
+			// workNavIN
+			workNavIN.current = gsap.timeline()
+			// workNavIN.current = gsap.timeline({ paused: true })
+				// .to('.emplNavBar', { y: (emplNavBar_Ref.current.offsetHeight * -emplNavBar_Ref.current.children.length) - 5, duration: 0 }, 'frame00')
+				// .to('.typeNavBar', { y: (typeNavBar_Ref.current.offsetHeight * -typeNavBar_Ref.current.children.length) - 5, duration: 0 }, 'frame00')
+
+				// .fromTo([workNav_Ref.current], { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 0.5, duration: 0.5 });
+				.fromTo('.workNavBar', { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 });
+			;
+
+			// workNavIN.play();
+			// workNavIN.pause();
+
+			// workNavIN.current.play();
+			// workNavIN.current.pause();
+			workNavIN.current.seek(0).pause();
+
+			// const emplNavItems = gsap.utils.toArray(emplNavBar_Ref.current.children);
+
+			// // console.log('');
+			// // console.log('emplNavItems = ' + emplNavItems);
+			// console.log(emplNavItems);
+
+			// emplNavTL
+			emplNavTL.current = gsap.timeline()
+			// emplNavTL.current = gsap.timeline({ paused: true })
+				// .to([emplNavBtn_m_Ref.current], { y: emplNavBtn_m_Ref.current.offsetHeight + emplNavBtn_m_Ref.current.children.length - 1, duration: 0 }, 'frame00')
+				// .fromTo([emplNavBtn_m_Ref.current.children], { y: -50, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.125, stagger: 0.0625 }, 'frame01')
+				// .fromTo('.workNavBar .emplNavBar .workNavItem', { y: -50, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.125, stagger: 0.0625 }, 'frame01')
+
+				// .to('.emplNavBar', { y: emplNavBar_Ref.current.offsetHeight * -emplNavBar_Ref.current.children.length, duration: 0.5 }, 'frame00')
+				.to('.emplNavBar', { y: (emplNavBar_Ref.current.offsetHeight * -emplNavBar_Ref.current.children.length) - 10, duration: 0.25 }, 'frame00')
+				// .fromTo('.emplNavBar', { y: 0 }, { y: (emplNavBar_Ref.current.offsetHeight * -emplNavBar_Ref.current.children.length) - 15, duration: 0.5 }, 'frame00')
+
+				// .fromTo('.emplNavItem', { y: -50, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.125, stagger: 0.0625 }, 'frame01')
+				// .fromTo(emplNavItems, { y: -100, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.125, stagger: 0.0625 }, 'frame01')
+				// .fromTo([emplNavBar_Ref.current.children], { y: -100, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.125, stagger: 0.0625 }, 'frame01')
+
+				// .to([emplNavBar_Ref.current.children], {
+				// .to('.emplNavItem', {
+				// .to(emplNavItems, {
+				// 	duration: 1,
+				// 	rotation: 360,
+				// 	opacity: 1,
+				// 	delay: 0.5,
+				// 	stagger: 0.1, // stagger in from the left with a 0.1 second gap in between animations
+				// 	ease: "sine.out"
+				// }, 'frame01')
+			;
+
+			// workNavIN.play();
+			// emplNavTL.pause();
+
+			// workNavIN.current.play();
+			// emplNavTL.current.pause();
+			// emplNavTL.current.seek(0).pause();
+
+
+			// const typeNavItems = gsap.utils.toArray(typeNavBar_Ref.current.children);
+
+			// // console.log('');
+			// // console.log('typeNavItems = ' + typeNavItems);
+			// console.log(typeNavItems);
+
+			// typeNavTL
+			typeNavTL.current = gsap.timeline()
+			// typeNavTL.current = gsap.timeline({ paused: true })
+				// .to([typeNavBtn_m_Ref.current], { y: typeNavBtn_m_Ref.current.offsetHeight + typeNavBtn_m_Ref.current.children.length - 1, duration: 0 }, 'frame00')
+				// .fromTo([typeNavBtn_m_Ref.current.children], { y: -50, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.125, stagger: 0.0625 }, 'frame01')
+				// .fromTo('.workNavBar .typeNavBar .workNavItem', { y: -50, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.125, stagger: 0.0625 }, 'frame01')
+
+				// .to('.typeNavBar', { y: typeNavBar_Ref.current.offsetHeight * -typeNavBar_Ref.current.children.length, duration: 0.5 }, 'frame00')
+				.to('.typeNavBar', { y: (typeNavBar_Ref.current.offsetHeight * -typeNavBar_Ref.current.children.length) - 10, duration: 0.25 }, 'frame00')
+				// .to('.typeNavBar', { y: (typeNavBar_Ref.current.offsetHeight * -typeNavBar_Ref.current.children.length) - 15, duration: 0 }, 'frame00')
+				// .fromTo('.typeNavBar', { y: 0 }, { y: (typeNavBar_Ref.current.offsetHeight * -typeNavBar_Ref.current.children.length) - 15, duration: 0.5 }, 'frame00')
+
+				// .fromTo('.typeNavItem', { y: -50, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.125, stagger: 0.0625 }, 'frame01')
+				// .fromTo(typeNavItems, { y: -100, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.125, stagger: 0.0625 }, 'frame01')
+				// .fromTo([typeNavBar_Ref.current.children], { y: -100, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.125, stagger: 0.0625 }, 'frame01')
+
+				// .to([typeNavBar_Ref.current.children], {
+				// .to('.typeNavItem', {
+				// .to(typeNavItems, {
+				// 	duration: 1,
+				// 	rotation: 360,
+				// 	opacity: 1,
+				// 	delay: 0.5,
+				// 	stagger: 0.1, // stagger in from the left with a 0.1 second gap in between animations
+				// 	ease: "sine.out"
+				// }, 'frame01')
+			;
+
+			// workNavIN.play();
+			// typeNavTL.pause();
+
+			// workNavIN.current.play();
+			// typeNavTL.current.pause();
+			typeNavTL.current.seek(0).pause();
+		}
+
+	// },{}); // <-- scope is for selector text (optional)
+	},{ scope: workNavContainer_Ref }); // <-- scope is for selector text (optional)
+	// },{ scope: workNavContainer_Ref.current }); // <-- scope is for selector text (optional)
+
+	//#endregion -------------------- useEffect: browserDetect-ish (props.thisDeviceWidthArray) => define TIMELINES --------------------
+
+
+	//#region -------------------- MARK: useEffect: workNavToggleBtn --------------------
+
+	useEffect(() => {
+
+		//#region -------------------- FINDIN' OUT SH*T --------------------
+
+		// // console.log('');
+		// console.log('-------------------- useEffect: workNavToggleBtn --------------------');
+		// console.log('workNavToggleBtn = ' + workNavToggleBtn);
+
+		// // console.log('');
+		// console.log('emplNavBar_Ref.current.lastChild = ' + emplNavBar_Ref.current.lastChild);
+		// console.log(emplNavBar_Ref.current.lastChild);
+
+		// console.log('');
+		// console.log('typeNavBar_Ref.current.lastChild = ' + typeNavBar_Ref.current.lastChild);
+		// console.log(typeNavBar_Ref.current.lastChild);
+
+		// // console.log('');
+		// console.log('props.thisDeviceWidthArray = ' + props.thisDeviceWidthArray);
+		// console.log(props.thisDeviceWidthArray);
+
+		//#endregion -------------------- FINDIN' OUT SH*T --------------------
+
+		if (!props.thisDeviceWidthArray[0]) {
+
+			if (workNavToggleBtn) {
+
+				// console.log('');
+				console.log('workNavToggleBtn = ' + workNavToggleBtn);
+				// console.log('workNavTL = ' + workNavTL);
+				// console.log(workNavTL);
+
+				// workNavTL.play();
+				workNavTL.current.play();
+				// workNavTL.current.reverse();
+				setWorkNavToggleText('View by type');
+				// typeNavBar_Ref.current.lastChild.click();
+
+			} else {
+
+				// console.log('');
+				console.log('workNavToggleBtn = ' + workNavToggleBtn);
+				// console.log('workNavTL = ' + workNavTL);
+				// console.log(workNavTL);
+
+				// workNavTL.reverse();
+				workNavTL.current.reverse();
+				// workNavTL.current.play();
+				setWorkNavToggleText('View by employer');
+				// emplNavBar_Ref.current.lastChild.click();
+		}
+	}
+
+	// }, []);
+	// }, [workNavToggleBtn]);
+	// }, [props, workNavToggleBtn]);
+	}, [props.thisDeviceWidthArray, workNavToggleBtn]);
+	// }, [workNavToggleBtn, workNavTL]);
+	// }, [workNavToggleBtn, emplNavBar_Ref]);
+	// }, [workNavToggleBtn, props]);
+	// }, [workNavToggleBtn, emplNavToggleBtn, typeNavToggleBtn]);
+
+	//#endregion -------------------- useEffect: workNavToggleBtn --------------------
+
+
+	//#region -------------------- MARK: useEffect: emplNavToggleBtn *** JURY'S STILL OUT... *** --------------------
+
+	useEffect(() => {
+		// if (emplNavToggleBtn) {
+		if (!emplNavToggleBtn) {
+
+			console.log('');
+			console.log('emplNavToggleBtn = ' + emplNavToggleBtn);
+			// console.log('typeNavToggleBtn = ' + typeNavToggleBtn);
+			// console.log('emplNavTL.current = ' + emplNavTL.current);
+			// console.log(emplNavTL.current);
+
+			// emplNavTL.current.play();
+			// // typeNavTL.current.reverse();
+
+			emplNavTL.current?.play();
+			// typeNavTL.current?.reverse();
+
+			// if (typeNavToggleBtn) {
+			// 	// setTypeNavToggleBtn(false);
+			// 	setTypeNavToggleBtn(!typeNavToggleBtn);
+			// }
+
+		} else {
+
+			console.log('');
+			console.log('emplNavToggleBtn = ' + emplNavToggleBtn);
+			// console.log('typeNavToggleBtn = ' + typeNavToggleBtn);
+			// console.log('emplNavTL.current = ' + emplNavTL.current);
+			// console.log(emplNavTL.current);
+
+			// emplNavTL.current.reverse();
+			// // typeNavTL.current.reverse();
+
+			emplNavTL.current?.reverse();
+			// typeNavTL.current?.reverse();
+
+			// if (typeNavToggleBtn) {
+			// 	// setTypeNavToggleBtn(false);
+			// 	setTypeNavToggleBtn(!typeNavToggleBtn);
+			// }
+		}
+	// });
+	// }, []);
+	// }, [emplNavToggleBtn]);
+	}, [emplNavToggleBtn, typeNavToggleBtn]);
+
+	//#endregion -------------------- useEffect: emplNavToggleBtn *** JURY'S STILL OUT... *** --------------------
+
+
+	//#region -------------------- MARK: useEffect: typeNavToggleBtn *** JURY'S STILL OUT... *** --------------------
+
+	useEffect(() => {
+		// if (typeNavToggleBtn) {
+		if (!typeNavToggleBtn) {
+
+			// console.log('');
+			// console.log('emplNavToggleBtn = ' + emplNavToggleBtn);
+			console.log('typeNavToggleBtn = ' + typeNavToggleBtn);
+			// console.log('emplNavTL.current = ' + emplNavTL.current);
+			// console.log(emplNavTL.current);
+
+			// // emplNavTL.current.reverse();
+			// typeNavTL.current.play();
+
+			// emplNavTL.current?.reverse();
+			typeNavTL.current?.play();
+
+			// if (emplNavToggleBtn) {
+			// 	// setEmplNavToggleBtn(false);
+			// 	setEmplNavToggleBtn(!emplNavToggleBtn);
+			// }
+
+		} else {
+
+			// console.log('');
+			// console.log('emplNavToggleBtn = ' + emplNavToggleBtn);
+			console.log('typeNavToggleBtn = ' + typeNavToggleBtn);
+			// console.log('emplNavTL.current = ' + emplNavTL.current);
+			// console.log(emplNavTL.current);
+
+			// // emplNavTL.current.reverse();
+			// typeNavTL.current.reverse();
+
+			// emplNavTL.current?.reverse();
+			typeNavTL.current?.reverse();
+
+			// if (emplNavToggleBtn) {
+			// 	// setEmplNavToggleBtn(false);
+			// 	setEmplNavToggleBtn(!emplNavToggleBtn);
+			// }
+		}
+	// });
+	// }, []);
+	// }, [typeNavToggleBtn]);
+	}, [typeNavToggleBtn, emplNavToggleBtn]);
+
+	//#endregion -------------------- useEffect: typeNavToggleBtn *** JURY'S STILL OUT... *** --------------------
+
+
+	//#region -------------------- MARK: useEffect: emplNavToggleBtn, typeNavToggleBtn *** NG *** --------------------
+
+	// useEffect(() => {
+
+	// 	// switch (true) {
+	// 	switch (true) {
+
+	// 		// case 'toggleNav':
+	// 		// 	return { ...state, toggleNav: !state.toggleNav };
+
+	// 		case navState.emplNavBtn_m:
+
+	// 			console.log('');
+	// 			console.log('navState.emplNavBtn_m = ' + navState.emplNavBtn_m);
+	// 			console.log('navState.typeNavBtn_m = ' + navState.typeNavBtn_m);
+	// 			// console.log('emplNavTL.current = ' + emplNavTL.current);
+	// 			// console.log(emplNavTL.current);
+
+	// 			typeNavTL.current.reverse();
+	// 			emplNavTL.current.play();
+
+	// 			// if (emplNavToggleBtn) {
+	// 				// setEmplNavToggleBtn(!emplNavToggleBtn)
+	// 			// }
+
+	// 			break;
+
+	// 		case navState.typeNavBtn_m:
+
+	// 			console.log('');
+	// 			console.log('navState.emplNavBtn_m = ' + navState.emplNavBtn_m);
+	// 			console.log('navState.typeNavBtn_m = ' + navState.typeNavBtn_m);
+	// 			// console.log('emplNavTL.current = ' + emplNavTL.current);
+	// 			// console.log(emplNavTL.current);
+
+	// 			emplNavTL.current.reverse();
+	// 			typeNavTL.current.play();
+
+	// 			// if (emplNavToggleBtn) {
+	// 				// setEmplNavToggleBtn(!emplNavToggleBtn)
+	// 			// }
+
+	// 			break;
+
+	// 		default:
+	// 			console.log('useEffect: emplNavToggleBtn, typeNavToggleBtn => case: break');
+
+	// 			break;
+	// 	}
+
+	// // });
+	// // }, []);
+	// // }, [emplNavToggleBtn, typeNavToggleBtn]);
+	// }, [navState.emplNavBtn_m, navState.typeNavBtn_m]);
+
+	//#endregion -------------------- useEffect: emplNavToggleBtn, typeNavToggleBtn *** NG *** --------------------
+
+
+	//#region -------------------- MARK: useEffect: handleNavToggles *** NG *** --------------------
+
+	// useEffect(() => {
+
+	// 	switch(navToggle) {
+
+	// 		case 'emplNav':
+	// 			console.log('navToggle = ' + navToggle);
+	// 			break;
+
+	// 		case 'typeNav':
+	// 			console.log('navToggle = ' + navToggle);
+	// 			break;
+
+	// 		case 'workNav':
+	// 			console.log('navToggle = ' + navToggle);
+
+	// 			// setWorkNavToggleBtn(!workNavToggleBtn)
+
+	// 			break;
+
+	// 		default:
+	// 			console.log('break');
+
+	// 			// // if (props.thisDeviceWidthArray[1] || props.thisDeviceWidthArray[2]) {
+	// 			// if (!props.thisDeviceWidthArray[0] && workNavToggleBtn) {
+	// 			// 	workNavIN.play();
+	// 			// }
+
+	// 			break;
+	// 	}
+	// // }, );
+	// // }, []);
+	// }, [navToggle]);
+	// // }, [props, navToggle, workNavToggleBtn]);
+
+	//#endregion -------------------- useEffect: handleNavToggles *** NG *** --------------------
+
 
 	//#region -------------------- MARK: useEffect: Close modal on ESC key press --------------------
 
@@ -1522,299 +1917,10 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 	//#endregion -------------------- useEffect: Close modal on ESC key press --------------------
 
 
-	//#region -------------------- MARK: useEffect: browserDetect => workNavIN, workNavTL --------------------
-
-	// const workNavTL = new gsap.timeline().pause();
-
-	useEffect(() => {
-
-		//#region -------------------- FINDIN' OUT SH*T --------------------
-
-		// console.log('');
-		// console.log('-------------------- useEffect: browserDetect => workNavIN, workNavTL --------------------');
-		// // console.log('browserDetect = ' + browserDetect);
-
-		// // const ua = new UAParser().getResult();
-
-		// // console.log('ua = ' + ua);
-		// console.log(ua);
-		// console.log('ua.device.type = ' + ua.device.type);
-
-		// // console.log('');
-		// // console.log('workNav_Ref.current.id = ' + workNav_Ref.current.id);
-		// // console.log('workNav_Ref.current.getBoundingClientRect().width = ' + workNav_Ref.current.getBoundingClientRect().width);
-		// // console.log('workNav_Ref.current.getBoundingClientRect().height = ' + workNav_Ref.current.getBoundingClientRect().height);
-
-		// console.log('');
-		// console.log('screen.orientation = ' + screen.orientation);
-		// console.log('screen.orientation.type = ' + screen.orientation.type);
-		// console.log('window.matchMedia = ' + window.matchMedia);
-
-		//#endregion -------------------- FINDIN' OUT SH*T --------------------
-
-
-		// workNavWidth = employerNav_Ref.current.getBoundingClientRect().width;
-		// workNavHeight = employerNav_Ref.current.getBoundingClientRect().height;
-
-		workNavWidth = workNav_Ref.current.getBoundingClientRect().width;
-		workNavHeight = workNav_Ref.current.getBoundingClientRect().height;
-
-		// console.log('workNavWidth = ' + workNavWidth);
-		// console.log('workNavHeight = ' + workNavHeight);
-
-
-		// if (ua.device.type === undefined) {
-		// if ((ua.device.type === 'mobile') && (workNav_Ref.current.getBoundingClientRect().width >= 1920)) {
-		// if ((ua.device.type === 'mobile') && (workNav_Ref.current.getBoundingClientRect().width >= 1080)) {
-		// if ((ua.device.type === 'mobile') && (workNav_Ref.current.getBoundingClientRect().width >= workNav_Ref.current.getBoundingClientRect().height)) {
-		if (workNav_Ref.current.getBoundingClientRect().width >= workNav_Ref.current.getBoundingClientRect().height) {
-
-			// setBrowserDetect('desktop');
-
-			workNavIN
-				// .fromTo([workNav_Ref.current], { y: 0, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame00')
-				// .fromTo([workNav_Ref.current], { y: -workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame00')
-				// .fromTo(['.workNavContainer'], { y: 0, autoAlpha: 1 }, { y: workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame00')
-
-				// .to([workNav_Ref.current], { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame00')
-				// .to([workNav_Ref.current], { y: workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame00')
-				// .to([workNav_Ref.current], { y: -workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame00')
-				.fromTo([workNav_Ref.current], { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 });
-
-				// .fromTo(['.employerNav'], { y: 0, autoAlpha: 0 }, { y: workNavHeight, autoAlpha: 1, duration: 0.5 });
-				// .fromTo(['.workNavBar'], { y: 0, autoAlpha: 0 }, { y: workNavHeight, autoAlpha: 1, duration: 0.5 });
-				// .fromTo(['.workNavBar'], { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 });
-				// .fromTo(['.workNavBar'], { y: -workNav_Ref.current.getBoundingClientRect().height, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 });
-			;
-
-			workNavIN.play();
-			// workNavIN.pause();
-
-			workNavTL
-				// .fromTo([employerNav_Ref.current], { y: -workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-				// // .fromTo([typeNav_Ref.current], { y: 0, autoAlpha: 1 }, { y: -workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame01')
-				// .fromTo([typeNav_Ref.current], { y: workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-				// // .to([typeNav_Ref.current], { y: workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame01')
-				// // .fromTo([activeEmplDiv_Ref.current], { height: 0 }, { height: workNavHeight, duration: 0.5 }, 'frame01')
-
-				// // .fromTo([employerNav_Ref.current], { y: 0, autoAlpha: 1 }, { y: -workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame01')
-				// // .fromTo([typeNav_Ref.current], { y: -workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-				// // // .fromTo([activeEmplDiv_Ref.current], { height: 0 }, { height: workNavHeight, duration: 0.5 }, 'frame01')
-
-				.fromTo([employerNav_Ref.current], { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-				.fromTo([typeNav_Ref.current], { y: workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 0, duration: 0.5 }, 'frame01')
-
-				// // .fromTo([employerNav_Ref.current], { y: 0, autoAlpha: 1 }, { y: workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame01')
-				// .fromTo([employerNav_Ref.current], { y: -workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-			;
-
-			// workNavIN.play();
-			workNavTL.pause();
-
-		} else {
-
-			// setBrowserDetect(ua.device.type);
-
-			workNavIN
-				// .fromTo([workNav_Ref.current], { y: 0, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame00')
-				.fromTo([workNav_Ref.current], { y: -workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame00')
-			;
-
-			// workNavIN.play();
-			workNavIN.pause();
-
-			workNavTL
-				.fromTo([employerNav_Ref.current], { x: -workNavWidth, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-				.fromTo([typeNav_Ref.current], { x: 0, autoAlpha: 1 }, { x: -workNavWidth, autoAlpha: 0, duration: 0.5 }, 'frame01')
-				// .fromTo([activeEmplDiv_Ref.current], { width: 0 }, { width: workNavHeight, duration: 0.5 }, 'frame01')
-			;
-
-			workNavTL.pause();
-		}
-
-		// workNavIN.play();
-		// workNavTL.pause();
-
-
-		// if (workNavToggleBtn) {
-
-		// 	// setWorkNavToggleBtn(false);
-
-		// 	// workNavIN.restart(0);
-		// 	// workNavIN.seek(0);
-
-		// 	workNavTL.restart();
-		// 	// workNavTL.seek('start');
-		// 	// workNavTL.seek('end');
-		// 	// workNavTL.play();
-		// }
-
-
-		//#region -------------------- FINDIN' OUT MORE SH*T --------------------
-
-		// console.log('post-if...');
-		// console.log('ua.device.type = ' + ua.device.type);
-		// console.log('browserDetect = ' + browserDetect);
-
-		//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
-
-	// }, )
-	}, [])
-	// }, [browserDetect])
-	// }, [workNavToggleBtn])
-	// }, [browserDetect, workNavToggleBtn])
-	// }, [browserDetect, workNavToggleBtn, workNavTL])
-
-	//#endregion -------------------- useEffect: browserDetect => workNavIN, workNavTL --------------------
-
-
-	//#region -------------------- MARK: useEffect: workNavTL *** NG *** --------------------
-
-	// useEffect(() => {
-
-	// 	//#region -------------------- FINDIN' OUT SH*T --------------------
-
-	// 	// console.log('');
-	// 	// console.log('-------------------- useEffect: workNavTL --------------------');
-	// 	// console.log('workNavTL = ' + workNavTL);
-	// 	// // console.log('isBrowser = ' + isBrowser);
-	// 	// console.log('browserDetect = ' + browserDetect);
-	// 	// console.log('browserDetect = ' + browserDetect);
-	// 	// console.log('workNavToggleText = ' + workNavToggleText);
-
-	// 	//#endregion -------------------- FINDIN' OUT SH*T --------------------
-
-
-	// 	// let workNavWidth = employerNav_Ref.current.getBoundingClientRect().width;
-	// 	// let workNavHeight = employerNav_Ref.current.getBoundingClientRect().height;
-
-	// 	workNavWidth = employerNav_Ref.current.getBoundingClientRect().width;
-	// 	workNavHeight = employerNav_Ref.current.getBoundingClientRect().height;
-
-	// 	// console.log('');
-	// 	// console.log('workNavWidth = ' + workNavWidth);
-	// 	// console.log('workNavHeight = ' + workNavHeight);
-
-
-	// 	//#region -------------------- workNavIN --------------------
-
-	// 	// gsap.to(['.workNavBar'], { y: workNavHeight, opacity: 1, duration: 0.375 });
-	// 	// gsap.to(['.workNavBar'], { y: workNavHeight, opacity: 1, duration: 0.375 });
-
-	// 	// gsap.fromTo(['.workNavBar'], { y: -workNavHeight, autoAlpha: 0 }, { y: workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame01');
-	// 	// gsap.fromTo(['.workNavBar'], { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 });
-	// 	// gsap.fromTo([toggleNav_Ref.current], { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 });
-
-	// 	// workNavIN
-	// 	// 	.fromTo(['.workNavBar'], { y: -workNavHeight, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 });
-	// 	// ;
-
-	// 	// workNavIN.play();
-
-	// 	//#endregion -------------------- workNavIN --------------------
-
-
-	// 	//#region -------------------- workNavTL: desktop vs mobile --------------------
-
-	// 	// if (isBrowser === true) {
-	// 	// if (browserDetect === 'desktop') {
-	// 	// if (ua.device.type === undefined) {
-	// 	if (ua.device.type === undefined) {
-
-	// 		workNavTL
-	// 			.fromTo([employerNav_Ref.current], { y: -workNavHeight, autoAlpha: 1 }, { y: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-	// 			.fromTo([typeNav_Ref.current], { y: 0, autoAlpha: 1 }, { y: -workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame01')
-	// 			// .fromTo([activeEmplDiv_Ref.current], { height: 0 }, { height: workNavHeight, duration: 0.5 }, 'frame01')
-
-	// 			// .fromTo([employerNav_Ref.current], { y: 0, autoAlpha: 1 }, { y: -workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame01')
-	// 			// .fromTo([typeNav_Ref.current], { y: -workNavHeight, autoAlpha: 1 }, { y: workNavHeight, autoAlpha: 1, duration: 0.5 }, 'frame01')
-	// 			// // .fromTo([activeEmplDiv_Ref.current], { height: 0 }, { height: workNavHeight, duration: 0.5 }, 'frame01')
-	// 		;
-
-	// 		// workNavTL.pause();
-
-	// 	} else {
-
-	// 		workNavTL
-	// 			.fromTo([employerNav_Ref.current], { x: -workNavWidth, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.5 }, 'frame01')
-	// 			.fromTo([typeNav_Ref.current], { x: 0, autoAlpha: 1 }, { x: -workNavWidth, autoAlpha: 0, duration: 0.5 }, 'frame01')
-	// 			// .fromTo([activeEmplDiv_Ref.current], { width: 0 }, { width: workNavHeight, duration: 0.5 }, 'frame01')
-	// 		;
-	// 	}
-
-	// 	//#endregion -------------------- workNavTL: desktop vs mobile --------------------
-
-
-	// 	// // console.log('');
-	// 	// // // console.log('typeNav_Ref.current.offsetTop = ' + typeNav_Ref.current.offsetTop);
-	// 	// console.log('workNavToggleBtn = ' + workNavToggleBtn);
-	// 	// // console.log('workNavToggleText = ' + workNavToggleText);
-
-
-	// 	// if (workNavToggleBtn) {
-	// 	// // if (!workNavToggleBtn) {
-	// 	// 	workNavTL.restart();
-	// 	// 	// workNavTL.reverse();
-	// 	// 	// workNavTL.time(0).kill();
-	// 	// 	// workNavTL.time(0);
-	// 	// 	// workNavTL.seek('end');
-	// 	// }
-
-	// 	// // workNavTL.seek('end', false);
-
-	// }, [])
-	// // }, [workNavHeight])
-	// // }, [workNavToggleBtn])
-	// // }, [browserDetect, workNavToggleBtn])
-	// // }, [browserDetect, workNavToggleBtn, workNavToggleText])
-
-	//#endregion -------------------- useEffect: workNavTL *** NG *** --------------------
-
-
-	//#region -------------------- MARK: useEffect: workNavToggleBtn --------------------
-
-	useEffect(() => {
-
-		//#region -------------------- FINDIN' OUT SH*T --------------------
-
-		// console.log('');
-		// console.log('-------------------- useEffect: workNavToggleBtn --------------------');
-		// console.log('workNavToggleBtn = ' + workNavToggleBtn);
-
-		// // console.log('');
-		// console.log('employerNav_Ref.current.lastChild = ' + employerNav_Ref.current.lastChild);
-		// console.log(employerNav_Ref.current.lastChild);
-
-		// console.log('');
-		// console.log('typeNav_Ref.current.lastChild = ' + typeNav_Ref.current.lastChild);
-		// console.log(typeNav_Ref.current.lastChild);
-
-		//#endregion -------------------- FINDIN' OUT SH*T --------------------
-
-
-		// clearContent();
-
-		if (workNavToggleBtn) {
-			workNavTL.play();
-			setWorkNavToggleText('View by type');
-			// typeNav_Ref.current.lastChild.click();
-		} else {
-			workNavTL.reverse();
-			setWorkNavToggleText('View by employer');
-			// employerNav_Ref.current.lastChild.click();
-		}
-
-	// }, [])
-	}, [workNavToggleBtn])
-	// }, [workNavToggleBtn, workNavTL])
-	// }, [workNavToggleBtn, employerNav_Ref])
-
-	//#endregion -------------------- useEffect: workNavToggleBtn --------------------
-
-
 	//#region -------------------- MARK: useEffect: initialize isotopeGallery object with configs --------------------
 
 	useEffect(() => {
+	// useEffect((props) => {
 
 		//#region -------------------- FINDIN' OUT SH*T --------------------
 
@@ -1826,8 +1932,15 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 		// console.log('isotopeGallery_Ref = ' + isotopeGallery_Ref);
 		// console.log('isotopeGallery_Ref.current = ' + isotopeGallery_Ref.current);
 
+		// console.log('props = ' + props);
+		// console.log(props);
+
+		// console.log('props.filterKey = ' + props.filterKey);
+		// console.log(props.filterKey);
+
 		//#endregion -------------------- FINDIN' OUT SH*T --------------------
 
+		// isotopeGallery_Ref.current?.arrange({ filter: props.filterKey });
 
 		// let galleryImagesLoaded = require('imagesloaded');
 		// let galleryImagesLoaded = { imagesloaded };
@@ -1838,6 +1951,7 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 		// isotopeGallery_Ref.current = new Isotope('.galleryContainer', {
 		isotopeGallery_Ref.current = new Isotope('.galleryContainer', {
 			// initLayout: false,
+			// initLayout: true,
 
 			// itemSelector: '.filter-item',
 			itemSelector: '.workItem',
@@ -1855,6 +1969,7 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 			packery: {
 				gutter: 20,
 				// gutter: 40,
+				// gutter: (props.thisDeviceWidthArray[0]) ? 10 : (props.thisDeviceWidthArray[1]) ? 10 : 20,
 				// columnWidth: '.workItem',
 				// rowHeight: 60,
 				// horizontal: true
@@ -1866,79 +1981,49 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 
 		// setIsLoaded(!isLoaded);
 
-		// // cleanup
+		// cleanup
 		// return () => isotopeGallery_Ref.current.destroy()
 
 	// });
-	}, [])
-	// }, [isLoading])
-	// }, [isLoaded])
-	// }, [isLoading, isLoaded])
+	}, []);
+	// }, [isLoading]);
+	// }, [isLoaded]);
+	// }, [isLoading, isLoaded]);
+	// }, [props]);
+
+
+	//#region -------------------- MARK: device check for isotopeGallery options --------------------
+
+	// const changeLayoutOptions = () => {
+	if (isotopeGallery_Ref.current) {
+
+		//#region -------------------- FINDIN' OUT SH*T --------------------
+
+		// console.log('');
+		// console.log('-------------------- device check for isotopeGallery options --------------------');
+
+		// // console.log('props = ' + props);
+		// // console.log(props);
+
+		// console.log('props.thisDeviceWidthArray = ' + props.thisDeviceWidthArray);
+		// console.log(props.thisDeviceWidthArray);
+
+		//#endregion -------------------- FINDIN' OUT SH*T --------------------
+
+		// Example of changing gutter size dynamically
+		isotopeGallery_Ref.current.option({
+			packery: {
+				gutter: (props.thisDeviceWidthArray[0]) ? 12.5 : (props.thisDeviceWidthArray[1]) ? 10 : 20,
+			},
+		});
+	
+		// Refresh the layout
+		isotopeGallery_Ref.current.layout();
+	};
+
+	//#endregion -------------------- device check for isotopeGallery options --------------------
 
 	//#endregion -------------------- useEffect: initialize isotopeGallery object with configs --------------------
-
-
-	//#region -------------------- MARK: useEffect: initialize isotopeChips object with configs *** NG *** --------------------
-
-	// useEffect(() => {
-
-	// 	//#region -------------------- FINDIN' OUT SH*T --------------------
-
-	// 	// console.log('');
-	// 	// console.log('-------------------- useEffect: initialize isotopeChips object with configs --------------------');
-
-	// 	// console.log('isLoading = ' + isLoading);
-	// 	// console.log('isLoaded = ' + isLoaded);
-	// 	// console.log('isotopeChips_Ref = ' + isotopeChips_Ref);
-	// 	// console.log('isotopeChips_Ref.current = ' + isotopeChips_Ref.current);
-
-	// 	//#endregion -------------------- FINDIN' OUT SH*T --------------------
-
-
-	// 	// let chipsImagesLoaded = require('imagesloaded');
-	// 	// let chipsImagesLoaded = { imagesloaded };
-
-	// 	// chipsImagesLoaded(workNav_Ref.current, function () {
-	// 	// imagesloaded(workNav_Ref.current, function () {
-
-	// 	isotopeChips_Ref.current = new Isotope('.chipContainer', {
-
-	// 		// itemSelector: '.filter-item',
-	// 		// itemSelector: '.workItem',
-	// 		itemSelector: '.chipItem',
-	// 		percentPosition: true,
-
-	// 		// layoutMode: 'masonry',
-	// 		// masonry: {
-	// 		// 	columnWidth: 100,
-	// 		// 	gutter: 20,
-	// 		// 	isFitWidth: true,
-	// 		// }
-
-	// 		layoutMode: 'packery',
-	// 		packery: {
-	// 			gutter: 20,
-	// 			// columnWidth: '.chipItem',
-	// 			// rowHeight: 60,
-	// 			// horizontal: true
-	// 		}
-	// 	})
-
-	// 	// console.log('isotopeChips_Ref.current = ' + isotopeChips_Ref.current);
-	// 	// console.log(isotopeChips_Ref.current);
-
-	// 	// setIsLoaded(!isLoaded);
-
-	// 	// // cleanup
-	// 	// return () => isotopeChips_Ref.current.destroy()
-
-	// // });
-	// }, [])
-	// // }, [isLoading])
-	// // }, [isLoaded])
-	// // }, [isLoading, isLoaded])
-
-	//#endregion -------------------- useEffect: initialize isotopeChips object with configs *** NG *** --------------------
 
 
 	//#region -------------------- MARK: useEffect: handle filterKey change in galleryContainer --------------------
@@ -1983,7 +2068,8 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 			imagesLoaded(galleryContainer_Ref.current, function () {
 			// imagesloaded(galleryContainer_Ref.current, function () {
 
-				filterKey === '*'
+				// filterKey === '*'
+				props.filterKey === '*'
 				// filterKey === 'all'
 				// filterKey === 'null'
 					// ? isotopeGallery_Ref.current.arrange({ filter: `*` })
@@ -1993,7 +2079,8 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 					// ? isotopeGallery_Ref.current.arrange({ filter: `*` })
 					// ? isotopeGallery_Ref.current.arrange({ filter: `all` })
 					? isotopeGallery_Ref.current.arrange({ filter: `null` })
-					: isotopeGallery_Ref.current.arrange({ filter: `.${filterKey}` });
+					// : isotopeGallery_Ref.current.arrange({ filter: `.${filterKey}` });
+					: isotopeGallery_Ref.current.arrange({ filter: `.${props.filterKey}` });
 
 				window.scrollTo(0, 0);
 
@@ -2003,80 +2090,127 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 			});
 		}
 
-	// }, [filterKey])
-	}, [filterKey, galleryContainer_Ref])
-	// }, [filterKey, chipContainer_Ref, galleryContainer_Ref])
-	// }, [filterKey, isLoading])
+	// }, [filterKey]);
+	// }, [filterKey, galleryContainer_Ref]);
+	}, [props.filterKey, galleryContainer_Ref]);
+	// }, [filterKey, chipContainer_Ref, galleryContainer_Ref]);
+	// }, [filterKey, isLoading]);
 
 	//#endregion -------------------- useEffect: handle filterKey change in galleryContainer --------------------
 
+	//#endregion ==================== useEffect(s) ====================
 
-	//#region -------------------- MARK: useEffect: chipContainer --------------------
-	// -------------------- imagesloaded: REF01: https://isotope.metafizzy.co/layout.html#imagesloaded --------------------
-	// -------------------- imagesloaded: REF02: https://imagesloaded.desandro.com/#webpack --------------------
-	// -------------------- imagesloaded: REF03: https://github.com/desandro/imagesloaded --------------------
 
-	// useEffect(() => {
+	//#region ==================== MARK: useReducer: navReducer => emplNavBtn_m, typeNavBtn_m *** ABANDONED for now... *** ====================
+
+	// const navInitialState = { 
+	// 	// // toggleNav: true, 
+	// 	// emplNavBtn_m: true, 
+	// 	// typeNavBtn_m: true 
+
+	// 	// toggleNav: false, 
+	// 	emplNavBtn_m: false, 
+	// 	typeNavBtn_m: false 
+	// };
+
+	// const [navState, navDispatch] = useReducer(navReducer, navInitialState);
+
+	// function navReducer(state, action) {
+	// // function navReducer(navState, action) {
 
 	// 	//#region -------------------- FINDIN' OUT SH*T --------------------
 
-	// 	// console.log('');
-	// 	// console.log('-------------------- useEffect: handle filterKey change in galleryContainer --------------------');
-	// 	// // console.log('filterKey = ' + filterKey);
-	// 	// // console.log('isLoading = ' + isLoading);
-
-	// 	// console.log('isotopeGallery_Ref = ' + isotopeGallery_Ref);
-	// 	// console.log(isotopeGallery_Ref);
-	// 	// console.log('isotopeGallery_Ref.current = ' + isotopeGallery_Ref.current);
-	// 	// console.log(isotopeGallery_Ref.current);
+	// 	console.log('');
+	// 	console.log('==================== navReducer(state, action) ====================');
 
 	// 	// console.log('');
-
-	// 	// console.log('isotopeChips_Ref = ' + isotopeChips_Ref);
-	// 	// console.log(isotopeChips_Ref);
-	// 	// console.log('isotopeChips_Ref.current = ' + isotopeChips_Ref.current);
-	// 	// console.log(isotopeChips_Ref.current);
+	// 	// console.log('state = ' + state);
+	// 	// console.log(state);	
 
 	// 	// console.log('');
-
-	// 	// console.log('workNav_Ref = ' + workNav_Ref);
-	// 	// console.log(workNav_Ref);
-	// 	// console.log('workNav_Ref.current = ' + workNav_Ref.current);
-	// 	// console.log(workNav_Ref.current);
+	// 	// console.log('action = ' + action);
+	// 	// console.log(action);
 
 	// 	//#endregion -------------------- FINDIN' OUT SH*T --------------------
 
 
-	// 	// let imagesLoaded = require('imagesloaded');
+	// 	switch (action.type) {
 
-	// 	// if (isotopeChips_Ref.current) {
-	// 	// 	imagesLoaded(isotopeChips_Ref.current, function () {
-	// 	if (chipContainer_Ref.current) {
-	// 		imagesLoaded(chipContainer_Ref.current, function () {
+	// 		// case 'toggleNav':
+	// 		// 	return { ...state, toggleNav: !state.toggleNav };
 
-	// 			// filterKey === '*';
-	// 			filterKey === 'all';
-	// 				// ? isotopeChips_Ref.current.arrange({ filter: `*` })
-	// 				// ? isotopeChips_Ref.current.arrange({ filter: `all` })
-	// 				// ? isotopeChips_Ref.current.arrange({ filter: `null` })
+	// 		case 'emplNavBtn_m':
+	// 		// case state.emplNavBtn_m:
+	// 		// case navState.emplNavBtn_m:
+	// 		// case (state && navState.emplNavBtn_m):
 
-	// 				// : isotopeChips_Ref.current.arrange({ filter: `.${filterKey}` });
-	// 				// : isotopeChips_Ref.current.arrange({ filter: `all` });
+	// 			// console.log('');
+	// 			console.log('...state = ' + {...state});
+	// 			console.log({...state});
 
-	// 			window.scrollTo(0, 0);
+	// 			// console.log('');
+	// 			// console.log('state.empleNavBtn_m = ' + state.empleNavBtn_m);
+	// 			// console.log('state.typeNavBtn_m = ' + state.typeNavBtn_m);
 
-	// 			// setActiveEmplDiv(filterKey);
-	// 			// setIsLoaded(true);
+	// 			// console.log('');
+	// 			// console.log('workNavTL.current = ' + workNavTL.current);
 
-	// 		});
+	// 			if (state.typeNavBtn_m) {
+	// 				emplNavTL.current.play();
+	// 				// typeNavTL.current.reverse();
+	// 				typeNavTL.current.seek(0).pause();
+	// 			} else {
+	// 				emplNavTL.current.reverse();
+	// 			}
+
+	// 			return { 
+	// 				...state, 
+	// 				emplNavBtn_m: !state.emplNavBtn_m, 
+	// 				typeNavBtn_m: false, 
+	// 			};
+
+	// 			// break;
+
+	// 		case 'typeNavBtn_m':
+	// 		// case state.typeNavBtn_m:
+	// 		// case navState.typeNavBtn_m:
+	// 		// case (state && navState.typeNavBtn_m):
+
+	// 			// console.log('');
+	// 			console.log('...state = ' + {...state});
+	// 			console.log({...state});
+
+	// 			// console.log('');
+	// 			// console.log('state.empleNavBtn_m = ' + state.empleNavBtn_m);
+	// 			// console.log('state.typeNavBtn_m = ' + state.typeNavBtn_m);
+
+	// 			if (state.emplNavBtn_m) {
+	// 				// emplNavTL.current.reverse();
+	// 				emplNavTL.current.seek(0).pause();
+	// 				typeNavTL.current.play();
+	// 			} else {
+	// 				typeNavTL.current.reverse();
+	// 			}
+
+	// 			return { 
+	// 				...state, 
+	// 				emplNavBtn_m: false, 
+	// 				typeNavBtn_m: !state.typeNavBtn_m, 
+	// 			};
+
+	// 			// break;
+
+	// 		default:
+
+	// 			return state;
+	
+	// 			// console.log('useEffect: emplNavToggleBtn, typeNavToggleBtn => case: break');
+
+	// 			// break;
 	// 	}
+	// }
 
-	// }, [filterKey])
-	// // }, [filterKey, isLoading])
-
-	//#endregion -------------------- useEffect: chipContainer --------------------
-
-	//#endregion ==================== useEffect(s) ====================
+	//#endregion ==================== useReducer: navReducer => emplNavBtn_m, typeNavBtn_m *** ABANDONED for now... *** ====================
 
 
 	//#region ==================== MARK: useCallback: clearContent() ====================
@@ -2125,49 +2259,17 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 		//#endregion -------------------- FINDIN' OUT SH*T --------------------
 
 
-		//#region -------------------- MARK: DATES --------------------
-
-		// let thisStartMonth = props.dateStart.slice(0, -6);
-		// let thisStartYear = props.dateStart.slice(6);
-
-		// let thisEndMonth = props.dateEnd.slice(0, -6);
-		// let thisEndYear = props.dateEnd.slice(6);
-
-		// let thisDateStart = thisStartMonth + '/' + thisStartYear;
-		// let thisDateEnd = thisEndMonth + '/' + thisEndYear;
-
-		// let thisDateStart = Intl.DateTimeFormat('en-US', {
-		// 	// day: '2-digit',
-		// 	month: '2-digit',
-		// 	// year: 'numeric',
-		// 	year: '2-digit',
-		// 	// hour: '2-digit',
-		// 	// minute: '2-digit',
-		// 	// hour12: false
-		// }).format(new Date(employers.date_start));
-
-		// let thisDateEnd = Intl.DateTimeFormat('en-US', {
-		// 	// day: '2-digit',
-		// 	month: '2-digit',
-		// 	// year: 'numeric',
-		// 	year: '2-digit',
-		// 	// hour: '2-digit',
-		// 	// minute: '2-digit',
-		// 	// hour12: false
-		// }).format(new Date(employers.date_end));
-
-		//#endregion -------------------- DATES --------------------
-
-
 		return filterEmployer.map((employer) =>
 
 			<div
 				// className={employer.logopath !== '#' ? 'workNavItemLogo' : 'workNavItem'}
-				// className={`chipItem ${employer.format} ${employer.album_id} masonryWidth${employer.masonryWidth}`}
-				// className={`chipItem ${employer.album_id} masonryWidth${2}`}
-				// className={`chipItem ${employer.album_id} masonryWidth${3}`}
+				// className={`chipItem ${employer.format} ${employer.album_id} masonryHspan${employer.masonryHspan}`}
+				// className={`chipItem ${employer.album_id} masonryHspan${2}`}
+				// className={`chipItem ${employer.album_id} masonryHspan${3}`}
 				// className={`chipItem ${employer.album_id}`}
-				className={`chipItem masonryWidth${3}`}
+				// className={`chipItem masonryHspan${3}`}
+				// className={`chipItem masonryHspan${2}`}
+				className={`chipItem`}
 				id={employer.album_id + '_ChipID'}
 				// key={employer.album_index}
 				key={employer.album_id}
@@ -2177,34 +2279,61 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 				// data-navprop={employer.album_id}
 				data-navprop={employer.album_id + '_ChipDATA'}
 
-				onClick={handleFilterKeyChange(employer.album_id)}
-				// onClick={() => {
-				// 	handleFilterKeyChange(employer.album_id)
-				// 	handleChipToggle()
-				// }}
-				// ===> *** INSTEAD... *** <=== make this click its counterpart in workNavBar
+				// onClick={handleFilterKeyChange(employer.album_id)}
 
-				// onClick={handleFilterKeyChange(props)}
-				// onClick={handleFilterKeyChange}
 				// onClick={() => handleFilterKeyChange(employer.album_id)}
-				// onClick={() => {console.log('chip click!'); handleFilterKeyChange(employer.album_id);}}
-				// onClick={() => onClick}
-				// onClick={(props) => onClick}
-				// onClick={() => {handleFilterKeyChange(employer.album_id); setFilterKey(employer.album_id);}}
+				// onClick={() => handleFilterKeyChange('ea')}
+				// onClick={() => handleFilterKeyChange(`ea`)}
 
-				// ref={chipNav_Ref}
+				// onClick={() => handleFilterKeyChange(employer.album_id)(employer.album_id)}
+				onClick={() => {
 
-				// handleChipToggle={handleChipToggle}
+
+					//#region -------------------- MARK: FINDIN' OUT MORE SH*T --------------------
+
+					// console.log('');
+					// console.log('-------------------- MARK: RenderChips --------------------');
+					// console.log('employers = ' + employers);
+					// console.log(employers);
+
+					// console.log('workNav_Ref.current = ' + workNav_Ref.current);
+					// console.log(workNav_Ref.current);
+
+					// console.log('workNavTL = ' + workNavTL);
+					// console.log(workNavTL);
+
+					// console.log('workNavToggleBtn = ' + workNavToggleBtn);
+					// console.log(workNavToggleBtn);
+
+					// console.log('workNavToggleBtn = ' + workNavToggleBtn);
+					// console.log(workNavToggleBtn);
+
+					// // setWorkNavToggleBtn(true);
+					// // setWorkNavToggleBtn(!workNavToggleBtn);
+					// workNavTL.current.play();
+
+					//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
+
+					handleFilterKeyChange(employer.album_id)(employer.album_id);
+
+					// emplNavTL.current.seek(0).pause();
+					// typeNavTL.current.seek(0).pause();
+					// emplNavTL.current.reverse();
+					// typeNavTL.current.reverse();
+					workNavIN.current.play();
+				}}
+
+				// onClick={() => {
+				// 	handleFilterKeyChange(employer.album_id);
+				// 	// setWorkNavToggleBtn(true);
+				// 	// console.log('Button clicked!');
+				// }}
+
+				// onClick={() => clearContent(employer.album_id)}
 			>
 
-				{/* <img
-					{employer.logopath !== '#' ? <img className='workNavLogo' src={remoteLoc + employer.logopath} alt={employer.employer} /> : employer.employer}
-					{employer.chippath !== '#' ? <img className='workNavLogo' src={remoteLoc + employer.chippath} alt={employer.employer} /> : employer.employer}
-					{employer.chippath !== '#' ? <img className='chipItem' src={remoteLoc + employer.chippath} alt={employer.employer} /> : null}
-				/> */}
-
 				<img
-					// className={`chipItem ${employer.album_id} masonryWidth${2}`}
+					// className={`chipItem ${employer.album_id} masonryHspan${2}`}
 					className='chipNavImg'
 					// id={employer.album_id + '_ID'}
 					// key={employer.album_index}
@@ -2219,17 +2348,19 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 					{/* <p>{employer.caption} {thisDateStart} - {thisDateEnd}</p> */}
 					{/* {thisDateStart !== thisDateEnd ? <div className='employerDates'>{thisDateStart} - {thisDateEnd}</div> : <div className='employerDates'>{thisDateEnd}</div>} */}
 
-					<p>{employer.caption} {
-						Intl.DateTimeFormat('en-US', {
-							month: '2-digit',
-							year: '2-digit',
-						}).format(new Date(employer.date_start))
-					} - {
-						Intl.DateTimeFormat('en-US', {
-							month: '2-digit',
-							year: '2-digit',
-						}).format(new Date(employer.date_end))
-					}</p>
+					{/* <p>
+						{employer.caption} {
+							Intl.DateTimeFormat('en-US', {
+								month: '2-digit',
+								year: '2-digit',
+							}).format(new Date(employer.date_start))
+						} - {
+							Intl.DateTimeFormat('en-US', {
+								month: '2-digit',
+								year: '2-digit',
+							}).format(new Date(employer.date_end))
+						}
+					</p> */}
 
 				</div>
 
@@ -2262,7 +2393,9 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 			<div
 				// className={employer.logopath !== '#' ? 'workNavItemLogo' : 'workNavItem'}
 				// className={employer.logopath !== `#` ? `workNavItemLogo ${employer.album_id}` : `workNavItem ${employer.album_id}`}
-				className={employer.logopath !== `#` ? `workNavItemLogo` : `workNavItem`}
+				// className={employer.logopath !== `#` ? `workNavItemLogo` : `workNavItem`}
+				// className={employer.logopath !== `#` ? `workNavItem workNavItemLogo` : `workNavItem`}
+				className='workNavItem emplNavItem'
 				id={employer.album_id + '_NavID'}
 				// key={employer.album_index}
 				// key={employer.album_index + '_chip'}
@@ -2270,12 +2403,18 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 				// navprop={employer.album_id}
 				data-navprop={employer.album_id}
 
-				onClick={handleFilterKeyChange(employer.album_id)}
+				// onClick={handleFilterKeyChange(employer.album_id)}
 				// onClick={handleFilterKeyChange(this, employer.album_id)}
+				onClick={() => {
+					handleFilterKeyChange(employer.album_id)(employer.album_id);
+					// setEmplNavToggleBtn(false);
+					setEmplNavToggleBtn(!emplNavToggleBtn);
+				}}
 
-				// ref={employerNav_Ref}
+				// ref={emplNavBar_Ref}
 			>
 				{employer.logopath !== '#' ? <img className='workNavLogo' src={remoteLoc + employer.logopath} alt={employer.employer} /> : employer.employer}
+				<span className='emplNavEmployer' id='emplNavEmployerID'>{employer.employer}</span>
 			</div>
 
 			// <div className={employer.logopath !== '#' ? 'workNavItemLogo' : 'workNavItem'} id={employer.album_id + 'NavID'} key={employer.album_index} onClick={handleFilterKeyChange(employer.album_id)} data-filter=".kiehls">
@@ -2300,61 +2439,25 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 		// console.log('-------------------- MARK: RenderTypes --------------------');
 
 		return filterType.map((e) =>
-			<div className='workNavItem' id={e.label + '_NavID'} key={e.key} onClick={handleFilterKeyChange(e.value)}>{e.label}</div>
 			// <div className='workNavItem' id={e.label + 'NavID'} key={e.key}>{e.label}</div>
+			<div 
+				className='workNavItem typeNavItem' 
+				id={e.label + '_NavID'} 
+				key={e.key} 
+				// onClick={handleFilterKeyChange(e.value)}
+				onClick={() => {
+					// handleFilterKeyChange(e.value);
+					handleFilterKeyChange(e.value)(e.value);
+					// setTypeNavToggleBtn(false);
+					setTypeNavToggleBtn(!typeNavToggleBtn);
+				}}
+			>
+				{e.label}
+			</div>
 		);
 	};
 
 	//#endregion -------------------- workNavContainer: workNav: RenderTypes --------------------
-
-
-	//#region -------------------- MARK: workNavContainer: renderLogos: workItem[s] *** NG *** --------------------
-
-	// const renderLogos = () => {
-
-	// 	console.log('');
-	// 	console.log('-------------------- renderLogos --------------------');
-
-	// 	// // return workData.filter((isLogo) => isLogo.logo !== '#').filter((isVisible) => isVisible.visiblity).map((workItem, index) =>
-	// 	// return employerData.filter((isLogo) => isLogo.logo !== '#').filter((isVisible) => isVisible.visiblity).map((workItem, index) =>
-
-	// 	// 	<div
-	// 	// 		className={`workItem ${workItem.format} ${workItem.album_id} masonryWidth${workItem.masonryWidth}`}
-	// 	// 		id={workItem.album_id + '_' + workItem.image_index + '_ID'}
-	// 	// 		key={index}
-	// 	// 		onClick={workItem.link !== '#' ? (event) => loadContent(event, workItem) : undefined}
-	// 	// 		style={{ cursor: workItem.availability && 'pointer' }}
-	// 	// 	>
-
-	// 	// 		qfrwefr
-
-	// 	// 		<img
-	// 	// 			logo={remoteLoc + '/logos/' + workItem.logo}
-	// 	// 			src={remoteLoc + '/logos_compressed/' + workItem.logo}
-	// 	// 			alt={'workItem: ' + workItem.album_id}
-	// 	// 		/>
-
-	// 	// 	</div>
-	// 	// );
-
-	// 	return filterEmployer.map((e) =>
-
-	// 		<div
-	// 			// className={e.logopath !== '#' ? 'workNavItemLogo' : 'workNavItem'}
-	// 			// className={`workItem ${e.format} ${e.album_id} masonryWidth${e.masonryWidth}`}
-	// 			className={`workItem ${e.album_id}`}
-	// 			id={e.album_id + '_ID'}
-	// 			key={e.album_index}
-	// 			// onClick={handleFilterKeyChange(e.album_id)}
-	// 		>
-
-	// 			{e.logopath !== '#' ? <img className='workNavLogo' src={remoteLoc + e.logopath} alt={e.employer} /> : e.employer}
-
-	// 		</div>
-	// 	);
-	// };
-
-	//#endregion -------------------- workNavContainer: renderLogos: workItem[s] *** NG *** --------------------
 
 
 	//#region -------------------- MARK: galleryContainer: RenderWork: workItem[s] --------------------
@@ -2362,15 +2465,57 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 	// const RenderWork = () => {
 	function RenderWork() {
 
+
+		//#region -------------------- FINDIN' OUT SH*T --------------------
+
 		// console.log('');
 		// console.log('-------------------- RenderWork --------------------');
+
+		// // console.log('');
+		// console.log('thisDeviceWidthArray = ' + thisDeviceWidthArray);
+		// console.log(thisDeviceWidthArray);
+
+		// // console.log('');
+		// console.log('props.thisDeviceWidthArray = ' + props.thisDeviceWidthArray);
+		// console.log(props.thisDeviceWidthArray);
+
+		// // console.log('');
+		// console.log('props.thisDeviceWidthArray[0] = ' + props.thisDeviceWidthArray[0]);
+		// console.log(props.thisDeviceWidthArray[0]);
+
+		//#endregion -------------------- FINDIN' OUT SH*T --------------------
+
 
 		// return workData.filter((isSrc) => isSrc.src !== '#').map((workItem, index) =>
 		return workData.filter((isSrc) => isSrc.src !== '#').filter((isVisible) => isVisible.visiblity).map((workItem, index) =>
 
 			<div
-				// className={`workItem ${workItem.format} ${workItem.album_id} masonryWidth${workItem.masonryWidth} masonryHeight${workItem.masonryHeight}`}
-				className={`workItem ${workItem.format} ${workItem.album_id} masonryWidth${workItem.masonryWidth}`}
+				// className={`workItem ${workItem.format} ${workItem.album_id} masonryHspan${workItem.masonryHspan} masonryVspan${workItem.masonryVspan}`}
+				// className={`workItem ${workItem.format} ${workItem.album_id} masonryHspan${workItem.masonryHspan}`}
+				// className={`workItem ${workItem.format} ${workItem.album_id} masonryHspan${workItem.masonryHspan + '_m'}`}
+
+				// className={(props.thisDeviceWidthArray[0] || props.thisDeviceWidthArray[1]) ?
+				// 	`workItem ${workItem.format} ${workItem.album_id} masonryHspan${workItem.masonryHspan + 1}` : 
+				// 	`workItem ${workItem.format} ${workItem.album_id} masonryHspan${workItem.masonryHspan}`
+				// }
+
+				// className={
+				// 	(props.thisDeviceWidthArray[0]) ?
+				// 		`workItem ${workItem.format} ${workItem.album_id} masonryHspan${workItem.masonryHspan + 2}` : 
+				// 	(props.thisDeviceWidthArray[1]) ?
+				// 		`workItem ${workItem.format} ${workItem.album_id} masonryHspan${workItem.masonryHspan + 1}` : 
+				// 		`workItem ${workItem.format} ${workItem.album_id} masonryHspan${workItem.masonryHspan}`
+				// }
+
+				className={
+					(props.thisDeviceWidthArray[0]) ?
+						`workItem ${workItem.format} ${workItem.album_id} masonryHspan${workItem.masonryHspan_m + '_m'}` : 
+					(props.thisDeviceWidthArray[1]) ?
+						`workItem ${workItem.format} ${workItem.album_id} masonryHspan${workItem.masonryHspan_l + '_l'}` : 
+						// `workItem ${workItem.format} ${workItem.album_id} masonryHspan${workItem.masonryHspan_m + '_l'}` : 
+						`workItem ${workItem.format} ${workItem.album_id} masonryHspan${workItem.masonryHspan}`
+				}
+
 				// id={workItem.album_id + 'DivID' + index}
 				id={workItem.album_id + '_' + workItem.image_index + '_ID'}
 				key={index}
@@ -2456,10 +2601,7 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 	//#endregion ==================== COMPONENTS ====================
 
 
-	// workNavIN.play();
-
-
-	//#region ==================== FINDIN' OUT MORE SH*T ====================
+	//#region ==================== MARK: FINDIN' OUT MORE SH*T ====================
 
 	// console.log('');
 	// console.log('galleryContainer_Ref = ' + galleryContainer_Ref);
@@ -2479,29 +2621,11 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 
 		{/* #region ------------------------- MARK: galleryContainer ------------------------- */}
 
-			{/* <div className='galleryContainer' id='galleryContainerID'> */}
-			{/* <div className='galleryContainer' id='galleryContainerID' ref={galleryContainer_Ref}> */}
-			{/* <div className='galleryContainer' id='galleryContainerID' style={{ visibility: galleryVisibility ? "visible" : "hidden" }} ref={galleryContainer_Ref}> */}
-
-			{/* <div className='isotopeContainer galleryContainer' id='galleryContainerID' ref={galleryContainer_Ref}> */}
-			{/* <div className='isotopeContainer galleryContainer' id='galleryContainerID' style={{ visibility: galleryVisibility ? "visible" : "hidden" }} ref={galleryContainer_Ref}> */}
-			{/* <div className='isotopeContainer galleryContainer' id='galleryContainerID' style={{ visibility: galChipToggle ? "hidden" : "visible" }} ref={galleryContainer_Ref}> */}
-			{/* <div className='isotopeContainer galleryContainer' id='galleryContainerID' style={{ visibility: galChipToggle ? "visible" : "hidden" }} ref={galleryContainer_Ref}> */}
-			{/* <div className='isotopeContainer galleryContainer' id='galleryContainerID' style={{ visibility: chipVisibility ? "hidden" : "visible" }} ref={galleryContainer_Ref}> */}
-			{/* <div className='isotopeContainer galleryContainer' id='galleryContainerID' style={{ visibility: chipVisibility ? "visible" : "hidden" }} ref={galleryContainer_Ref}> */}
-			{/* <div className='isotopeContainer galleryContainer' id='galleryContainerID' style={{ visibility: chipvisibility ? "hidden" : "visible" }} ref={galleryContainer_Ref}> */}
-			{/* <div className='isotopeContainer galleryContainer' id='galleryContainerID' style={{ visibility: chipvisibility ? "visible" : "hidden" }} ref={galleryContainer_Ref}> */}
-			{/* <div className='isotopeContainer galleryContainer' id='galleryContainerID' style={{ visibility: locationWork.state.chipState.chipvisibility ? "hidden" : "visible" }} ref={galleryContainer_Ref}> */}
-
-			{/* <div className='isotopeContainer galleryContainer' id='galleryContainerID' style={{ display: chipvisibility ? "none" : "flex" }} ref={galleryContainer_Ref}> */}
-
-			<div className='isotopeContainer galleryContainer' id='galleryContainerID' style={{ visibility: isChipVisible ? "hidden" : "visible" }} ref={galleryContainer_Ref}>
+			{/* <div className='isotopeContainer galleryContainer' id='galleryContainerID' style={{ visibility: isChipVisible ? "hidden" : "visible" }} ref={galleryContainer_Ref}> */}
+			<div className='isotopeContainer galleryContainer' id='galleryContainerID' style={{ visibility: props.isChipVisible ? "hidden" : "visible" }} ref={galleryContainer_Ref}>
 
 				{RenderWork()}
 				{/* <RenderWork /> */}
-
-				{/* {renderLogos()} */}
-				{/* {RenderChips()} */}
 
 				{/* <LoaderImage /> */}
 
@@ -2557,7 +2681,7 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 			{/* #endregion ------------------------- WEB: IFRAME ------------------------- */}
 
 
-			{/* #region ------------------------- VIDEO PLAYER ------------------------- */}
+			{/* #region ------------------------- MARK: VIDEO PLAYER ------------------------- */}
 
 				<div className={videoOpen === true ? 'videoContainer videoContainerOpen' : 'videoContainer videoContainerClosed'} id='videoContainerID' onClick={() => { clearContent(); }} ref={videoContainer_Ref}>
 
@@ -2591,7 +2715,7 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 
 				</div>
 
-			{/* #region ------------------------- VIDEO PLAYER ------------------------- */}
+			{/* #endregion ------------------------- VIDEO PLAYER ------------------------- */}
 
 			</div>
 
@@ -2600,22 +2724,54 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 
 		{/* #region ------------------------- MARK: workNavContainer ------------------------- */}
 
-			<div className='workNavContainer' id='workNavContainerID'>
+			<div className='workNavContainer' id='workNavContainerID' ref={workNavContainer_Ref}>
 
 				{/* <div className='workNavContainer' id='workNavContainerID'> */}
 					<div className='workNavBar' id='workNavBarID' ref={workNav_Ref}>
 
-						<div className='employerNav' id='employerNavID' ref={employerNav_Ref}>
-							<div className='activeEmplDiv' id='activeEmplDivID' ref={activeEmplDiv_Ref}></div>
+						<div className='emplNavBar' id='emplNavBarID' ref={emplNavBar_Ref}>
+							{/* <div className='activeEmplDiv' id='activeEmplDivID' ref={activeEmplDiv_Ref}></div> */}
 							<RenderEmployers />
 						</div>
 
-						<div className='typeNav' id='typeNavID' ref={typeNav_Ref}>
-							<div className='activeTypeDiv' id='activeTypeDivID' ref={activeTypeDiv_Ref}></div>
+						<div className='typeNavBar' id='typeNavBarID' ref={typeNavBar_Ref}>
+							{/* <div className='activeTypeDiv' id='activeTypeDivID' ref={activeTypeDiv_Ref}></div> */}
 							<RenderTypes />
 						</div>
 
+						<div className='workNavBtnContainer_m' id='workNavBtnContainer_mID' ref={workNavBtnContainer_m_Ref}>
+							{/* <div className='emplNavBtn_m' id='emplNavBtn_mID' onClick={() => { setWorkNavToggleBtn(!workNavToggleBtn); }} ref={emplNavBtn_m_Ref}>View by Employer</div>
+							<div className='typeNavBtn_m' id='typeNavBtn_mID' onClick={() => { setWorkNavToggleBtn(!workNavToggleBtn); }} ref={typeNavBtn_m_Ref}>View by Type</div> */}
+
+							{/* <div className='workBackBtn_m' id='workBackBtn_mID'ref={workBackBtn_m_Ref}> &#8592; </div> */}
+							<div className='workBackBtn_m' id='workBackBtn_mID'  onClick={goBack} ref={workBackBtn_m_Ref}> &#8592; </div>
+
+							<div className='emplNavBtn_m' id='emplNavBtn_mID' onClick={() => { setEmplNavToggleBtn(!emplNavToggleBtn); }} ref={emplNavBtn_m_Ref}>View by Employer: {emplNavToggleBtn ? 'True' : 'False'}</div>
+							<div className='typeNavBtn_m' id='typeNavBtn_mID' onClick={() => { setTypeNavToggleBtn(!typeNavToggleBtn); }} ref={typeNavBtn_m_Ref}>View by Type: {typeNavToggleBtn ? 'True' : 'False'}</div>
+
+							{/* <div className='emplNavBtn_m' id='emplNavBtn_mID' onClick={() => { setNavToggle('emplNav'); }} ref={emplNavBtn_m_Ref}>View by Employer</div>
+							<div className='typeNavBtn_m' id='typeNavBtn_mID' onClick={() => { setNavToggle('typeNav'); }} ref={typeNavBtn_m_Ref}>View by Type</div> */}
+
+							{/* <div className='emplNavBtn_m' id='emplNavBtn_mID' onClick={handleNavToggles(this)} ref={emplNavBtn_m_Ref}>View by Employer</div>
+							<div className='typeNavBtn_m' id='typeNavBtn_mID' onClick={handleNavToggles(this)} ref={typeNavBtn_m_Ref}>View by Type</div> */}
+
+							{/* <div className='emplNavBtn_m' id='emplNavBtn_mID' onClick={() => navDispatch({ type: 'emplNavBtn_m' })} ref={emplNavBtn_m_Ref}>View by Employer: {navState.emplNavBtn_m ? 'On' : 'Off'}</div>
+							<div className='typeNavBtn_m' id='typeNavBtn_mID' onClick={() => navDispatch({ type: 'typeNavBtn_m' })} ref={typeNavBtn_m_Ref}>View by Type: {navState.typeNavBtn_m ? 'On' : 'Off'}</div> */}
+
+							{/* <div className='emplNavBtn_m' id='emplNavBtn_mID' onClick={() => navDispatch({ type: 'emplNavBtn_m' })} ref={emplNavBtn_m_Ref}>View by Employer: {navState.emplNavBtn_m ? 'True' : 'False'}</div>
+							<div className='typeNavBtn_m' id='typeNavBtn_mID' onClick={() => navDispatch({ type: 'typeNavBtn_m' })} ref={typeNavBtn_m_Ref}>View by Type: {navState.typeNavBtn_m ? 'True' : 'False'}</div> */}
+
+							{/* <div className='emplNavBtn_m' id='emplNavBtn_mID' onClick={() => navDispatch({ type: 'emplNavBtn_m' })} ref={emplNavBtn_m_Ref}>View by Employer: {navState.emplNavBtn_m ? 'true' : 'false'}</div>
+							<div className='typeNavBtn_m' id='typeNavBtn_mID' onClick={() => navDispatch({ type: 'typeNavBtn_m' })} ref={typeNavBtn_m_Ref}>View by Type: {navState.typeNavBtn_m ? 'true' : 'false'}</div> */}
+
+							{/* <div className='emplNavBtn_m' id='emplNavBtn_mID' onClick={() => navDispatch({ type: 'emplNavBtn_m' })} ref={emplNavBtn_m_Ref}>View by Employer: {navState.emplNavBtn_m}</div>
+							<div className='typeNavBtn_m' id='typeNavBtn_mID' onClick={() => navDispatch({ type: 'typeNavBtn_m' })} ref={typeNavBtn_m_Ref}>View by Type: {navState.typeNavBtn_m}</div> */}
+						</div>
+
 						<div className='toggleNav' id='toggleNavID' onClick={() => { setWorkNavToggleBtn(!workNavToggleBtn); }} ref={toggleNav_Ref}>
+						{/* <div className='toggleNav' id='toggleNavID' onClick={() => { setNavToggle('workNav'); }} ref={toggleNav_Ref}> */}
+						{/* <div className='toggleNav' id='toggleNavID' onClick={handleNavToggles(this)} ref={toggleNav_Ref}> */}
+						{/* <div className='toggleNav' id='toggleNavID' onClick={() => navDispatch({ type: 'toggleNav' })} ref={toggleNav_Ref}> */}
 							<div className='toggleBtn' id='toggleBtnID' ref={toggleBtn_Ref}>
 								{workNavToggleText}
 							</div>
@@ -2631,67 +2787,13 @@ export default function Work({isLargeScreen, isChipVisible, setIsChipVisible, fi
 
 		{/* #region ------------------------- MARK: chipContainer ------------------------- */}
 
-			{/* <div className='isotopeContainer isotopeChips' id='isotopeChipsID' style={{ visibility: chipVisibility ? "visible" : "hidden" }}> */}
-			{/* <div className='isotopeContainer isotopeChips' id='isotopeChipsID' style={{ display: chipVisibility ? "inherit" : "none" }}> */}
-			{/* <div className='isotopeChips' id='isotopeChipsID' style={{ display: chipVisibility ? "inherit" : "none" }}> */}
-
-			{/* <div className='isotopeContainer' id='isotopeChipsID' style={{ display: chipVisibility ? "inherit" : "none" }} ref={chipNav_Ref}> */}
-			{/* <div className='isotopeChips' id='isotopeChipsID' style={{ display: chipVisibility ? "inherit" : "none" }} ref={chipNav_Ref}> */}
-			{/* <div className='chipContainer' id='isotopeChipsID' style={{ display: chipVisibility ? "inherit" : "none" }} ref={chipNav_Ref}> */}
-			{/* <div className='isotopeContainer chipContainer' id='isotopeChipsID' style={{ display: chipVisibility ? "inherit" : "none" }} ref={chipNav_Ref}> */}
-			{/* <div className='isotopeContainer isotopeChips chipContainer' id='isotopeChipsID' style={{ display: chipVisibility ? "inherit" : "none" }} ref={chipNav_Ref}> */}
-			{/* <div className='isotopeContainer chipContainer' id='isotopeChipsID' style={{ display: chipVisibility ? "inherit" : "none" }}> */}
-			{/* <div className='isotopeContainer chipContainer' id='isotopeChipsID' style={{ display: chipVisibility ? "inherit" : "none" }} ref={isotopeChips_Ref}> */}
-			{/* <div className='isotopeContainer chipContainer' id='isotopeChipsID' style={{ display: chipVisibility ? "inherit" : "none" }} ref={chipContainer_Ref}> */}
-			{/* <div className='isotopeContainer chipContainer' id='isotopeChipsID' style={{ display: chipVisibility ? "flex" : "none" }} ref={chipContainer_Ref}> */}
-
-			{/* <div className='chipContainer' id='chipContainerID' ref={chipContainer_Ref}> */}
-			{/* <div className='chipContainer' id='chipContainerID' style={{ display: galChipToggle ? "flex" : "none" }} ref={chipContainer_Ref}> */}
-			{/* <div className='chipContainer' id='chipContainerID' style={{ display: chipVisibility ? "flex" : "none" }} ref={chipContainer_Ref}> */}
-			{/* <div className='chipContainer' id='chipContainerID' style={{ display: chipVisibility ? "none" : "flex" }} ref={chipContainer_Ref}> */}
-			{/* <div className='chipContainer' id='chipContainerID' style={{ display: chipvisibility ? "none" : "flex" }} ref={chipContainer_Ref}> */}
-			{/* <div className='chipContainer' id='chipContainerID' style={{ display: chipVisibility ? "none" : "flex" }} onClick={() => { setChipVisibility(chipVisibility => !chipVisibility); }} ref={chipContainer_Ref}> */}
-			{/* <div className='chipContainer' id='chipContainerID' style={{ display: chipvisibility ? "flex" : "none" }} ref={chipContainer_Ref}> */}
-			{/* <div className='chipContainer' id='chipContainerID' style={{ display: locationWork.state.chipState.chipvisibility ? "flex" : "none" }} ref={chipContainer_Ref}> */}
-
-			{/* <div className='chipContainer' id='chipContainerID' style={{ zIndex: chipvisibility ? 0 : -999 }} ref={chipContainer_Ref}> */}
-
 			{/* <div className='chipContainer' id='chipContainerID' style={{ display: isChipVisible ? "flex" : "none" }} ref={chipContainer_Ref}> */}
-			<div className={isLargeScreen ? 'chipContainer chipContainer_d' : 'chipContainer chipContainer_l'} id='chipContainerID' style={{ display: isChipVisible ? "flex" : "none" }} ref={chipContainer_Ref}>
-
-				{/* <div className='chipContainer' id='chipContainerID'> */}
-				{/* <div className='chipContainer' id='chipContainerID' ref={chipNav_Ref}> */}
-				{/* <div className='chipContainer' id='chipContainerID' ref={isotopeChips_Ref}> */}
-					{/* {renderLogos()} */}
-					{/* {RenderChips()} */}
-					<RenderChips />
-				{/* </div> */}
-
+			<div className='chipContainer' id='chipContainerID' style={{ display: props.isChipVisible ? "flex" : "none" }} ref={chipContainer_Ref}>
+			{/* <div className={isLargeScreen ? 'chipContainer chipContainer_d' : 'chipContainer chipContainer_l'} id='chipContainerID' style={{ display: isChipVisible ? "flex" : "none" }} ref={chipContainer_Ref}> */}
+				<RenderChips />
 			</div>
 
 		{/* #endregion ------------------------- chipContainer ------------------------- */}
-
-
-
-
-		{/* #region ------------------------- MARK: chipToggleBtn *** NG *** ------------------------- */}
-
-			{/* <button className='chipToggleBtn' id='chipToggleBtnID' onClick={handleChipToggle} ref={chipToggleBtn_Ref}></button> */}
-
-		{/* #endregion ------------------------- chipToggleBtn *** NG *** ------------------------- */}
-
-
-		{/* #region ------------------------- MARK: testing123 *** NG *** ------------------------- */}
-
-			{/* <div className='testing123'>
-				<button onClick={toggleVisibility}>Toggle Content</button>
-
-				{isChipVisible && (
-					<h4>Chips are visible!</h4>
-				)}
-			</div> */}
-
-		{/* #endregion ------------------------- testing123 *** NG *** ------------------------- */}
 
 		</>
 	)

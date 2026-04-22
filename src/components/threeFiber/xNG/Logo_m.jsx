@@ -1,0 +1,113 @@
+// #region ==================== MARK: IMPORTS ====================
+
+// import { useMemo } from 'react';
+import { useRef, useMemo } from 'react';
+import * as THREE from 'three';
+// Import the SVGLoader
+import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
+// import { useLoader, Canvas } from '@react-three/fiber';
+import { useLoader } from '@react-three/fiber';
+// import { OrbitControls } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
+
+// #endregion ==================== IMPORTS ====================
+
+
+// #region ==================== MARK: CONSTANTS / VARS ====================
+
+const remoteGitImageLoc = 'https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/';
+
+// #endregion ==================== CONSTANTS / VARS ====================
+
+
+export default function Logo() {
+
+	// #region -------------------- MARK: SVG load and extrusion --------------------
+
+	// const logoSVG_url = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
+	const logoSVG_url = remoteGitImageLoc + 'logo/shigeru_logo_extrude_stroke.svg';
+	// const logoSVG_url = 'https://raw.githubusercontent.com/shigimcp/threejs-experiment-02/refs/heads/main/src/images/shigeru_logo.svg';
+
+	const logoSVG_data = useLoader(SVGLoader, logoSVG_url);
+
+	const shapes = useMemo(() => {
+		// Convert the paths from the SVG data into THREE.Shape objects
+		return logoSVG_data.paths.flatMap((path) => path.toShapes(true));
+	}, [logoSVG_data]);
+
+	const extrudeSettings = {
+		depth: 3.75,
+		bevelEnabled: false,
+		steps: 1
+	}
+
+	// #endregion -------------------- SVG load and extrusion --------------------
+
+
+	// #region -------------------- MARK: ANIMATION --------------------
+
+	const group_Ref = useRef();
+
+	useFrame(() => {
+		if (!group_Ref.current) {
+			return;
+		}
+
+		// group_Ref.current.rotation.x += 0.01;
+		// group_Ref.current.rotation.y += 0.01;
+		// group_Ref.current.rotation.y += 0.025;
+
+		group_Ref.current.rotation.y -= 0.01;
+		// group_Ref.current.rotation.y -= 0.0125;
+		// group_Ref.current.rotation.y -= 0.025;
+	});
+
+	// #endregion -------------------- ANIMATION --------------------
+
+
+	//#region ==================== MARK: FINDIN' OUT SH*T ====================
+
+	// console.log('');
+	// console.log('==================== COMPONENT: Logo.jsx ====================');
+
+	// // console.log('');
+	// console.log('props = ' + props);
+	// console.log(props);
+
+	// // console.log('');
+	// console.log('logoSVG_url = ' + logoSVG_url);
+	// console.log(logoSVG_url);
+
+	//#endregion ==================== FINDIN' OUT SH*T ====================
+
+
+	return (
+		<>
+			{/* A group or mesh to contain all extruded parts. Adjust scale and rotation as needed. */}
+
+			<group scale={0.01875} rotation={[Math.PI * 1, 0, 0]} position={[1, -0.25, 0]} ref={group_Ref}>
+
+				{shapes.map((shape, i) => (
+
+					<mesh key={i} receiveShadow castShadow position={[-50, -50, -2.5]}>
+
+						{/* Use the shapes and settings with the extrudeGeometry JSX component */}
+						<extrudeGeometry args={[shape, extrudeSettings]} />
+
+						{/* Apply a material, optionally using the original SVG color */}
+						<meshPhongMaterial 
+							// color={logoSVG_data.paths[i].color || 'hotpink'} 
+							// side={THREE.DoubleSide} 
+							// color = "royalblue" 
+							color = {'#6666aa'}
+							// side = {THREE.DoubleSide} 
+							wireframe = {true} 
+							transparent = {true} 
+							opacity = {0.05}
+						/>
+					</mesh>
+				))}
+			</group>
+		</>
+	);
+}
