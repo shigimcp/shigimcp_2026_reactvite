@@ -511,7 +511,7 @@ export default function Work(props) {
 	//#endregion -------------------- CONST/FUNCTION: handleNavToggles *** NG *** --------------------
 
 
-	//#region -------------------- MARK: CONST: useGoBack = (fallbackUrl) => /work --------------------
+	//#region -------------------- MARK: CONST: useGoBack = (fallbackUrl) => back button on mobile version --------------------
 
 	const useGoBack = (fallbackUrl) => {
 		const navigate = useNavigate();
@@ -533,7 +533,7 @@ export default function Work(props) {
 
 	// return <button onClick={goBack}>Go Back</button>;
 
-	//#endregion -------------------- CONST: useGoBack = (fallbackUrl) => /work --------------------
+	//#endregion -------------------- CONST: useGoBack = (fallbackUrl) => back button on mobile version --------------------
 
 
 	//#region -------------------- MARK: CONST: handleFilterKeyChange - setFilterKey / activeEmplDiv_Ref / activeTypeDiv_Ref --------------------
@@ -2746,8 +2746,11 @@ export default function Work(props) {
 							{/* <div className='workBackBtn_m' id='workBackBtn_mID'ref={workBackBtn_m_Ref}> &#8592; </div> */}
 							<div className='workBackBtn_m' id='workBackBtn_mID'  onClick={goBack} ref={workBackBtn_m_Ref}> &#8592; </div>
 
-							<div className='emplNavBtn_m' id='emplNavBtn_mID' onClick={() => { setEmplNavToggleBtn(!emplNavToggleBtn); }} ref={emplNavBtn_m_Ref}>View by Employer: {emplNavToggleBtn ? 'True' : 'False'}</div>
-							<div className='typeNavBtn_m' id='typeNavBtn_mID' onClick={() => { setTypeNavToggleBtn(!typeNavToggleBtn); }} ref={typeNavBtn_m_Ref}>View by Type: {typeNavToggleBtn ? 'True' : 'False'}</div>
+							<div className='emplNavBtn_m' id='emplNavBtn_mID' onClick={() => { setEmplNavToggleBtn(!emplNavToggleBtn); }} ref={emplNavBtn_m_Ref}>View by Employer</div>
+							<div className='typeNavBtn_m' id='typeNavBtn_mID' onClick={() => { setTypeNavToggleBtn(!typeNavToggleBtn); }} ref={typeNavBtn_m_Ref}>View by Type</div>
+
+							{/* <div className='emplNavBtn_m' id='emplNavBtn_mID' onClick={() => { setEmplNavToggleBtn(!emplNavToggleBtn); }} ref={emplNavBtn_m_Ref}>View by Employer: {emplNavToggleBtn ? 'True' : 'False'}</div>
+							<div className='typeNavBtn_m' id='typeNavBtn_mID' onClick={() => { setTypeNavToggleBtn(!typeNavToggleBtn); }} ref={typeNavBtn_m_Ref}>View by Type: {typeNavToggleBtn ? 'True' : 'False'}</div> */}
 
 							{/* <div className='emplNavBtn_m' id='emplNavBtn_mID' onClick={() => { setNavToggle('emplNav'); }} ref={emplNavBtn_m_Ref}>View by Employer</div>
 							<div className='typeNavBtn_m' id='typeNavBtn_mID' onClick={() => { setNavToggle('typeNav'); }} ref={typeNavBtn_m_Ref}>View by Type</div> */}
