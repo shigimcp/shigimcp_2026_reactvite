@@ -22,10 +22,10 @@ const root = createRoot(document.getElementById("root"));
 
 root.render(
 	<StrictMode>
-		{/* <BrowserRouter> */}
-		<BrowserRouter basename='/shigimcp_2026_reactvite/'>
+		<BrowserRouter>
+		{/* <BrowserRouter basename='/shigimcp_2026_reactvite/'> */}
 		{/* <BrowserRouter basename='/shigimcp_2026_reactvite'> */}
-		{/* <BrowserRouter basename='/Xstage/shigimcp_2026_reactvite'> */}
+		{/* <BrowserRouter basename='/Xstage/shigimcp_2026_reactvite/'> */}
 		{/* <BrowserRouter basename='https://www.shigimcp.com/Xstage/shigimcp_2026_reactvite'> */}
 		{/* <BrowserRouter basename={import.meta.env.BASE_URL}> */}
 			<App />
