@@ -419,7 +419,8 @@ export default function Header() {
 
 					{/* <hr className='hrGradient' /> */}
 					{/* <hr className='hrGradient' style={{ border: 'none', height: '0.5px', background: 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))' }} /> */}
-					<hr className='hrGradient' style={{ border: 'none', height: '0.5px', background: 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))', marginTop: -7 }} />
+					{/* <hr className='hrGradient' style={{ border: 'none', height: '0.5px', background: 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))', marginTop: -7 }} /> */}
+					<hr className='hrGradient' style={{ border: 'none', height: '0.5px', background: 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))', position: 'relative', top: '-0.4375rem' }} />
 				</div>
 
 			</div>
