@@ -147,7 +147,8 @@ export default function Header() {
 	// const remoteResumeLoc = '/resume/';
 	// const remoteResumeLoc = 'https://www.shigimcp.com/assets/resume/';
 	// const resumePDF_url = remoteResumeLoc + 'Shigeru_McPherson_Creative_Technologist_Digital_Designer_Resume.pdf';
-	const resumePDF_url = 'https://www.shigimcp.com/assets/resume/Shigeru_McPherson_Creative_Technologist_Digital_Designer_Resume.pdf';
+	// const resumePDF_url = 'https://www.shigimcp.com/assets/resume/Shigeru_McPherson_Creative_Technologist_Digital_Designer_Resume.pdf';
+	const resumePDF_url = 'https://www.shigimcp.com/assets/resume/Shigeru_McPherson_Interactive_Designer_Resume.pdf';
 
 	//#region -------------------- MARK: CONST: toggleVisibility --------------------
 
@@ -268,9 +269,14 @@ export default function Header() {
 		// window.matchMedia('(max-width: 768px)').matches, 
 		// window.matchMedia('(min-width: 1024px)').matches
 
+		// window.matchMedia('(max-width: 480px)').matches, 
+		// window.matchMedia('(min-width: 481px)').matches && window.matchMedia('(max-width: 1023px)').matches, 
+		// window.matchMedia('(min-width: 1024px)').matches
+
 		window.matchMedia('(max-width: 480px)').matches, 
 		window.matchMedia('(min-width: 481px)').matches && window.matchMedia('(max-width: 1023px)').matches, 
-		window.matchMedia('(min-width: 1024px)').matches
+		window.matchMedia('(min-width: 1024px)').matches && window.matchMedia('(max-width: 1439px)').matches, 
+		window.matchMedia('(min-width: 1440px)').matches
 	];
 
 	// // setIsLandscape(useMediaQuery('(min-width: 1920px)'));`
@@ -334,8 +340,11 @@ export default function Header() {
 					{/* #region -------------------- MARK: hed00 -------------------- */}
 
 						<div className='hed00' id='hed00ID'>
-							<span className='hed01' id='hed01ID'>Shigeru McPherson&nbsp;</span>
-							<span className='hed02' id='hed02ID'>creative technologist&nbsp;&nbsp;|&nbsp;&nbsp;digital designer&nbsp;&nbsp;|&nbsp;&nbsp;front-end developer</span>
+							{/* <span className='hed01' id='hed01ID'>Shigeru McPherson&nbsp;</span> */}
+							<Link to="/" className='hed01' id='hed01ID' style={{ color:'#ffffff', textDecoration: 'none' }}>Shigeru McPherson&nbsp;</Link>
+
+							{/* <span className='hed02' id='hed02ID'>creative technologist&nbsp;&nbsp;|&nbsp;&nbsp;digital designer&nbsp;&nbsp;|&nbsp;&nbsp;front-end developer</span> */}
+							<span className='hed02' id='hed02ID'>Interactive Designer&nbsp;&nbsp;|&nbsp;&nbsp;Front-End Developer&nbsp;&nbsp;|&nbsp;&nbsp;Creative Technologist</span>
 
 						{/* #region -------------------- MARK: contact_m - contact MOBILE -------------------- */}
 
@@ -404,6 +413,13 @@ export default function Header() {
 
 				{/* #endregion -------------------- navBarContainer -------------------- */}
 
+					{/* <Link to="/" className='logo' id='logoID'>
+						<img src='https://www.shigimcp.com/assets/img/0elements/shigeru_logo_ko_rev.svg' className='logoW' id='logoWID' alt='logoRev' />
+					</Link> */}
+
+					{/* <hr className='hrGradient' /> */}
+					{/* <hr className='hrGradient' style={{ border: 'none', height: '0.5px', background: 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))' }} /> */}
+					<hr className='hrGradient' style={{ border: 'none', height: '0.5px', background: 'linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))', marginTop: -7 }} />
 				</div>
 
 			</div>

@@ -255,27 +255,17 @@ img {
 	}
 
 	:root {
-		--header-height: 70px;
-		--navBar-height: 40px;
+		.hedWrapper {
+			.hedContainer {
+				.navBarContainer {
+					margin: 0 50%;
 
-		--workNav-width: 175px;
-		--workNav-height: 60px;
-
-		--body-min-width: 1115px;
-		--body-max-width: 1440px;
-		--body-max-width: 1920px;
-
-		REF: https://nekocalc.com/px-to-rem-converter *** Calculation based on a root font-size of 15 pixel!!! ***
-		--header-height: 4.667rem;
-		--navBar-height: 2.667rem;
-
-		--workNav-width: 11.667rem;
-		--workNav-height: 4rem;
-
-		--body-min-width: 74.333rem;
-		--body-max-width: 96rem;
-		--body-max-width: 126.667rem;
-		--body-max-width: calc(100vw - 1.25rem);
+					.navBar {
+						margin: 0 -25%;
+					}
+				}
+			}
+		}
 	}
 } */
 
@@ -337,6 +327,16 @@ img {
 		/* #endregion -------------------- Header.jsx / App.css -------------------- */
 
 
+		/* #region -------------------- MARK: Home.jsx / Home.css -------------------- */
+
+		.homeCanvas {
+			/* border: 0.5px inset #ff0000; */
+			left: 30vw;
+		}
+
+		/* #endregion -------------------- MARK: Home.jsx / Home.css -------------------- */
+
+
 		/* #region -------------------- MARK: Work.jsx / Work.css -------------------- */
 
 		/* .chipContainer {
@@ -388,22 +388,25 @@ img {
 
 		/* #region -------------------- MARK: Home.jsx / Home.css -------------------- */
 
-		/* .homeCanvas {
-			border: 1px inset #ff0000;
+		.homeCanvas {
+			/* border: 1px inset #ff0000; */
 
-			height: calc(100vh - var(--header-height) - var(--navBar-height));
+			/* height: calc(100vh - var(--header-height) - var(--navBar-height));
 
 			canvas {
 				border: 1px inset #00ff00;
 
 				width: 100vw;
 				height: calc(50vh - var(--header-height) - var(--navBar-height));
-			}
-		} */
+			} */
+
+			left: 10vw;
+		}
 
 		.homeHed {
 			/* border: 1px inset #0000ff; */
 
+			top: 21.25vh;
 			/* top: 25vh; */
 
 			/* h1 {
@@ -547,7 +550,8 @@ img {
 	* {
 		/* font-size: 10px; */
 		/* font-size: 9px; */
-		font-size: 8.5px;
+		/* font-size: 8.5px; */
+		font-size: 8.375px;
 		/* font-size: 8px; */
 		/* font-size: 7px; */
 	}
@@ -583,7 +587,8 @@ img {
 			/* border: 1px inset #0000ff; */
 
 			line-height: 3.5rem;
-			top: 12.5vh;
+			/* top: 12.5vh; */
+			top: 15vh;
 
 			h1 {
 				font-size: 3.5em;
@@ -821,7 +826,8 @@ img {
 	* {
 		/* font-size: 12.5px; */
 		/* font-size: 12px; */
-		font-size: 11px;
+		/* font-size: 11px; */
+		font-size: 10.5px;
 		/* font-size: 10px; */
 		/* font-size: 9px; */
 		/* font-size: 8px; */
@@ -912,6 +918,10 @@ img {
 							text-decoration-color: #888888;
 						}
 					}
+				}
+
+				.hrGradient {
+					display: none;
 				}
 			}
 
@@ -1440,6 +1450,10 @@ img {
 							text-decoration-color: #888888;
 						}
 					}
+				}
+
+				.hrGradient {
+					display: none;
 				}
 			}
 

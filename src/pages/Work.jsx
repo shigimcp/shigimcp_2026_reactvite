@@ -99,14 +99,14 @@ import JCVR_26963 from '../assets/images/ea/banners/26963_JC_VIVA_ROSE_GWP_PR_Wa
 // // const NMPF_04852 = new URL('/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250/NMPF_04852.jsx', import.meta.url).href;
 // const NMPF_04852 = new URL('/images/ea/banners/CR_4852_NMPF_US_Walmart_300x250', import.meta.url).href;
 
-// const NMMN_11155 = new URL('/images/ea/banners/CR_11155_MINAJESTY_2014_US_DIGITAL_300x600/NMMN_11155.jsx', import.meta.url).href;
+// // const NMMN_11155 = new URL('/images/ea/banners/CR_11155_MINAJESTY_2014_US_DIGITAL_300x600/NMMN_11155.jsx', import.meta.url).href;
 // const BCBG_02342 = new URL('/images/ea/banners/BCBG_MAXAZRIA_CR00002342_AU_Digital_Plan/BCBG_02342.jsx', import.meta.url).href;
 // const BCBG_05500 = new URL('/images/ea/banners/CR_5500_BCBG_BC_AU_Digital_Plan_2013/BCBG_05500.jsx', import.meta.url).href;
 // const JCNR_07074 = new URL('/images/ea/banners/CR_7074_JC_VNOIR_2013_AU_300x600/JCNR_07074.jsx', import.meta.url).href;
 // const BSPS_26897 = new URL('/images/ea/banners/26897_BS_PRIVATE_SHOW_GWP_PR_Walgreens_300x250/BSPS_26897.jsx', import.meta.url).href;
 // const NMTG_26903 = new URL('/images/ea/banners/26903_NM_TRINI_GIRL_GWP_PR_Walgreens_300x250/NMTG_26903.jsx', import.meta.url).href;
 // const JCVR_26963 = new URL('/images/ea/banners/26963_JC_VIVA_ROSE_GWP_PR_Walgreens_300x250/JCVR_26963.jsx', import.meta.url).href;
-// const JBJA_10263 = new URL('/images/ea/banners/CR_10263_J_by_JENNIFER_ANISTON_Kohls_300x250/JBJA_10263.jsx', import.meta.url).href;
+// // const JBJA_10263 = new URL('/images/ea/banners/CR_10263_J_by_JENNIFER_ANISTON_Kohls_300x250/JBJA_10263.jsx', import.meta.url).href;
 
 
 
@@ -114,14 +114,14 @@ import JCVR_26963 from '../assets/images/ea/banners/26963_JC_VIVA_ROSE_GWP_PR_Wa
 
 // const NMPF_04852 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_4852_NMPF_US_Walmart_300x250/NMPF_04852.jsx', import.meta.url).href;
 
-// const NMMN_11155 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_11155_MINAJESTY_2014_US_DIGITAL_300x600/NMMN_11155.jsx', import.meta.url).href;
+// // const NMMN_11155 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_11155_MINAJESTY_2014_US_DIGITAL_300x600/NMMN_11155.jsx', import.meta.url).href;
 // const BCBG_02342 = new URL('https://www.shigimcp.com/assets/img/ea/banners/BCBG_MAXAZRIA_CR00002342_AU_Digital_Plan/BCBG_02342.jsx', import.meta.url).href;
 // const BCBG_05500 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_5500_BCBG_BC_AU_Digital_Plan_2013/BCBG_05500.jsx', import.meta.url).href;
 // const JCNR_07074 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_7074_JC_VNOIR_2013_AU_300x600/JCNR_07074.jsx', import.meta.url).href;
 // const BSPS_26897 = new URL('https://www.shigimcp.com/assets/img/ea/banners/26897_BS_PRIVATE_SHOW_GWP_PR_Walgreens_300x250/BSPS_26897.jsx', import.meta.url).href;
 // const NMTG_26903 = new URL('https://www.shigimcp.com/assets/img/ea/banners/26903_NM_TRINI_GIRL_GWP_PR_Walgreens_300x250/NMTG_26903.jsx', import.meta.url).href;
 // const JCVR_26963 = new URL('https://www.shigimcp.com/assets/img/ea/banners/26963_JC_VIVA_ROSE_GWP_PR_Walgreens_300x250/JCVR_26963.jsx', import.meta.url).href;
-// const JBJA_10263 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_10263_J_by_JENNIFER_ANISTON_Kohls_300x250/JBJA_10263.jsx', import.meta.url).href;
+// // const JBJA_10263 = new URL('https://www.shigimcp.com/assets/img/ea/banners/CR_10263_J_by_JENNIFER_ANISTON_Kohls_300x250/JBJA_10263.jsx', import.meta.url).href;
 
 //#endregion - - - - - - - - - - - EA (shigimcp) - - - - - - - - - - -
 
@@ -976,7 +976,13 @@ export default function Work(props) {
 
 					//#region - - - - - - - - - - - IF 'animate'... - - - - - - - - - - -
 
-					// console.log('I am an ANIMATE or STANDARD banner: ' + thisWorkItem.format_src);
+
+					//#region -------------------- FINDIN' OUT MORE SH*T --------------------
+
+					console.log('I am an ANIMATE or STANDARD banner: ' + thisWorkItem.format_src);
+
+					//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
+
 
 					// iframeSRC = remoteLoc + thisWorkItem.album_id + '/banners/' + thisWorkItem.link;
 					iframeSRC = remoteLoc + thisWorkItem.album_id + '/banners/' + thisWorkItem.link + '/index.html';
@@ -1000,24 +1006,31 @@ export default function Work(props) {
 					//#region - - - - - - - - - - - ELSE IF 'html5'... - - - - - - - - - - -
 
 					newContent = React.createElement(bannerContent[thisWorkItem.link2]);
-					// newContent = remoteLoc + thisWorkItem.album_id + '/banners/' + thisWorkItem.link + '/index.html';
+
+					// // iframeSRC = remoteLoc + thisWorkItem.album_id + '/banners_/' + thisWorkItem.link + '/' + thisWorkItem.link2 + '.jsx';
+					// // iframeSRC = remoteLoc + thisWorkItem.album_id + '/banners_/' + thisWorkItem.link + '/' + thisWorkItem.link2;
+					// iframeSRC = remoteLoc + thisWorkItem.album_id + '/banners/' + thisWorkItem.link + '/index.html';
 
 
 					//#region -------------------- FINDIN' OUT MORE SH*T --------------------
 
-					// console.log('I am an HTML5 banner: ' + thisWorkItem.format_src);
+					console.log('I am an HTML5 banner: ' + thisWorkItem.format_src);
 
-					// // console.log('thisWorkItem.link = ' + thisWorkItem.link);
-					// // console.log('thisWorkItem.link2 = ' + thisWorkItem.link2);
-					// // console.log('thisWorkItem.link3 = ' + thisWorkItem.link3);
-					// // console.log('thisWorkItem.link4 = ' + thisWorkItem.link4);
+					// console.log('thisWorkItem.link = ' + thisWorkItem.link);
+					// console.log('thisWorkItem.link2 = ' + thisWorkItem.link2);
+					// console.log('thisWorkItem.link3 = ' + thisWorkItem.link3);
+					// console.log('thisWorkItem.link4 = ' + thisWorkItem.link4);
 
-					// // console.log('bannerContent = ' + bannerContent);
-					// console.log(bannerContent);
+					// console.log('bannerContent = ' + bannerContent);
+					console.log(bannerContent);
+
+					// console.log('');
+					console.log('newContent = ' + newContent);
+					console.log(newContent);
 
 					// // console.log('');
-					// console.log('newContent = ' + newContent);
-					// console.log(newContent);
+					// console.log('iframeSRC = ' + iframeSRC);
+					// console.log(iframeSRC);
 
 					//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
 
@@ -1035,6 +1048,17 @@ export default function Work(props) {
 					gsap.set([bannerContainer_Ref.current], { scale: bannerScale, transformOrigin: '0 0', immediateRender: true });
 
 					setBannerShow(newContent);
+
+
+					// banneriFrame_Ref.current.src = iframeSRC;
+					// banneriFrame_Ref.current.style.left = currentTargetDims[0] + 'px';
+					// banneriFrame_Ref.current.style.top = currentTargetDims[1] + 'px';
+					// banneriFrame_Ref.current.style.width = targetDims[2] / bannerScale + 'px';
+					// banneriFrame_Ref.current.style.height = targetDims[3] / bannerScale + 'px';
+
+					// gsap.set([banneriFrame_Ref.current], { scale: bannerScale, transformOrigin: '0 0', immediateRender: true });
+
+					// setBanneriFrameOpen(true);
 
 					//#endregion - - - - - - - - - - - ELSE IF 'html5'... - - - - - - - - - - -
 				}
@@ -1640,10 +1664,14 @@ export default function Work(props) {
 
 			if (workNavToggleBtn) {
 
-				// console.log('');
-				console.log('workNavToggleBtn = ' + workNavToggleBtn);
-				// console.log('workNavTL = ' + workNavTL);
-				// console.log(workNavTL);
+				//#region -------------------- FINDIN' OUT MORE SH*T --------------------
+
+				// // console.log('');
+				// console.log('workNavToggleBtn = ' + workNavToggleBtn);
+				// // console.log('workNavTL = ' + workNavTL);
+				// // console.log(workNavTL);
+
+				//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
 
 				// workNavTL.play();
 				workNavTL.current.play();
@@ -1653,10 +1681,14 @@ export default function Work(props) {
 
 			} else {
 
-				// console.log('');
-				console.log('workNavToggleBtn = ' + workNavToggleBtn);
-				// console.log('workNavTL = ' + workNavTL);
-				// console.log(workNavTL);
+				//#region -------------------- FINDIN' OUT MORE SH*T --------------------
+
+				// // console.log('');
+				// console.log('workNavToggleBtn = ' + workNavToggleBtn);
+				// // console.log('workNavTL = ' + workNavTL);
+				// // console.log(workNavTL);
+
+				//#endregion -------------------- FINDIN' OUT MORE SH*T --------------------
 
 				// workNavTL.reverse();
 				workNavTL.current.reverse();
@@ -1684,11 +1716,16 @@ export default function Work(props) {
 		// if (emplNavToggleBtn) {
 		if (!emplNavToggleBtn) {
 
-			console.log('');
-			console.log('emplNavToggleBtn = ' + emplNavToggleBtn);
-			// console.log('typeNavToggleBtn = ' + typeNavToggleBtn);
-			// console.log('emplNavTL.current = ' + emplNavTL.current);
-			// console.log(emplNavTL.current);
+			//#region -------------------- FINDIN' OUT SH*T --------------------
+
+			// console.log('');
+			// console.log('emplNavToggleBtn = ' + emplNavToggleBtn);
+			// // console.log('typeNavToggleBtn = ' + typeNavToggleBtn);
+			// // console.log('emplNavTL.current = ' + emplNavTL.current);
+			// // console.log(emplNavTL.current);
+
+			//#endregion -------------------- FINDIN' OUT SH*T --------------------
+
 
 			// emplNavTL.current.play();
 			// // typeNavTL.current.reverse();
@@ -1703,11 +1740,16 @@ export default function Work(props) {
 
 		} else {
 
-			console.log('');
-			console.log('emplNavToggleBtn = ' + emplNavToggleBtn);
-			// console.log('typeNavToggleBtn = ' + typeNavToggleBtn);
-			// console.log('emplNavTL.current = ' + emplNavTL.current);
-			// console.log(emplNavTL.current);
+			//#region -------------------- FINDIN' OUT SH*T --------------------
+
+			// console.log('');
+			// console.log('emplNavToggleBtn = ' + emplNavToggleBtn);
+			// // console.log('typeNavToggleBtn = ' + typeNavToggleBtn);
+			// // console.log('emplNavTL.current = ' + emplNavTL.current);
+			// // console.log(emplNavTL.current);
+
+			//#endregion -------------------- FINDIN' OUT SH*T --------------------
+
 
 			// emplNavTL.current.reverse();
 			// // typeNavTL.current.reverse();
@@ -1734,11 +1776,16 @@ export default function Work(props) {
 		// if (typeNavToggleBtn) {
 		if (!typeNavToggleBtn) {
 
-			// console.log('');
-			// console.log('emplNavToggleBtn = ' + emplNavToggleBtn);
-			console.log('typeNavToggleBtn = ' + typeNavToggleBtn);
-			// console.log('emplNavTL.current = ' + emplNavTL.current);
-			// console.log(emplNavTL.current);
+			//#region -------------------- FINDIN' OUT SH*T --------------------
+
+			// // console.log('');
+			// // console.log('emplNavToggleBtn = ' + emplNavToggleBtn);
+			// console.log('typeNavToggleBtn = ' + typeNavToggleBtn);
+			// // console.log('emplNavTL.current = ' + emplNavTL.current);
+			// // console.log(emplNavTL.current);
+
+			//#endregion -------------------- FINDIN' OUT SH*T --------------------
+
 
 			// // emplNavTL.current.reverse();
 			// typeNavTL.current.play();
@@ -1753,11 +1800,16 @@ export default function Work(props) {
 
 		} else {
 
-			// console.log('');
-			// console.log('emplNavToggleBtn = ' + emplNavToggleBtn);
-			console.log('typeNavToggleBtn = ' + typeNavToggleBtn);
-			// console.log('emplNavTL.current = ' + emplNavTL.current);
-			// console.log(emplNavTL.current);
+			//#region -------------------- FINDIN' OUT SH*T --------------------
+
+			// // console.log('');
+			// // console.log('emplNavToggleBtn = ' + emplNavToggleBtn);
+			// console.log('typeNavToggleBtn = ' + typeNavToggleBtn);
+			// // console.log('emplNavTL.current = ' + emplNavTL.current);
+			// // console.log(emplNavTL.current);
+
+			//#endregion -------------------- FINDIN' OUT SH*T --------------------
+
 
 			// // emplNavTL.current.reverse();
 			// typeNavTL.current.reverse();

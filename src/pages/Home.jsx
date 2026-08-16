@@ -76,9 +76,14 @@ export default function Home(props) {
 		// [0.25, 1.75, 11.25], 
 		// [0, 0.75, 10]
 
-		[-0.5, 3, 20], 
-		[0.25, 1.75, 11.25], 
-		[0, 0.75, 7.5]
+		// [-0.5, 3, 20], 
+		// [0.25, 1.75, 11.25], 
+		// [0, 0.75, 7.5]
+
+		[-0.5, 3.75, 21.25], 
+		[0.5, 1.5, 12.5], 
+		[0.5, 0.625, 8.25], 
+		[2, 0.75, 7.5]
 	];
 
 	//#endregion ==================== CONSTs/FUNCTIONs ====================
@@ -109,7 +114,8 @@ export default function Home(props) {
 				{/* <PerspectiveCamera makeDefault fov={30} position={(window.matchMedia('(min-width: 375px)').matches && window.matchMedia('(max-width: 767px)').matches) ? pCamPos[0] : pCamPos[1]} /> */}
 				{/* <PerspectiveCamera makeDefault fov={30} position={(thisDeviceWidthArray[0]) ? pCamPos[0] : (thisDeviceWidthArray[1] || thisDeviceWidthArray[2]) ? pCamPos[1] : pCamPos[2]} /> */}
 				{/* <PerspectiveCamera makeDefault fov={30} position={(thisDeviceWidthArray[0]) ? pCamPos[0] : (thisDeviceWidthArray[1]) ? pCamPos[1] : pCamPos[2]} /> */}
-				<PerspectiveCamera makeDefault fov={30} position={(props.thisDeviceWidthArray[0]) ? pCamPos[0] : (props.thisDeviceWidthArray[1]) ? pCamPos[1] : pCamPos[2]} />
+				{/* <PerspectiveCamera makeDefault fov={30} position={(props.thisDeviceWidthArray[0]) ? pCamPos[0] : (props.thisDeviceWidthArray[1]) ? pCamPos[1] : pCamPos[2]} /> */}
+				<PerspectiveCamera makeDefault fov={30} position={(props.thisDeviceWidthArray[0]) ? pCamPos[0] : (props.thisDeviceWidthArray[1]) ? pCamPos[1] : (props.thisDeviceWidthArray[2]) ? pCamPos[2] : pCamPos[3]} />
 
 			{/* #endregion - - - - - - - - - - - PerspectiveCamera => mobile, laptop, desktop - SEE: Header.jsx - - - - - - - - - - - */}
 
@@ -182,18 +188,28 @@ export default function Home(props) {
 				</div> */}
 
 				<div className='homeDescr'>
+					{/* <p>
+						Hi!
+					</p>
+					<p>
+						<br />
+						<br /><br />
+						I'm a Creative Technologist and Developer with 20+ years of experience building interactive digital experiences, campaign websites, and motion-driven content for global brands including L’Oréal (Kiehl’s), Elizabeth Arden, Armani Exchange, and Hearst Communications.
+					</p>
+					<p>
+						<br /><br />
+						I combine strong visual design with front-end development to prototype and deliver engaging digital experiences, while continuously exploring creative coding workflows that integrate motion, UI/UX, and front-end development.
+						<br /><br />
+					</p> */}
+
 					<p>
 						Hi!
 					</p>
 					<p>
-						{/* <br /> */}
-						{/* <br /><br /> */}
-						I'm a Creative Technologist and Developer with 20+ years of experience building interactive digital experiences, campaign websites, and motion-driven content for global brands including L’Oréal (Kiehl’s), Elizabeth Arden, Armani Exchange, and Hearst Communications.
+						I'm an Interactive Designer, Front-End Developer, and Creative Technologist with 20+ years of experience designing and building interactive digital experiences for global brands including L'Oréal (Kiehl's), Elizabeth Arden, Armani Exchange, and Hearst Communications.
 					</p>
 					<p>
-						{/* <br /><br /> */}
-						I combine strong visual design with front-end development to prototype and deliver engaging digital experiences, while continuously exploring creative coding workflows that integrate motion, UI/UX, and front-end development.
-						{/* <br /><br /> */}
+						I combine visual design, front-end development, and motion to create engaging digital experiences from early concepts and rapid prototypes through production-ready implementation. I enjoy working at the intersection of design and development to help turn creative ideas into polished digital experiences.
 					</p>
 					<p>
 						Love,<br />

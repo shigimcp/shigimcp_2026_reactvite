@@ -54,6 +54,8 @@
 	background: var(--hed-BGgradient);
 	/* background: linear-gradient(0deg,rgba(255, 255, 255, 1) var(--hed-BGgradient_edge), rgba(0, 0, 0, 1) var(--hed-BGgradient_edge), rgba(0, 0, 0, 1) 100%); */
 
+	/* mix-blend-mode: multiply; */
+
 	width: 100vw;
 
 	margin: 0;
@@ -72,7 +74,8 @@
 	/* position: sticky; */
 	top: 0;
 	left: 0;
-	z-index: 998;
+	/* z-index: 998; */
+	/* z-index: 800; */
 
 	/* display: none; */
 
@@ -123,6 +126,8 @@
 				height: inherit;
 				max-height: var(--logo-max-height);
 			} */
+
+			z-index: 99999;
 		}
 
 		.hed {
@@ -141,6 +146,8 @@
 			display: grid;
 			grid-template-columns: 75% 25%;
 			align-items: end;
+
+			/* z-index: 990; */
 
 			.hed00 {
 				/* border: 1px inset #00ff00; */
@@ -187,9 +194,10 @@
 		.navBarContainer {
 			/* border: 1px inset #00ff00; */
 
-			border-bottom: 1px solid #cccccc;
+			/* border-bottom: 1px solid #cccccc; */
 			/* background: #ffffff; */
-			mix-blend-mode: multiply;
+			/* mix-blend-mode: multiply; */
+			/* mix-blend-mode: difference; */
 
 			/* width: inherit; */
 			width: 100vw;
@@ -200,6 +208,8 @@
 
 			margin: auto;
 			/* margin: 0 500px; */
+			/* margin: 0 8.75%; */
+
 			padding: 0;
 			/* padding: inherit; */
 			/* padding: 0 2.5rem 0 0; */
@@ -213,12 +223,15 @@
 			left: 50%;
 			transform: translateX(-50%);
 			top: var(--header-height);
+
 			z-index: 990;
 
 			.navBar {
 				/* border: 1px inset #0000ff; */
 				/* background: #ff0000; */
 				/* background: #ffffff; */
+
+				/* border-bottom: 1px solid #cccccc; */
 
 				/* color: #ffffff; */
 				color: #000000;
@@ -236,6 +249,8 @@
 				height: inherit;
 
 				margin: auto;
+				/* margin: 0 -8.75%; */
+
 				padding: var(--hedPadding);
 
 				display: grid;
@@ -362,6 +377,27 @@
 					} */
 				}
 			}
+
+			.hrGradient {
+				/* border: 1px inset #00ff00; */
+
+				/* border: none; */
+
+				/* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); */
+
+				/* height: 0.5px; */
+
+				/* margin: 0; */
+				margin-top: -10px;
+				/* padding: 0; */
+
+
+				/* border: none;
+				height: 2px;
+				background-color: #0f0;
+				margin: 20px 0; */
+			}
+
 		}
 
 		.navBarContainer_m {
@@ -392,7 +428,8 @@
 			transform: translateX(-50%);
 			top: var(--header-height);
 			/* top: 0; */
-			z-index: 999;
+			/* z-index: 999; */
+			/* z-index: 990; */
 
 			.navBar {
 				/* border: 1px inset #0000ff; */
