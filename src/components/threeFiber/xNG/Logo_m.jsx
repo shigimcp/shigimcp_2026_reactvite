@@ -15,7 +15,8 @@ import { useFrame } from '@react-three/fiber';
 
 // #region ==================== MARK: CONSTANTS / VARS ====================
 
-const remoteGitImageLoc = 'https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/';
+// const remoteGitImageLoc = 'https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/';
+// const remoteImageLoc = 'https://shigimcp.com/assets/img/';
 
 // #endregion ==================== CONSTANTS / VARS ====================
 
@@ -25,8 +26,10 @@ export default function Logo() {
 	// #region -------------------- MARK: SVG load and extrusion --------------------
 
 	// const logoSVG_url = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
-	const logoSVG_url = remoteGitImageLoc + 'logo/shigeru_logo_extrude_stroke.svg';
+	// const logoSVG_url = remoteGitImageLoc + 'logo/shigeru_logo_extrude_stroke.svg';
 	// const logoSVG_url = 'https://raw.githubusercontent.com/shigimcp/threejs-experiment-02/refs/heads/main/src/images/shigeru_logo.svg';
+	// const logoSVG_url = remoteImageLoc + 'logos_compressed/shigeru_logo_extrude_stroke.svg';
+	const logoSVG_url = 'https://github.com/shigimcp/shigimcp_2026_reactvite/blob/main/src/assets/images/0elements/shigeru_logo_extrude_stroke.svg';
 
 	const logoSVG_data = useLoader(SVGLoader, logoSVG_url);
 

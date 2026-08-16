@@ -45,5 +45,15 @@ export default defineConfig({
 	// 	},
 	// },
 
+	server: {
+    proxy: {
+      '/api-assets': {
+        target: 'https://shigimcp.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api-assets/, '')
+      }
+    }
+  }
+
 });
 // }));
