@@ -12,9 +12,9 @@ export default defineConfig({
 		},
 
 		// base: "/",
-		base: "/shigimcp_2026_reactvite/",
+		// base: "/shigimcp_2026_reactvite/",
 		// base: "https://shigimcp.github.io/shigimcp_2026_reactvite/",
-		// base: "/Xstage/shigimcp_2026_reactvite/",
+		base: "/Xstage/shigimcp_2026_reactvite/",
 		// base: "https://www.shigimcp.com/Xstage/shigimcp_2026_reactvite/",
 		// base: "./",
 		// base: "",
